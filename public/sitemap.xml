@@ -15,4 +15,16 @@
   <url>
     <loc>https://living-cost-lab.vercel.app/blog</loc>
   </url>
+  <url>
+    <loc>https://living-cost-lab.vercel.app/privacy</loc>
+  </url>
+  <url>
+    <loc>https://living-cost-lab.vercel.app/terms</loc>
+  </url>
+  <url>
+    <loc>https://living-cost-lab.vercel.app/contact</loc>
+  </url>
+  <url>
+    <loc>https://living-cost-lab.vercel.app/about</loc>
+  </url>
 </urlset>

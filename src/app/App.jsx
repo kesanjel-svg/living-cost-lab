@@ -8,6 +8,11 @@ import CalculatorsPage from '../pages/CalculatorsPage'
 import ElectricCalculatorPage from '../features/calculators/electric/ElectricCalculatorPage'
 import BlogPage from '../pages/BlogPage'
 import NotFoundPage from '../pages/NotFoundPage'
+import PrivacyPolicyPage from '../pages/PrivacyPolicyPage'
+import TermsPage from '../pages/TermsPage'
+import ContactPage from '../pages/ContactPage'
+import AboutPage from '../pages/AboutPage'
+import SeoAuditPage from '../features/seo/pages/SeoAuditPage'
 import './App.css'
 
 function App() {
@@ -26,6 +31,13 @@ function App() {
               element={<ElectricCalculatorPage />}
             />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            {import.meta.env.DEV && (
+              <Route path="/seo/audit" element={<SeoAuditPage />} />
+            )}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

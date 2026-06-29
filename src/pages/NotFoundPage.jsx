@@ -10,6 +10,7 @@ export default function NotFoundPage() {
         title="페이지를 찾을 수 없습니다 | 생활비연구소"
         description="요청하신 페이지를 찾을 수 없습니다. 생활비연구소 홈으로 이동해주세요."
         canonical="/404"
+        noindex
       />
       <div className="page__header">
         <h1 className="page__title">404</h1>

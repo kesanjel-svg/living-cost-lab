@@ -87,6 +87,11 @@ export default function SupportDetailPage() {
           title="지원금을 찾을 수 없습니다 | 생활비연구소"
           description="요청하신 지원금 정보를 찾을 수 없습니다."
           canonical={`/support/${id}`}
+          noindex
+          breadcrumbs={[
+            { name: '홈', path: '/' },
+            { name: '지원금 찾기', path: '/support' },
+          ]}
         />
         <div className="page__content">
           <Link to="/support" className="page__back">
@@ -102,9 +107,15 @@ export default function SupportDetailPage() {
     <div className="page page--detail">
       <Seo
         title={`${program.title} 신청방법 | 생활비연구소`}
-        description={program.summary}
+        description={`${program.summary} ${program.description}`.slice(0, 160)}
         keywords={program.tags?.join(', ')}
         canonical={`/support/${program.id}`}
+        breadcrumbs={[
+          { name: '홈', path: '/' },
+          { name: '지원금 찾기', path: '/support' },
+          { name: program.title, path: `/support/${program.id}` },
+        ]}
+        faq={program.faq}
       />
       <div className="page__content">
         <Link to="/support" className="page__back">

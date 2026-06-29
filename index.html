@@ -11,7 +11,7 @@
     <title>생활비연구소 | 정부지원금 · 생활비 계산 플랫폼</title>
     <meta
       name="description"
-      content="정부지원금, 전기요금 계산기, 생활비 절약 정보, 각종 지원금을 한곳에서 확인하는 생활비연구소입니다."
+      content="생활비연구소(Living Cost Lab)는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
     />
     <meta
       name="keywords"
@@ -34,12 +34,12 @@
     />
     <meta
       property="og:description"
-      content="정부지원금, 전기요금 계산기, 생활비 절약 정보, 각종 지원금을 한곳에서 확인하는 생활비연구소입니다."
+      content="생활비연구소(Living Cost Lab)는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
     />
-    <meta property="og:url" content="https://livingcostlab.kr/" />
+    <meta property="og:url" content="https://living-cost-lab.vercel.app/" />
     <meta
       property="og:image"
-      content="https://livingcostlab.kr/favicon.svg"
+      content="https://living-cost-lab.vercel.app/og-image.svg"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -49,12 +49,68 @@
     />
     <meta
       name="twitter:description"
-      content="정부지원금, 전기요금 계산기, 생활비 절약 정보, 각종 지원금을 한곳에서 확인하는 생활비연구소입니다."
+      content="생활비연구소(Living Cost Lab)는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
     />
     <meta
       name="twitter:image"
-      content="https://livingcostlab.kr/favicon.svg"
+      content="https://living-cost-lab.vercel.app/og-image.svg"
     />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Living Cost Lab",
+            "alternateName": "생활비연구소",
+            "url": "https://living-cost-lab.vercel.app",
+            "logo": "https://living-cost-lab.vercel.app/favicon.svg"
+          },
+          {
+            "@type": "WebSite",
+            "name": "생활비연구소",
+            "alternateName": "Living Cost Lab",
+            "url": "https://living-cost-lab.vercel.app",
+            "inLanguage": "ko-KR",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://living-cost-lab.vercel.app/support?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "name": "생활비연구소",
+            "alternateName": "Living Cost Lab",
+            "description": "정부지원금 찾기와 생활비 계산 기능을 제공하는 생활비 계산 플랫폼",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "browserRequirements": "Requires JavaScript",
+            "url": "https://living-cost-lab.vercel.app",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "KRW"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://living-cost-lab.vercel.app/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
 
     <link
       rel="stylesheet"
