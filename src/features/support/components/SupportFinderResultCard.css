@@ -21,6 +21,17 @@
   box-shadow: var(--shadow-md);
 }
 
+.support-finder__result-category {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  background: var(--blue-50);
+  border-radius: 999px;
+}
+
 .support-finder__result-title {
   margin: 0 0 0.625rem;
   font-size: 1.0625rem;

@@ -83,6 +83,43 @@
   color: var(--blue-950);
 }
 
+.support-detail__subtext {
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.support-detail__subtext strong {
+  margin-right: 0.35rem;
+  color: var(--blue-900);
+}
+
+.support-detail__doc-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.support-detail__doc-list li + li {
+  margin-top: 0.35rem;
+}
+
+.support-detail__blog-summary {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.support-detail__similar-intro {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
 .support-detail__link {
   display: inline-flex;
   align-items: center;

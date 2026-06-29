@@ -1,4 +1,6 @@
 import supportPrograms from '../../../data/supportPrograms'
+import { blogPosts } from '../../../data/blogPosts'
+import { getBlogPath } from '../../blog/services/blogService'
 
 function mapAge(value) {
   if (value === '20s') return '20'
@@ -42,24 +44,61 @@ export function filterSupportPrograms(filters, programs) {
   )
 }
 
-export function getSupportById(id, programs) {
-  return programs.find((program) => program.id === id)
+export function searchSupportPrograms(query, programs, categoryKey = '') {
+  const keyword = query.trim().toLowerCase()
+
+  return programs.filter((program) => {
+    const matchesCategory =
+      !categoryKey || program.categoryKey === categoryKey
+
+    if (!keyword) {
+      return matchesCategory
+    }
+
+    const haystack = [
+      program.title,
+      program.category,
+      ...(program.tags ?? []),
+    ]
+      .join(' ')
+      .toLowerCase()
+
+    return matchesCategory && haystack.includes(keyword)
+  })
 }
 
-export function getSimilarSupports(currentSupport, programs, limit = 2) {
+export function getSupportById(id, programs) {
+  return programs.find(
+    (program) => program.id === id || program.slug === id,
+  )
+}
+
+export function getSimilarSupports(currentSupport, programs, limit = 3) {
   const sameCategory = programs.filter(
     (program) =>
       program.id !== currentSupport.id &&
-      program.category === currentSupport.category,
+      program.categoryKey === currentSupport.categoryKey,
   )
 
   if (sameCategory.length > 0) {
-    return sameCategory
+    return sameCategory.slice(0, limit)
   }
 
   return programs
     .filter((program) => program.id !== currentSupport.id)
     .slice(0, limit)
+}
+
+export function resolveRelatedPosts(postSlugs = []) {
+  return postSlugs
+    .map((slug) => blogPosts.find((post) => post.slug === slug))
+    .filter(Boolean)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      summary: post.summary,
+      href: getBlogPath(post.slug),
+    }))
 }
 
 export function getRecommendedPrograms(filters) {
@@ -72,15 +111,19 @@ export function getProgramById(id) {
 
 export function getProgramsByCalculator(calculatorId) {
   return supportPrograms.filter((program) =>
-    program.relatedCalculator.includes(calculatorId),
+    program.relatedCalculators?.includes(calculatorId),
   )
 }
 
-export function getSimilarPrograms(id, limit = 2) {
+export function getSimilarPrograms(id, limit = 3) {
   const current = getProgramById(id)
   if (!current) {
     return []
   }
 
   return getSimilarSupports(current, supportPrograms, limit)
+}
+
+export function getSupportSeoDescription(program) {
+  return `${program.summary} ${program.description}`.slice(0, 160)
 }

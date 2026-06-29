@@ -1,4 +1,5 @@
 import SupportFinder from '../components/SupportFinder'
+import SupportSearch from '../components/SupportSearch'
 import Seo from '../../../shared/seo/Seo'
 import './SupportPage.css'
 
@@ -24,6 +25,7 @@ export default function SupportPage() {
           확인할 수 있습니다.
         </p>
       </div>
+      <SupportSearch />
       <SupportFinder variant="full" showPageHeader={false} />
     </div>
   )

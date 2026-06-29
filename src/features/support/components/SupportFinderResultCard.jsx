@@ -7,6 +7,9 @@ export default function SupportFinderResultCard({ program, index }) {
       className="support-finder__result-card"
       style={{ animationDelay: `${0.08 + index * 0.06}s` }}
     >
+      {program.category && (
+        <span className="support-finder__result-category">{program.category}</span>
+      )}
       <h3 className="support-finder__result-title">{program.title}</h3>
       <p className="support-finder__result-desc">{program.summary}</p>
       {program.target && (

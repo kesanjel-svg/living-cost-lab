@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { blogRegistry } from '../../../constants/blogs'
 import { calculatorRegistry } from '../../../constants/calculators'
 import supportPrograms from '../../../data/supportPrograms'
 import {
   getSimilarSupports,
   getSupportById,
+  getSupportSeoDescription,
+  resolveRelatedPosts,
 } from '../services/supportService'
 import Seo from '../../../shared/seo/Seo'
 import '../../../pages/Page.css'
@@ -66,19 +67,14 @@ export default function SupportDetailPage() {
     ? getSimilarSupports(program, supportPrograms)
     : []
 
-  const relatedCalculators = (program?.relatedCalculator ?? [])
+  const relatedCalculators = (program?.relatedCalculators ?? [])
     .map((calculatorId) => ({
       id: calculatorId,
       ...calculatorRegistry[calculatorId],
     }))
     .filter((item) => item.title)
 
-  const relatedBlogs = (program?.relatedBlogs ?? [])
-    .map((blogId) => ({
-      id: blogId,
-      ...blogRegistry[blogId],
-    }))
-    .filter((item) => item.title)
+  const relatedPosts = program ? resolveRelatedPosts(program.relatedPosts) : []
 
   if (!program) {
     return (
@@ -103,19 +99,31 @@ export default function SupportDetailPage() {
     )
   }
 
+  const supportPath = `/support/${program.slug}`
+
   return (
     <div className="page page--detail">
       <Seo
         title={`${program.title} 신청방법 | 생활비연구소`}
-        description={`${program.summary} ${program.description}`.slice(0, 160)}
+        description={getSupportSeoDescription(program)}
         keywords={program.tags?.join(', ')}
-        canonical={`/support/${program.id}`}
+        canonical={supportPath}
+        type="article"
         breadcrumbs={[
           { name: '홈', path: '/' },
           { name: '지원금 찾기', path: '/support' },
-          { name: program.title, path: `/support/${program.id}` },
+          { name: program.title, path: supportPath },
         ]}
         faq={program.faq}
+        articles={[
+          {
+            headline: `${program.title} 신청방법`,
+            description: getSupportSeoDescription(program),
+            path: supportPath,
+            datePublished: '2026-01-01',
+            dateModified: '2026-06-27',
+          },
+        ]}
       />
       <div className="page__content">
         <Link to="/support" className="page__back">
@@ -140,39 +148,57 @@ export default function SupportDetailPage() {
             )}
           </header>
 
-          <DetailSection title="지원 대상">
+          <DetailSection title="신청자격">
             <p className="support-detail__text">{program.target}</p>
+            {program.income && (
+              <p className="support-detail__subtext">
+                <strong>소득 기준</strong> {program.income}
+              </p>
+            )}
           </DetailSection>
 
-          <DetailSection title="소득 기준">
-            <p className="support-detail__text">{program.income}</p>
-          </DetailSection>
-
-          <DetailSection title="지원 내용">
+          <DetailSection title="지원내용">
             <p className="support-detail__text">{program.benefit}</p>
           </DetailSection>
 
-          <DetailSection title="신청 기간">
-            <p className="support-detail__text">{program.period}</p>
+          <DetailSection title="신청방법">
+            <p className="support-detail__text">{program.applyMethod}</p>
+            {program.applyPeriod && (
+              <p className="support-detail__subtext">
+                <strong>신청 기간</strong> {program.applyPeriod}
+              </p>
+            )}
+            {program.organization && (
+              <p className="support-detail__subtext">
+                <strong>담당 기관</strong> {program.organization}
+              </p>
+            )}
+            {program.website && (
+              <a
+                href={program.website}
+                target="_blank"
+                rel="noreferrer"
+                className="support-detail__link"
+              >
+                공식 홈페이지 바로가기 →
+              </a>
+            )}
           </DetailSection>
 
-          <DetailSection title="신청 방법">
-            <p className="support-detail__text">{program.method}</p>
-          </DetailSection>
+          {program.documents?.length > 0 && (
+            <DetailSection title="제출서류">
+              <ul className="support-detail__doc-list">
+                {program.documents.map((document) => (
+                  <li key={document}>{document}</li>
+                ))}
+              </ul>
+            </DetailSection>
+          )}
 
-          <DetailSection title="담당 기관">
-            <p className="support-detail__text">{program.organization}</p>
-          </DetailSection>
-
-          {program.homepage && (
-            <a
-              href={program.homepage}
-              target="_blank"
-              rel="noreferrer"
-              className="support-detail__link"
-            >
-              공식 홈페이지 바로가기 →
-            </a>
+          {program.faq?.length > 0 && (
+            <DetailSection title="자주 묻는 질문">
+              <FaqAccordion items={program.faq} />
+            </DetailSection>
           )}
 
           {relatedCalculators.length > 0 && (
@@ -200,44 +226,36 @@ export default function SupportDetailPage() {
             </DetailSection>
           )}
 
-          {relatedBlogs.length > 0 && (
-            <DetailSection title="관련 생활비 정보">
+          {relatedPosts.length > 0 && (
+            <DetailSection title="관련 블로그">
               <div className="support-detail__blog-grid">
-                {relatedBlogs.map((blog) =>
-                  blog.available ? (
-                    <Link
-                      key={blog.id}
-                      to={blog.href}
-                      className="support-detail__blog-card"
-                    >
-                      <h3 className="support-detail__blog-title">{blog.title}</h3>
-                      <span className="support-detail__blog-link">
-                        읽어보기
-                        <span aria-hidden="true">→</span>
-                      </span>
-                    </Link>
-                  ) : (
-                    <article
-                      key={blog.id}
-                      className="support-detail__blog-card support-detail__blog-card--pending"
-                    >
-                      <h3 className="support-detail__blog-title">{blog.title}</h3>
-                      <span className="support-detail__badge">준비중</span>
-                    </article>
-                  ),
-                )}
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    to={post.href}
+                    className="support-detail__blog-card"
+                  >
+                    <h3 className="support-detail__blog-title">{post.title}</h3>
+                    {post.summary && (
+                      <p className="support-detail__blog-summary">
+                        {post.summary}
+                      </p>
+                    )}
+                    <span className="support-detail__blog-link">
+                      읽어보기
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
+                ))}
               </div>
             </DetailSection>
           )}
 
-          {program.faq?.length > 0 && (
-            <DetailSection title="FAQ">
-              <FaqAccordion items={program.faq} />
-            </DetailSection>
-          )}
-
           {similarPrograms.length > 0 && (
-            <DetailSection title="비슷한 지원금">
+            <DetailSection title="추천 지원금">
+              <p className="support-detail__similar-intro">
+                같은 {program.category} 카테고리의 다른 지원금입니다.
+              </p>
               <div className="support-detail__similar-grid">
                 {similarPrograms.map((item) => (
                   <article key={item.id} className="support-detail__similar-card">
@@ -247,7 +265,7 @@ export default function SupportDetailPage() {
                     <h3 className="support-detail__similar-title">{item.title}</h3>
                     <p className="support-detail__similar-desc">{item.summary}</p>
                     <Link
-                      to={`/support/${item.id}`}
+                      to={`/support/${item.slug}`}
                       className="support-detail__similar-btn"
                     >
                       자세히 보기
