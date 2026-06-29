@@ -16,11 +16,43 @@
 }
 
 .footer__brand {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.01em;
+}
+
+.footer__latest {
+  margin-bottom: 1.25rem;
+}
+
+.footer__latest-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer__latest-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__latest-list li {
+  margin-bottom: 0.375rem;
+}
+
+.footer__latest-link {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__latest-link:hover {
+  color: #fff;
 }
 
 .footer__nav {

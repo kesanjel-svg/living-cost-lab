@@ -1,4 +1,5 @@
-import Card from '../components/ui/Card'
+import BlogCard from '../features/blog/components/BlogCard'
+import { getBlogPath } from '../features/blog/services/blogService'
 import { blogPosts } from '../data'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
@@ -11,8 +12,8 @@ const BREADCRUMBS = [
 
 const ARTICLE_SCHEMAS = blogPosts.map((post) => ({
   headline: post.title,
-  description: post.description,
-  path: post.href,
+  description: post.summary,
+  path: getBlogPath(post.slug),
   datePublished: post.datePublished,
   dateModified: post.dateModified,
 }))
@@ -36,18 +37,11 @@ export default function BlogPage() {
         </p>
       </div>
       <div className="page__content">
-        <div className="page-grid page-grid--3">
+        <div className="blog-page__grid">
           {blogPosts.map((post, index) => (
-            <Card
-              key={post.id}
-              variant="blog"
-              title={post.title}
-              href={post.href}
-              animationDelay={0.05 + index * 0.06}
-            />
+            <BlogCard key={post.slug} post={post} index={index} />
           ))}
         </div>
-        <p className="page__notice">블로그 상세 페이지는 준비 중입니다.</p>
       </div>
     </div>
   )

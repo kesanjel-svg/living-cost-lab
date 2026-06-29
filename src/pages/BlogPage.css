@@ -1,1 +1,11 @@
-/* Blog page uses shared page grid styles from Page.css */
+.blog-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .blog-page__grid {
+    grid-template-columns: 1fr;
+  }
+}

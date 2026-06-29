@@ -1,0 +1,90 @@
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  animation: fadeUp 0.5s var(--ease-out) both;
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blue-200);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-card__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 7rem;
+  font-size: 2.5rem;
+}
+
+.blog-card__thumb--energy {
+  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+}
+
+.blog-card__thumb--support {
+  background: linear-gradient(135deg, #dcfce7 0%, #ecfdf5 100%);
+}
+
+.blog-card__thumb--health {
+  background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%);
+}
+
+.blog-card__thumb--gas {
+  background: linear-gradient(135deg, #ffedd5 0%, #fff7ed 100%);
+}
+
+.blog-card__thumb--housing {
+  background: linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%);
+}
+
+.blog-card__thumb--saving {
+  background: linear-gradient(135deg, #ccfbf1 0%, #f0fdfa 100%);
+}
+
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.blog-card__category {
+  margin-bottom: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--blue-700);
+}
+
+.blog-card__title {
+  margin: 0 0 0.625rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--blue-950);
+}
+
+.blog-card__summary {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.blog-card__date {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

@@ -7,6 +7,7 @@ import SupportDetailPage from '../features/support/pages/SupportDetailPage'
 import CalculatorsPage from '../pages/CalculatorsPage'
 import ElectricCalculatorPage from '../features/calculators/electric/ElectricCalculatorPage'
 import BlogPage from '../pages/BlogPage'
+import BlogDetailPage from '../pages/BlogDetailPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import PrivacyPolicyPage from '../pages/PrivacyPolicyPage'
 import TermsPage from '../pages/TermsPage'
@@ -31,6 +32,7 @@ function App() {
               element={<ElectricCalculatorPage />}
             />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogDetailPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/contact" element={<ContactPage />} />
