@@ -1,16 +1,55 @@
-# React + Vite
+# 생활비연구소 (Living Cost Lab)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**정부지원금 · 생활비 계산 플랫폼**
 
-Currently, two official plugins are available:
+## 프로젝트 소개
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+생활비 절약과 정부지원금 정보를 한곳에서 제공하는 웹서비스입니다.
 
-## React Compiler
+### 주요 기능
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 지원금 찾기
+- 전기요금 계산기
+- 생활비 절약 정보
+- 정부지원금 상세 안내
+- AI 추천 시스템(개발 예정)
 
-## Expanding the Oxlint configuration
+## 기술 스택
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React
+- Vite
+- React Router
+- GitHub
+- Vercel
+
+## 개발 로드맵
+
+### Release v0.1
+
+- MVP 구축
+- 지원금 찾기
+- 전기요금 계산기
+
+### Release v0.2
+
+- SEO
+- Search Console
+- Google Analytics
+
+### Release v0.3
+
+- 블로그 시스템
+- 도시가스 계산기
+
+### Release v0.4
+
+- 건강보험 계산기
+- 국민연금 계산기
+
+### Release v0.5
+
+- AI 생활비 추천
+
+## 배포 주소
+
+https://living-cost-lab.vercel.app/
