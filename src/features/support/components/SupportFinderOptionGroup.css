@@ -1,0 +1,63 @@
+.support-finder__field {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border: none;
+}
+
+.support-finder__field:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+.support-finder__legend {
+  margin-bottom: 0.75rem;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--blue-900);
+}
+
+.support-finder__options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
+}
+
+.support-finder__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.support-finder__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.support-finder__option:hover {
+  border-color: var(--blue-200);
+  color: var(--blue-800);
+}
+
+.support-finder__option--selected {
+  color: var(--blue-700);
+  background: var(--blue-50);
+  border-color: var(--blue-200);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+}

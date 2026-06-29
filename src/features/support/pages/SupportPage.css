@@ -1,0 +1,15 @@
+.support-page .support-finder.section--default {
+  padding-top: 0;
+}
+
+.support-page .support-finder .section__inner {
+  max-width: 960px;
+}
+
+.support-page .support-finder__form {
+  padding: 2rem;
+}
+
+.support-page .support-finder__results-grid {
+  grid-template-columns: repeat(2, 1fr);
+}

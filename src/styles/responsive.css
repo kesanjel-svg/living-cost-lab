@@ -1,0 +1,138 @@
+/* Global layout & mobile overrides */
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section__inner,
+.header__inner,
+.footer__inner,
+.hero__content {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 2.5rem;
+  }
+
+  .section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section--highlight {
+    padding-top: 1.75rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .section--default,
+  .section--muted,
+  .section--compact {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .section__inner,
+  .header__inner,
+  .footer__inner {
+    max-width: 100%;
+  }
+
+  .section__grid,
+  .section__grid--3,
+  .section__grid--4,
+  .section__grid--5 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .section__more-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .section-header__action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 2.5rem 16px 2rem;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__cta {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .header__inner {
+    padding: 1rem 16px;
+  }
+
+  .footer {
+    padding: 2rem 16px;
+  }
+
+  .support-finder .section__inner {
+    max-width: 100%;
+  }
+
+  .support-finder__form {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .support-finder__results-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .support-finder__options {
+    grid-template-columns: 1fr;
+  }
+
+  .support-finder__submit,
+  button[type='submit'] {
+    width: 100%;
+  }
+
+  .card {
+    min-width: 0;
+    max-width: 100%;
+  }
+}

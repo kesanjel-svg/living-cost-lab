@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+.app__main {
+  flex: 1;
+  width: 100%;
+}
