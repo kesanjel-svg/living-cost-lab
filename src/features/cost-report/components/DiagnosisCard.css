@@ -1,0 +1,184 @@
+.diagnosis-card {
+  padding: 1.75rem;
+  background: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.diagnosis-card__score-block {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.diagnosis-card__ring {
+  --score: 0;
+  position: relative;
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--blue-600) calc(var(--score) * 1%),
+    var(--blue-100) 0
+  );
+  display: grid;
+  place-items: center;
+}
+
+.diagnosis-card__ring::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.diagnosis-card__score-value {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blue-900);
+}
+
+.diagnosis-card__score-meta {
+  min-width: 0;
+}
+
+.diagnosis-card__eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue-700);
+}
+
+.diagnosis-card__score-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.diagnosis-card__summary {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.diagnosis-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.diagnosis-card__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.diagnosis-card__metric-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue-800);
+}
+
+.diagnosis-card__metric-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.diagnosis-card__metric-note {
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+}
+
+.diagnosis-card__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.diagnosis-card__badge--high {
+  color: #b45309;
+  background: #fffbeb;
+}
+
+.diagnosis-card__badge--medium {
+  color: var(--blue-800);
+  background: var(--blue-50);
+}
+
+.diagnosis-card__badge--low {
+  color: #047857;
+  background: #ecfdf5;
+}
+
+.diagnosis-card__section-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.diagnosis-card__support-list,
+.diagnosis-card__action-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diagnosis-card__support-list li + li,
+.diagnosis-card__action-list li + li {
+  margin-top: 0.5rem;
+}
+
+.diagnosis-card__support-link,
+.diagnosis-card__action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  text-decoration: none;
+}
+
+.diagnosis-card__support-link:hover,
+.diagnosis-card__action-link:hover {
+  color: var(--blue-900);
+}
+
+.diagnosis-card__actions {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.diagnosis-card__action-link {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .diagnosis-card__score-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .diagnosis-card__metrics {
+    grid-template-columns: 1fr;
+  }
+}

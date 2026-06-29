@@ -14,6 +14,7 @@ import TermsPage from '../pages/TermsPage'
 import ContactPage from '../pages/ContactPage'
 import AboutPage from '../pages/AboutPage'
 import SeoAuditPage from '../features/seo/pages/SeoAuditPage'
+import CostReportPage from '../features/cost-report/pages/CostReportPage'
 import './App.css'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/support" element={<SupportPage />} />
             <Route path="/support/:id" element={<SupportDetailPage />} />
+            <Route path="/cost-report" element={<CostReportPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route
               path="/calculators/electric"

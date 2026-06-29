@@ -14,4 +14,9 @@ export const blogRegistry = {
     href: '/blog/earned-income-schedule',
     available: true,
   },
+  'living-cost-checklist': {
+    title: '월급날 생활비 점검 체크리스트',
+    href: '/blog/living-cost-checklist',
+    available: true,
+  },
 }

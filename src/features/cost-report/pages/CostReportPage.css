@@ -1,0 +1,36 @@
+.cost-report-page__header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 0;
+  text-align: center;
+}
+
+.cost-report-page__content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.cost-report-page__results {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  animation: fadeUp 0.5s var(--ease-out) both;
+}
+
+.cost-report-page__disclaimer {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 768px) {
+  .cost-report-page__content {
+    padding: 1rem;
+  }
+}
