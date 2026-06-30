@@ -1,0 +1,32 @@
+{
+  "id": "training",
+  "slug": "training",
+  "title": "국민내일배움카드",
+  "category": "교육·취업",
+  "summary": "직업훈련 비용을 지원해 취업 역량을 키워줍니다.",
+  "description": "국민 누구나 직업능력 개발 훈련을 받을 수 있도록 훈련비를 지원하는 제도입니다.",
+  "target": "구직자, 재직자, 자영업자 등 훈련 수강 희망자",
+  "income": "소득 제한 없음(과정별 상이할 수 있음)",
+  "benefit": "직업훈련 수강비 지원",
+  "applyPeriod": "연중 수시 신청",
+  "applyMethod": "고용24 또는 HRD-Net에서 카드 발급 후 수강",
+  "organization": "고용노동부 / 한국산업인력공단",
+  "website": "https://www.work24.go.kr",
+  "documents": ["신분증", "재직·구직 확인 서류(해당 시)"],
+  "tags": ["직업훈련", "취업", "내일배움카드", "정부지원금"],
+  "age": "all",
+  "family": "all",
+  "incomeLevel": "all",
+  "relatedCalculators": [],
+  "relatedPosts": [],
+  "faq": [
+    {
+      "question": "재직 중에도 사용할 수 있나요?",
+      "answer": "재직자도 일부 과정은 수강할 수 있습니다."
+    },
+    {
+      "question": "지원 한도가 있나요?",
+      "answer": "연간 지원 한도가 있으며, 과정별 지원 범위가 다릅니다."
+    }
+  ]
+}

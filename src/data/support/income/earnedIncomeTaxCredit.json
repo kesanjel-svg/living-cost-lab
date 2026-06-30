@@ -1,0 +1,32 @@
+{
+  "id": "work",
+  "slug": "work",
+  "title": "근로장려금",
+  "category": "소득",
+  "summary": "열심히 일하는 저소득·중소득 근로 가구를 지원합니다.",
+  "description": "근로소득이 있는 가구의 소득을 보전해 주는 세금 환급형 지원으로, 일한 만큼 소득을 돌려받을 수 있습니다.",
+  "target": "근로소득이 있는 저소득·중소득 가구",
+  "income": "소득 기준 이하 근로 가구",
+  "benefit": "가구 소득 수준에 따른 현금 지급",
+  "applyPeriod": "정기 신청(3~6월), 기한 후 신청(9~11월)",
+  "applyMethod": "국세청 홈택스에서 온라인 신청",
+  "organization": "국세청",
+  "website": "https://www.hometax.go.kr",
+  "documents": ["소득·재산 신고서", "근로소득 원천징수영수증", "통장 사본"],
+  "tags": ["근로소득", "세금환급", "저소득", "정부지원금"],
+  "age": "all",
+  "family": "all",
+  "incomeLevel": "low",
+  "relatedCalculators": ["electric", "health", "pension"],
+  "relatedPosts": ["earned-income-schedule", "child-benefit-guide"],
+  "faq": [
+    {
+      "question": "무직 상태에서도 신청할 수 있나요?",
+      "answer": "근로소득이 있어야 신청할 수 있습니다."
+    },
+    {
+      "question": "신청 후 언제 받을 수 있나요?",
+      "answer": "심사 후 지급 일정에 따라 통장으로 입금됩니다."
+    }
+  ]
+}

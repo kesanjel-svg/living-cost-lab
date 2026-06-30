@@ -1,0 +1,32 @@
+{
+  "id": "birth",
+  "slug": "birth",
+  "title": "출산지원금",
+  "category": "출산·육아",
+  "summary": "출산·육아 가구의 경제적 부담을 줄여줍니다.",
+  "description": "출산을 앞두었거나 영유아 자녀가 있는 가구에 지자체·국가 출산 지원금을 제공합니다.",
+  "target": "출산 예정 또는 영유아 자녀가 있는 가구",
+  "income": "대부분 소득 무관(지자체별 상이)",
+  "benefit": "출산·육아 일시금 또는 바우처 지원",
+  "applyPeriod": "출산 전후 또는 자녀 출생 후 일정 기간 내",
+  "applyMethod": "거주지 주민센터 또는 지자체 온라인 신청",
+  "organization": "보건복지부 / 지자체",
+  "website": "https://www.bokjiro.go.kr",
+  "documents": ["주민등록등본", "출생증명서 또는 임신 확인 서류", "통장 사본"],
+  "tags": ["출산", "육아", "영유아", "정부지원금"],
+  "age": "all",
+  "family": "child",
+  "incomeLevel": "all",
+  "relatedCalculators": ["health"],
+  "relatedPosts": ["child-benefit-guide"],
+  "faq": [
+    {
+      "question": "지역마다 금액이 다른가요?",
+      "answer": "국가 지원과 지자체 추가 지원이 합쳐져 지역별 차이가 있습니다."
+    },
+    {
+      "question": "둘째 아이도 지원되나요?",
+      "answer": "출산 순위에 따라 지원금이 달라질 수 있습니다."
+    }
+  ]
+}

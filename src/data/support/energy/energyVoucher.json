@@ -1,0 +1,32 @@
+{
+  "id": "energy",
+  "slug": "energy",
+  "title": "에너지바우처",
+  "category": "에너지",
+  "summary": "전기·가스 등 에너지 비용을 지원하는 제도입니다.",
+  "description": "에너지 취약계층의 전기, 도시가스, 지역난방 등 에너지 비용 부담을 줄여주는 정부 지원 제도입니다.",
+  "target": "기초생활수급자 중 노인, 영유아, 장애인, 임산부, 중증질환자 등이 포함된 가구",
+  "income": "기초생활수급자 중심",
+  "benefit": "전기·가스·지역난방 등 에너지 비용 지원",
+  "applyPeriod": "매년 신청 기간에 따라 상이",
+  "applyMethod": "주민센터 또는 복지로를 통해 신청",
+  "organization": "산업통상자원부 / 한국에너지공단",
+  "website": "https://www.bokjiro.go.kr",
+  "documents": ["주민등록등본", "소득·재산 증명 서류", "에너지 사용 고지서"],
+  "tags": ["전기요금", "가스요금", "취약계층", "정부지원금"],
+  "age": "all",
+  "family": "all",
+  "incomeLevel": "low",
+  "relatedCalculators": ["electric", "gas"],
+  "relatedPosts": ["electric-saving-tips", "gas-cashback", "energy-voucher-guide"],
+  "faq": [
+    {
+      "question": "에너지바우처는 누구나 신청할 수 있나요?",
+      "answer": "아니요. 소득 기준과 세대원 특성 기준을 모두 충족해야 합니다."
+    },
+    {
+      "question": "온라인 신청이 가능한가요?",
+      "answer": "복지로를 통해 온라인 신청이 가능한 경우가 있습니다."
+    }
+  ]
+}

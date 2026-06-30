@@ -8,6 +8,9 @@ export {
   ageOptions,
   householdOptions,
   incomeOptions,
+  categoryFilterOptions,
+  getProgramsByCategory,
+  getSupportCategories,
 } from './supportPrograms'
 export {
   getRecommendedPrograms,

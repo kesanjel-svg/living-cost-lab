@@ -1,0 +1,8 @@
+{
+  "energy": { "label": "에너지", "order": 1 },
+  "youth": { "label": "청년", "order": 2 },
+  "birth": { "label": "출산", "order": 3 },
+  "education": { "label": "교육", "order": 4 },
+  "housing": { "label": "주거", "order": 5 },
+  "income": { "label": "소득", "order": 6 }
+}

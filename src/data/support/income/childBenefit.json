@@ -1,0 +1,32 @@
+{
+  "id": "child",
+  "slug": "child",
+  "title": "자녀장려금",
+  "category": "소득",
+  "summary": "자녀를 양육하는 가구의 소득을 보전해 줍니다.",
+  "description": "만 18세 미만 자녀가 있는 가구를 대상으로, 양육 부담을 줄이기 위한 세금 환급형 지원입니다.",
+  "target": "만 18세 미만 자녀가 있는 저소득·중소득 가구",
+  "income": "소득 기준 이하 가구",
+  "benefit": "자녀 수·소득 수준에 따른 현금 지급",
+  "applyPeriod": "정기 신청(3~6월), 기한 후 신청(9~11월)",
+  "applyMethod": "국세청 홈택스에서 온라인 신청",
+  "organization": "국세청",
+  "website": "https://www.hometax.go.kr",
+  "documents": ["소득·재산 신고서", "가족관계증명서", "통장 사본"],
+  "tags": ["자녀", "양육", "세금환급", "정부지원금"],
+  "age": "all",
+  "family": "child",
+  "incomeLevel": "low",
+  "relatedCalculators": ["health", "pension"],
+  "relatedPosts": ["child-benefit-guide", "earned-income-schedule"],
+  "faq": [
+    {
+      "question": "자녀가 1명이면 더 유리한가요?",
+      "answer": "자녀 수와 가구 소득에 따라 지급액이 달라집니다."
+    },
+    {
+      "question": "근로장려금과 함께 받을 수 있나요?",
+      "answer": "요건을 충족하면 함께 신청·수령할 수 있습니다."
+    }
+  ]
+}
