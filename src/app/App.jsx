@@ -15,6 +15,7 @@ import ContactPage from '../pages/ContactPage'
 import AboutPage from '../pages/AboutPage'
 import SeoAuditPage from '../features/seo/pages/SeoAuditPage'
 import CostReportPage from '../features/cost-report/pages/CostReportPage'
+import DashboardPage from '../features/dashboard/pages/DashboardPage'
 import './App.css'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/support" element={<SupportPage />} />
             <Route path="/support/:id" element={<SupportDetailPage />} />
             <Route path="/cost-report" element={<CostReportPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route
               path="/calculators/electric"

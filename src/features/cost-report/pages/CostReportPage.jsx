@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { generateCostReport } from '../../../engines/costReportEngine'
+import { saveCostReport } from '../../../shared/storage/userActivityStorage'
 import Seo from '../../../shared/seo/Seo'
 import CostReportForm from '../components/CostReportForm'
 import CostReportResults from '../components/CostReportResults'
@@ -15,7 +16,9 @@ export default function CostReportPage() {
   const [report, setReport] = useState(null)
 
   const handleSubmit = (input) => {
-    setReport(generateCostReport(input))
+    const nextReport = generateCostReport(input)
+    saveCostReport({ input, report: nextReport })
+    setReport(nextReport)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

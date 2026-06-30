@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { calculatorRegistry } from '../../../constants/calculators'
 import supportPrograms from '../../../data/supportPrograms'
@@ -9,6 +9,7 @@ import {
   resolveRelatedPosts,
 } from '../services/supportService'
 import Seo from '../../../shared/seo/Seo'
+import { addRecentSupportView } from '../../../shared/storage/userActivityStorage'
 import '../../../pages/Page.css'
 import './SupportDetailPage.css'
 
@@ -66,6 +67,12 @@ export default function SupportDetailPage() {
   const similarPrograms = program
     ? getSimilarSupports(program, supportPrograms)
     : []
+
+  useEffect(() => {
+    if (program) {
+      addRecentSupportView(program)
+    }
+  }, [program])
 
   const relatedCalculators = (program?.relatedCalculators ?? [])
     .map((calculatorId) => ({

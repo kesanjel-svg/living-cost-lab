@@ -1,0 +1,118 @@
+.dashboard-section {
+  padding: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.dashboard-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-section__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.dashboard-section__more {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  text-decoration: none;
+}
+
+.dashboard-section__more:hover {
+  color: var(--blue-900);
+}
+
+.dashboard-section__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dashboard-section__item + .dashboard-section__item {
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border);
+}
+
+.dashboard-section__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  text-decoration: none;
+}
+
+.dashboard-section__link:hover {
+  color: var(--blue-900);
+}
+
+.dashboard-section__meta {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue-600);
+}
+
+.dashboard-section__summary {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.dashboard-section__pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.dashboard-section__badge {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  background: var(--blue-50);
+  border-radius: 999px;
+}
+
+.dashboard-section__empty {
+  padding: 1.25rem;
+  text-align: center;
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+}
+
+.dashboard-section__empty p {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.dashboard-section__empty-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--blue-700);
+  text-decoration: none;
+}
+
+.dashboard-section__empty-link:hover {
+  color: var(--blue-900);
+}
