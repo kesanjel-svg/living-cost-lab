@@ -1,0 +1,47 @@
+.search-autocomplete {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  max-height: min(420px, 70vh);
+  overflow: auto;
+  padding: 0.875rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.search-autocomplete__section + .search-autocomplete__section,
+.search-autocomplete__section + .popular-search,
+.recent-search + .popular-search {
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border);
+}
+
+.search-autocomplete__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue-800);
+}
+
+.search-autocomplete__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.search-autocomplete__loading,
+.search-autocomplete__empty {
+  margin: 0;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.recent-search + .popular-search {
+  margin-top: 0.875rem;
+}

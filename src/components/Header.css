@@ -12,6 +12,7 @@
 .header__inner {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -127,7 +128,7 @@
   }
 
   .header__nav--open {
-    max-height: 280px;
+    max-height: 320px;
     opacity: 1;
   }
 

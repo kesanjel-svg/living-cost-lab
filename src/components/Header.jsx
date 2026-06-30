@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { navItems } from '../data'
+import HeaderSearch from '../features/search/components/HeaderSearch'
 import './Header.css'
 
 export default function Header() {
@@ -14,6 +15,8 @@ export default function Header() {
         <Link to="/" className="header__logo" onClick={closeMenu}>
           생활비연구소 AI
         </Link>
+
+        <HeaderSearch />
 
         <button
           type="button"

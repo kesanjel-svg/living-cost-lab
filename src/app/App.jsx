@@ -17,6 +17,7 @@ import SeoAuditPage from '../features/seo/pages/SeoAuditPage'
 import CostReportPage from '../features/cost-report/pages/CostReportPage'
 import DashboardPage from '../features/dashboard/pages/DashboardPage'
 import ProfilePage from '../features/profile/pages/ProfilePage'
+import SearchPage from '../features/search/pages/SearchPage'
 import './App.css'
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/cost-report" element={<CostReportPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route
               path="/calculators/electric"

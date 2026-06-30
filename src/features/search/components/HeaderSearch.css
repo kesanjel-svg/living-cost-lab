@@ -1,0 +1,15 @@
+.header-search {
+  position: relative;
+  flex: 1;
+  max-width: 360px;
+  margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .header-search {
+    order: 3;
+    flex: 1 1 100%;
+    max-width: none;
+    margin: 0.75rem 0 0;
+  }
+}
