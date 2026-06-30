@@ -5,6 +5,7 @@ import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorSavingCard from '../components/CalculatorSavingCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import { getDefaultElectricUsageFromProfile } from '../../profile/services/profileService'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import {
   buildElectricResult,
@@ -13,7 +14,7 @@ import {
 } from '../services/electricService'
 
 export default function ElectricCalculator() {
-  const [usage, setUsage] = useState('')
+  const [usage, setUsage] = useState(() => getDefaultElectricUsageFromProfile())
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
 

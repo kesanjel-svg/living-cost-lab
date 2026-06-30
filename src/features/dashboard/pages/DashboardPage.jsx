@@ -4,6 +4,7 @@ import Seo from '../../../shared/seo/Seo'
 import DashboardQuickActions from '../components/DashboardQuickActions'
 import DashboardSection from '../components/DashboardSection'
 import DashboardStatCards from '../components/DashboardStatCards'
+import ProfileCompletionCard from '../components/ProfileCompletionCard'
 import { getDashboardData } from '../services/dashboardService'
 import './DashboardPage.css'
 
@@ -37,9 +38,11 @@ export default function DashboardPage() {
         <p className="dashboard-page__desc">
           {data.fromDiagnosis
             ? 'AI 생활비 진단 결과를 바탕으로 맞춤 정보를 보여드립니다.'
-            : 'AI 생활비 진단을 실행하면 더 정확한 맞춤 정보를 확인할 수 있습니다.'}
+            : data.fromProfile
+              ? '저장된 프로필을 바탕으로 맞춤 정보를 보여드립니다.'
+              : '프로필을 작성하거나 AI 생활비 진단을 실행하면 더 정확한 정보를 확인할 수 있습니다.'}
         </p>
-        {!data.fromDiagnosis && (
+        {!data.fromDiagnosis && !data.fromProfile && (
           <Link to="/cost-report" className="dashboard-page__cta">
             AI 생활비 진단 시작하기 →
           </Link>
@@ -47,6 +50,8 @@ export default function DashboardPage() {
       </div>
 
       <div className="dashboard-page__content">
+        <ProfileCompletionCard completion={data.profileCompletion} />
+
         <DashboardStatCards stats={data.stats} />
 
         <DashboardQuickActions />

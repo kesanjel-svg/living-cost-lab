@@ -3,16 +3,30 @@ import { calculatorRegistry } from '../../../constants/calculators'
 import { generateCostReport } from '../../../engines/costReportEngine'
 import { getBlogPath } from '../../blog/services/blogService'
 import {
+  calculateProfileCompletion,
+  hasMinimumProfile,
+  profileToCostReportInput,
+} from '../../profile/services/profileService'
+import { getSavedProfile } from '../../../shared/storage/profileStorage'
+import {
   getRecentSupports,
   getSavedCostReport,
 } from '../../../shared/storage/userActivityStorage'
 
-const DEFAULT_INPUT = {
+const FALLBACK_INPUT = {
   age: '30s',
   householdSize: '2',
   monthlyIncome: '200to300',
   region: 'metro',
   housingType: 'monthly',
+}
+
+function getDefaultInput() {
+  const profile = getSavedProfile()
+  if (hasMinimumProfile(profile)) {
+    return profileToCostReportInput(profile)
+  }
+  return FALLBACK_INPUT
 }
 
 function getReportSnapshot() {
@@ -22,8 +36,9 @@ function getReportSnapshot() {
   }
 
   return {
-    report: generateCostReport(DEFAULT_INPUT),
+    report: generateCostReport(getDefaultInput()),
     fromDiagnosis: false,
+    fromProfile: hasMinimumProfile(getSavedProfile()),
   }
 }
 
@@ -55,13 +70,18 @@ function getDefaultCalculators(limit = 3) {
 }
 
 export function getDashboardData() {
-  const { report, fromDiagnosis } = getReportSnapshot()
+  const snapshot = getReportSnapshot()
+  const { report } = snapshot
   const recentSupports = getRecentSupports()
+  const profile = getSavedProfile()
+  const profileCompletion = calculateProfileCompletion(profile)
   const topSupport = report.supports[0]
   const topCalculator = report.calculators[0]
 
   return {
-    fromDiagnosis,
+    fromDiagnosis: snapshot.fromDiagnosis,
+    fromProfile: snapshot.fromProfile ?? false,
+    profileCompletion,
     stats: {
       supportCount: report.supports.length,
       supportTitle: topSupport?.title ?? '지원금 확인',

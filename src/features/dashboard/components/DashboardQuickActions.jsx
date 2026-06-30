@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import './DashboardQuickActions.css'
 
 const ACTIONS = [
+  { label: '프로필 작성', to: '/profile', icon: '👤' },
   { label: '지원금 찾기', to: '/support', icon: '💰' },
   { label: '전기요금 계산기', to: '/calculators/electric', icon: '⚡' },
-  { label: '블로그', to: '/blog', icon: '📰' },
   { label: 'AI 생활비 진단', to: '/cost-report', icon: '🤖' },
 ]
 

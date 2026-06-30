@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import SupportFinderOptionGroup from '../../support/components/SupportFinderOptionGroup'
 import {
+  profileToCostReportInput,
+} from '../../profile/services/profileService'
+import {
   ageOptions,
   householdSizeOptions,
   housingTypeOptions,
@@ -9,7 +12,7 @@ import {
 } from '../data/costReportOptions'
 import './CostReportForm.css'
 
-const INITIAL = {
+const EMPTY = {
   age: '',
   householdSize: '',
   monthlyIncome: '',
@@ -17,8 +20,13 @@ const INITIAL = {
   housingType: '',
 }
 
+function getInitialForm() {
+  const fromProfile = profileToCostReportInput()
+  return { ...EMPTY, ...fromProfile }
+}
+
 export default function CostReportForm({ onSubmit }) {
-  const [form, setForm] = useState(INITIAL)
+  const [form, setForm] = useState(getInitialForm)
   const [error, setError] = useState('')
 
   const setField = (field) => (value) => {
@@ -28,7 +36,13 @@ export default function CostReportForm({ onSubmit }) {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    const missing = Object.entries(form).find(([, value]) => !value)
+    const missing = Object.entries(form).find(
+      ([key, value]) =>
+        !value &&
+        ['age', 'householdSize', 'monthlyIncome', 'region', 'housingType'].includes(
+          key,
+        ),
+    )
     if (missing) {
       setError('모든 항목을 선택해주세요.')
       return

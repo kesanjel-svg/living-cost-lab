@@ -109,6 +109,27 @@ function recommendSupports(input) {
     }
   }
 
+  if (input.childCount && input.childCount !== '0') {
+    const childProgram = supportPrograms.find((p) => p.id === 'child')
+    if (childProgram && !programs.some((p) => p.id === childProgram.id)) {
+      programs = [...programs, childProgram]
+    }
+  }
+
+  if (input.isPregnant === 'yes') {
+    const birthProgram = supportPrograms.find((p) => p.id === 'birth')
+    if (birthProgram && !programs.some((p) => p.id === birthProgram.id)) {
+      programs = [birthProgram, ...programs]
+    }
+  }
+
+  if (input.hasDisability === 'yes') {
+    const energyProgram = supportPrograms.find((p) => p.id === 'energy')
+    if (energyProgram && !programs.some((p) => p.id === energyProgram.id)) {
+      programs = [energyProgram, ...programs]
+    }
+  }
+
   return [...new Map(programs.map((p) => [p.id, p])).values()]
     .slice(0, MAX_SUPPORT)
     .map(mapSupport)

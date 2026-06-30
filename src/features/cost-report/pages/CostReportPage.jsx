@@ -1,5 +1,11 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { generateCostReport } from '../../../engines/costReportEngine'
+import {
+  calculateProfileCompletion,
+  profileToCostReportInput,
+} from '../../profile/services/profileService'
+import { getSavedProfile } from '../../../shared/storage/profileStorage'
 import { saveCostReport } from '../../../shared/storage/userActivityStorage'
 import Seo from '../../../shared/seo/Seo'
 import CostReportForm from '../components/CostReportForm'
@@ -14,10 +20,15 @@ const BREADCRUMBS = [
 
 export default function CostReportPage() {
   const [report, setReport] = useState(null)
+  const profileCompletion = useMemo(
+    () => calculateProfileCompletion(getSavedProfile()),
+    [],
+  )
 
   const handleSubmit = (input) => {
-    const nextReport = generateCostReport(input)
-    saveCostReport({ input, report: nextReport })
+    const merged = { ...profileToCostReportInput(getSavedProfile()), ...input }
+    const nextReport = generateCostReport(merged)
+    saveCostReport({ input: merged, report: nextReport })
     setReport(nextReport)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -36,8 +47,14 @@ export default function CostReportPage() {
         <h1 className="page__title">AI 생활비 진단</h1>
         <p className="page__description">
           간단한 정보를 입력하면 생활비 점수, 추천 지원금, 절약 가능 금액을
-          확인할 수 있습니다.
+          확인할 수 있습니다. 생활비 프로필이 저장되어 있으면 기본값으로
+          채워집니다.
         </p>
+        {profileCompletion < 100 && (
+          <Link to="/profile" className="cost-report-page__profile-cta">
+            프로필을 작성하면 더 정확한 추천을 받을 수 있습니다 →
+          </Link>
+        )}
       </div>
 
       <div className="cost-report-page__content">

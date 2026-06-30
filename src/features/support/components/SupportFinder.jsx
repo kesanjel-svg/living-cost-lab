@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Section from '../../../components/ui/Section'
 import SupportFinderOptionGroup from './SupportFinderOptionGroup'
 import SupportFinderResultCard from './SupportFinderResultCard'
+import { profileToSupportFinderDefaults } from '../../profile/services/profileService'
 import supportPrograms, {
   ageOptions,
   householdOptions,
@@ -10,13 +11,18 @@ import supportPrograms, {
 import { filterSupportPrograms } from '../services/supportService'
 import './SupportFinder.css'
 
+function getInitialFinderState() {
+  return profileToSupportFinderDefaults()
+}
+
 export default function SupportFinder({
   variant = 'default',
   showPageHeader = true,
 }) {
-  const [age, setAge] = useState('')
-  const [household, setHousehold] = useState('')
-  const [income, setIncome] = useState('')
+  const defaults = getInitialFinderState()
+  const [age, setAge] = useState(defaults.age)
+  const [household, setHousehold] = useState(defaults.household)
+  const [income, setIncome] = useState(defaults.income)
   const [results, setResults] = useState(null)
   const [error, setError] = useState('')
 
@@ -51,7 +57,8 @@ export default function SupportFinder({
           <h2 className="support-finder__title">내가 받을 수 있는 지원금 찾기</h2>
           <p className="support-finder__intro">
             나이, 가구 형태, 소득 수준을 선택하면 받을 가능성이 있는 지원금을
-            간단히 확인할 수 있습니다.
+            간단히 확인할 수 있습니다. 생활비 프로필이 저장되어 있으면 기본값으로
+            채워집니다.
           </p>
         </div>
       )}

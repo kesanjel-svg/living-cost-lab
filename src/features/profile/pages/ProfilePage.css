@@ -1,0 +1,60 @@
+.profile-page__header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0;
+  text-align: center;
+}
+
+.profile-page__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  font-weight: 800;
+  color: var(--blue-950);
+}
+
+.profile-page__desc {
+  margin: 0 auto 1rem;
+  max-width: 560px;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.profile-page__completion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--blue-50);
+  border: 1px solid var(--blue-200);
+  border-radius: 999px;
+}
+
+.profile-page__completion-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--blue-800);
+}
+
+.profile-page__completion-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--blue-900);
+}
+
+.profile-page__content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2rem;
+}
+
+.profile-page__note {
+  margin: 1rem 0 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
