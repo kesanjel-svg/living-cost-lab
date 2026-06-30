@@ -1,0 +1,16 @@
+.detail-section {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 5rem;
+}
+
+.detail-section__title {
+  margin: 0 0 0.875rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.detail-section__body {
+  min-width: 0;
+}
