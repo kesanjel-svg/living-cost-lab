@@ -1,0 +1,5 @@
+.latest-blog,
+.popular-calculators {
+  content-visibility: auto;
+  contain-intrinsic-size: 480px;
+}

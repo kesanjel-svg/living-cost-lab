@@ -5,7 +5,7 @@ import { popularCalculators } from '../data'
 
 export default function PopularCalculators() {
   return (
-    <Section id="popular-calculators" variant="default">
+    <Section id="popular-calculators" variant="default" className="popular-calculators">
       <SectionHeader
         title="인기 계산기"
         action={{ label: '전체 보기', to: '/calculators' }}

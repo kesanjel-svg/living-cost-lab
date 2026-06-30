@@ -1,0 +1,52 @@
+.home-faq {
+  content-visibility: auto;
+  contain-intrinsic-size: 420px;
+}
+
+.home-faq__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-faq__item {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.home-faq__item + .home-faq__item {
+  margin-top: 0.75rem;
+}
+
+.home-faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-align: left;
+  color: var(--blue-950);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.home-faq__icon {
+  flex-shrink: 0;
+  font-size: 1.125rem;
+  color: var(--blue-600);
+}
+
+.home-faq__answer {
+  margin: 0;
+  padding: 0 1.25rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}

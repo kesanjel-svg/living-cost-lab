@@ -5,14 +5,18 @@ export default function Hero() {
   return (
     <section id="home" className="hero">
       <div className="hero__content">
-        <h1 className="hero__title">생활비를 줄이는 가장 쉬운 방법</h1>
+        <h1 className="hero__title">생활비를 아끼는 가장 쉬운 방법</h1>
         <p className="hero__description">
-          전기요금, 도시가스, 정부지원금, 생활비 절약 정보를 한 곳에서
-          확인하세요.
+          정부지원금, 생활비 계산기, AI 진단을 한곳에서.
         </p>
-        <Link to="/calculators/electric" className="hero__cta">
-          전기요금 계산하기
-        </Link>
+        <div className="hero__actions">
+          <Link to="/support" className="hero__cta hero__cta--primary">
+            지원금 찾기
+          </Link>
+          <Link to="/cost-report" className="hero__cta hero__cta--secondary">
+            AI 생활비 진단
+          </Link>
+        </div>
       </div>
     </section>
   )

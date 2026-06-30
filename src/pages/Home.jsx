@@ -1,9 +1,12 @@
-import TodaySubsidies from '../components/TodaySubsidies'
 import Hero from '../components/Hero'
-import SupportFinder from '../features/support/components/SupportFinder'
 import PopularCalculators from '../components/PopularCalculators'
-import FeatureCards from '../components/FeatureCards'
 import LatestBlog from '../components/LatestBlog'
+import AiDiagnosisBanner from '../features/home/components/AiDiagnosisBanner'
+import HomeFaq from '../features/home/components/HomeFaq'
+import HomeRecommendCards from '../features/home/components/HomeRecommendCards'
+import LatestSupports from '../features/home/components/LatestSupports'
+import { HOME_FAQ } from '../features/home/data/homeFaq'
+import '../features/home/home-sections.css'
 import Seo from '../shared/seo/Seo'
 import {
   DEFAULT_DESCRIPTION,
@@ -20,13 +23,15 @@ export default function Home() {
         keywords={DEFAULT_KEYWORDS}
         canonical="/"
         includeHomeSchemas
+        faq={HOME_FAQ}
       />
-      <TodaySubsidies />
       <Hero />
-      <SupportFinder variant="compact" />
+      <HomeRecommendCards />
+      <LatestSupports />
       <PopularCalculators />
-      <FeatureCards />
-      <LatestBlog />
+      <LatestBlog title="인기 블로그" />
+      <AiDiagnosisBanner />
+      <HomeFaq />
     </>
   )
 }
