@@ -1,0 +1,42 @@
+.related-topic-nav {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+}
+
+.related-topic-nav__title {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.related-topic-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-topic-nav__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 999px;
+  background: var(--color-surface, #fff);
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.related-topic-nav__chip:hover {
+  border-color: var(--color-primary, #2563eb);
+  background: #eff6ff;
+}
+
+.related-topic-nav__icon {
+  font-size: 1rem;
+}

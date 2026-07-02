@@ -9,6 +9,7 @@ const FOOTER_NAV = [
   { label: '약관', to: '/terms' },
   { label: '개인정보처리방침', to: '/privacy' },
   { label: '블로그', to: '/blog' },
+  { label: '토픽', to: '/topics' },
 ]
 
 const LATEST_POSTS = getLatestPosts(blogPosts, 5)

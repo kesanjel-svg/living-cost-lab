@@ -18,6 +18,8 @@ import CostReportPage from '../features/cost-report/pages/CostReportPage'
 import DashboardPage from '../features/dashboard/pages/DashboardPage'
 import ProfilePage from '../features/profile/pages/ProfilePage'
 import SearchPage from '../features/search/pages/SearchPage'
+import TopicsIndexPage from '../features/topics/pages/TopicsIndexPage'
+import TopicHubPage from '../features/topics/pages/TopicHubPage'
 import './App.css'
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/topics" element={<TopicsIndexPage />} />
+            <Route path="/topics/:slug" element={<TopicHubPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route
               path="/calculators/electric"

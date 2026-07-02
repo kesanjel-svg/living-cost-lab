@@ -1,0 +1,96 @@
+{
+  "energy": {
+    "slug": "energy",
+    "label": "에너지",
+    "title": "에너지 · 전기·가스 생활비",
+    "description": "전기요금, 도시가스, 에너지바우처 등 에너지 관련 지원금과 절약 정보를 모았습니다.",
+    "icon": "⚡",
+    "order": 1,
+    "blogCategories": ["전기·에너지", "도시가스"],
+    "blogSlugs": [
+      "electric-discount",
+      "energy-voucher-guide",
+      "electric-saving-tips",
+      "gas-cashback",
+      "winter-heating-save"
+    ],
+    "featuredBlogSlugs": ["energy-voucher-guide", "electric-discount"],
+    "featuredSupportIds": ["energy"],
+    "calculatorIds": ["electric", "gas"],
+    "relatedTopics": ["income", "housing"]
+  },
+  "youth": {
+    "slug": "youth",
+    "label": "청년",
+    "title": "청년 · 주거·일자리 지원",
+    "description": "청년월세지원, 청년 맞춤 지원금과 생활비 절약 정보를 확인하세요.",
+    "icon": "🎓",
+    "order": 2,
+    "blogCategories": ["주거"],
+    "blogSlugs": ["youth-rent-guide", "living-cost-checklist"],
+    "featuredBlogSlugs": ["youth-rent-guide"],
+    "featuredSupportIds": ["youth-rent"],
+    "calculatorIds": ["electric"],
+    "relatedTopics": ["housing", "education", "income"]
+  },
+  "birth": {
+    "slug": "birth",
+    "label": "출산",
+    "title": "출산 · 육아 지원",
+    "description": "출산지원금, 육아 관련 지원금과 생활비 정보를 한곳에서 확인합니다.",
+    "icon": "👶",
+    "order": 3,
+    "blogCategories": ["지원금"],
+    "blogSlugs": ["child-benefit-guide"],
+    "featuredBlogSlugs": ["child-benefit-guide"],
+    "featuredSupportIds": ["birth"],
+    "calculatorIds": ["health"],
+    "relatedTopics": ["income", "youth"]
+  },
+  "education": {
+    "slug": "education",
+    "label": "교육",
+    "title": "교육 · 취업 지원",
+    "description": "국민내일배움카드 등 직업훈련·교육 지원 제도와 관련 정보입니다.",
+    "icon": "📚",
+    "order": 4,
+    "blogCategories": [],
+    "blogSlugs": ["living-cost-checklist"],
+    "featuredBlogSlugs": [],
+    "featuredSupportIds": ["training"],
+    "calculatorIds": [],
+    "relatedTopics": ["youth", "income"]
+  },
+  "housing": {
+    "slug": "housing",
+    "label": "주거",
+    "title": "주거 · 월세·전세 지원",
+    "description": "월세, 전세, 주거비 절약과 청년 주거 지원 정보를 모았습니다.",
+    "icon": "🏠",
+    "order": 5,
+    "blogCategories": ["주거"],
+    "blogSlugs": ["youth-rent-guide"],
+    "featuredBlogSlugs": ["youth-rent-guide"],
+    "featuredSupportIds": ["youth-rent"],
+    "calculatorIds": ["electric", "gas"],
+    "relatedTopics": ["youth", "energy"]
+  },
+  "income": {
+    "slug": "income",
+    "label": "소득",
+    "title": "소득 · 세금 환급 지원",
+    "description": "근로장려금, 자녀장려금 등 소득 보전형 지원금 정보입니다.",
+    "icon": "💰",
+    "order": 6,
+    "blogCategories": ["지원금"],
+    "blogSlugs": [
+      "earned-income-schedule",
+      "child-benefit-guide",
+      "energy-voucher-guide"
+    ],
+    "featuredBlogSlugs": ["earned-income-schedule", "child-benefit-guide"],
+    "featuredSupportIds": ["work", "child"],
+    "calculatorIds": ["health", "pension"],
+    "relatedTopics": ["birth", "energy", "education"]
+  }
+}
