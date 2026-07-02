@@ -1,4 +1,5 @@
 import Card from '../components/ui/Card'
+import { formatPageTitle } from '../constants/branding'
 import { popularCalculators } from '../data'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
@@ -26,7 +27,7 @@ export default function CalculatorsPage() {
   return (
     <div className="page page--calculators">
       <Seo
-        title="생활비 계산기 | 생활비연구소"
+        title={formatPageTitle('생활비 계산기')}
         description="전기요금, 도시가스, 건강보험, 국민연금 등 생활비 관련 계산기를 이용해보세요. 무료로 예상 생활비를 확인하고 절약 방법을 찾아보세요."
         keywords="생활비 계산기, 전기요금 계산기, 도시가스 계산기, 건강보험 계산기"
         canonical="/calculators"

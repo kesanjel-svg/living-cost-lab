@@ -1,3 +1,4 @@
+import { formatPageTitle, BRAND_CONTACT_EMAIL, BRAND_NAME } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
 import './ContentPage.css'
@@ -11,8 +12,8 @@ export default function ContactPage() {
   return (
     <div className="page page--contact">
       <Seo
-        title="문의하기 | 생활비연구소"
-        description="생활비연구소 서비스 문의, 제휴·광고 문의, 오류 제보를 안내합니다. contact@livingcostlab.kr로 연락해주세요."
+        title={formatPageTitle('문의하기')}
+        description={`${BRAND_NAME} 서비스 문의, 제휴·광고 문의, 오류 제보를 안내합니다. ${BRAND_CONTACT_EMAIL}로 연락해주세요.`}
         keywords="문의하기, 생활비연구소, 제휴 문의, 오류 제보"
         canonical="/contact"
         breadcrumbs={BREADCRUMBS}
@@ -20,7 +21,7 @@ export default function ContactPage() {
       <div className="page__header">
         <h1 className="page__title">문의하기</h1>
         <p className="page__description">
-          생활비연구소 이용 중 궁금한 점이나 제안 사항을 보내주세요.
+          {BRAND_NAME} 이용 중 궁금한 점이나 제안 사항을 보내주세요.
         </p>
       </div>
       <div className="page__content">
@@ -28,8 +29,8 @@ export default function ContactPage() {
           <section className="content-page__section">
             <h2>서비스 관련 문의</h2>
             <p>
-              지원금 찾기, 계산기, 생활비 정보 등 서비스 이용과 관련된
-              문의를 받습니다. 가능한 빠르게 답변드리겠습니다.
+              지원금 찾기, 계산기, AI 생활비 진단 등 서비스 이용과 관련된
+              문의를 받습니다. 영업일 기준 3~5일 내 답변을 드리겠습니다.
             </p>
           </section>
 
@@ -56,8 +57,13 @@ export default function ContactPage() {
 
           <section className="content-page__section">
             <h2>연락처</h2>
-            <p>아래 이메일로 문의해주세요. (현재 MVP 단계, 답변에 시간이 걸릴 수 있습니다.)</p>
-            <span className="content-page__email">contact@livingcostlab.kr</span>
+            <p>
+              아래 이메일로 문의해주세요. 개인정보 처리에 관한 내용은{' '}
+              <a href="/privacy">개인정보처리방침</a>을 참고해주세요.
+            </p>
+            <a href={`mailto:${BRAND_CONTACT_EMAIL}`} className="content-page__email">
+              {BRAND_CONTACT_EMAIL}
+            </a>
           </section>
         </article>
       </div>

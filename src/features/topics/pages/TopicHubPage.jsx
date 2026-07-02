@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
+import { formatPageTitle } from '../../../constants/branding'
 import Seo from '../../../shared/seo/Seo'
 import HubLayout from '../components/HubLayout'
 import { getTopicHubData, getTopicPath } from '../services/topicHubService'
@@ -19,7 +20,7 @@ export default function TopicHubPage() {
   return (
     <>
       <Seo
-        title={`${topic.title} | 생활비연구소`}
+        title={formatPageTitle(topic.title)}
         description={topic.description}
         keywords={`${topic.label}, 생활비, 지원금, ${topic.title}`}
         canonical={getTopicPath(topic.slug)}

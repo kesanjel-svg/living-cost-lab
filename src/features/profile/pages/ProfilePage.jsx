@@ -3,6 +3,7 @@ import { getSavedProfile, saveProfile } from '../../../shared/storage/profileSto
 import {
   calculateProfileCompletion,
 } from '../services/profileService'
+import { formatPageTitle } from '../../../constants/branding'
 import Seo from '../../../shared/seo/Seo'
 import ProfileForm from '../components/ProfileForm'
 import './ProfilePage.css'
@@ -24,11 +25,12 @@ export default function ProfilePage() {
   return (
     <div className="profile-page page">
       <Seo
-        title="생활비 프로필 | 생활비연구소"
+        title={formatPageTitle('생활비 프로필')}
         description="나이, 가구, 소득, 주거 정보를 입력해 AI 생활비 진단과 지원금 추천의 기본값으로 활용하세요. 로그인 없이 localStorage에 저장됩니다."
         keywords="생활비 프로필, 맞춤 추천, 지원금, AI 진단"
         canonical="/profile"
         breadcrumbs={BREADCRUMBS}
+        noindex
       />
 
       <div className="profile-page__header">

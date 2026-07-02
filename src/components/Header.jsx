@@ -5,6 +5,8 @@ import { navItems } from '../data'
 import HeaderSearch from '../features/search/components/HeaderSearch'
 import './Header.css'
 
+const NAV_ID = 'site-nav'
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -24,6 +26,7 @@ export default function Header() {
           className="header__toggle"
           aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={menuOpen}
+          aria-controls={NAV_ID}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span />
@@ -31,7 +34,11 @@ export default function Header() {
           <span />
         </button>
 
-        <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
+        <nav
+          id={NAV_ID}
+          className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}
+          aria-label="주 메뉴"
+        >
           <ul className="header__menu">
             {navItems.map((item) => (
               <li key={item.label}>

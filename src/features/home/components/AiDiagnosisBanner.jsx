@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { CtaButton } from '../../../shared/ui'
 import './AiDiagnosisBanner.css'
 
 export default function AiDiagnosisBanner() {
@@ -15,10 +15,15 @@ export default function AiDiagnosisBanner() {
             있습니다.
           </p>
         </div>
-        <Link to="/cost-report" className="ai-banner__cta">
+        <CtaButton
+          to="/cost-report"
+          variant="inverse-primary"
+          size="sm"
+          className="ai-banner__cta"
+          showArrow
+        >
           생활비 진단하기
-          <span aria-hidden="true">→</span>
-        </Link>
+        </CtaButton>
       </div>
     </section>
   )

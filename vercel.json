@@ -17,11 +17,29 @@
           "value": "text/plain; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/ads.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/site.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json; charset=utf-8"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!sitemap.xml|robots.txt|favicon.svg|og-image.svg).*)",
+      "source": "/((?!sitemap.xml|robots.txt|ads.txt|site.webmanifest|favicon.svg|og-image.svg).*)",
       "destination": "/index.html"
     }
   ]

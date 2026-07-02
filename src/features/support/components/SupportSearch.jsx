@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import supportPrograms, {
   categoryFilterOptions,
 } from '../../../data/supportPrograms'
+import { EmptyState } from '../../../shared/ui'
 import { searchSupportPrograms } from '../services/supportService'
 import SupportFinderResultCard from './SupportFinderResultCard'
 import './SupportSearch.css'
@@ -64,7 +65,12 @@ export default function SupportSearch() {
             ))}
           </div>
         ) : (
-          <p className="support-search__empty">검색 결과가 없습니다.</p>
+          <EmptyState
+            variant="compact"
+            icon="⌕"
+            title="검색 결과가 없습니다"
+            description="다른 키워드나 카테고리로 다시 검색해보세요."
+          />
         )}
       </div>
     </section>

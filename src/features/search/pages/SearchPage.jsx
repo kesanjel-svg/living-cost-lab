@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { ANALYTICS_EVENTS, trackEvent } from '../../../shared/analytics'
 import {
   BRAND_NAME,
   BRAND_SEARCH_PLACEHOLDER_DETAILED,
@@ -50,6 +51,15 @@ export default function SearchPage() {
         addRecentSearch(keyword)
         setResponse(result)
         setLoading(false)
+        trackEvent(ANALYTICS_EVENTS.SEARCH, {
+          search_term: keyword,
+          result_count: result.total,
+        })
+        if (result.total === 0) {
+          trackEvent(ANALYTICS_EVENTS.SEARCH_NO_RESULTS, {
+            search_term: keyword,
+          })
+        }
       }
     }
 

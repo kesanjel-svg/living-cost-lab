@@ -2,6 +2,7 @@
  * Branding type definitions for JSDoc consumers.
  * @typedef {Object} BrandingConstants
  * @property {string} name
+ * @property {string} nameEn
  * @property {string} tagline
  * @property {string} url
  * @property {string} logoPath
@@ -16,6 +17,8 @@
  * @property {string} notFoundTitle
  * @property {string} manifestShortName
  * @property {string} manifestDescription
+ * @property {string} contactEmail
+ * @property {string} operatorLabel
  */
 
 export {}

@@ -1,3 +1,4 @@
+import { formatPageTitle } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
 import './ContentPage.css'
@@ -11,7 +12,7 @@ export default function TermsPage() {
   return (
     <div className="page page--terms">
       <Seo
-        title="이용약관 | 생활비연구소"
+        title={formatPageTitle('이용약관')}
         description="생활비연구소 서비스 이용약관입니다. 서비스 목적, 정보 제공 한계, 계산기·지원금 안내, 이용자 책임 및 면책 조항을 확인하세요."
         keywords="이용약관, 생활비연구소, 서비스 약관"
         canonical="/terms"

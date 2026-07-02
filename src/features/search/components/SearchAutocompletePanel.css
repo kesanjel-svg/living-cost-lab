@@ -34,12 +34,10 @@
   list-style: none;
 }
 
-.search-autocomplete__loading,
-.search-autocomplete__empty {
-  margin: 0;
-  padding: 0.75rem 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
+.search-autocomplete__loading {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .recent-search + .popular-search {

@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import Home from '../pages/Home'
 import { PageSkeleton } from '../shared/ui'
 import ErrorBoundary from '../shared/error/ErrorBoundary'
+import AnalyticsRouteListener from '../shared/analytics/AnalyticsRouteListener'
 import './App.css'
 
 const SupportPage = lazy(() => import('../features/support/pages/SupportPage'))
@@ -45,8 +46,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
+        <a href="#main-content" className="skip-link">
+          본문 바로가기
+        </a>
         <Header />
-        <main className="app__main">
+        <main id="main-content" className="app__main" tabIndex={-1}>
+          <AnalyticsRouteListener />
           <ErrorBoundary>
             <Routes>
               <Route path="/" element={<Home />} />

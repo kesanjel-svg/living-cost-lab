@@ -1,4 +1,9 @@
-import { BRAND_NAME } from '../constants/branding'
+import {
+  BRAND_CONTACT_EMAIL,
+  BRAND_NAME,
+  BRAND_NAME_EN,
+  formatPageTitle,
+} from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
 import './ContentPage.css'
@@ -12,9 +17,9 @@ export default function AboutPage() {
   return (
     <div className="page page--about">
       <Seo
-        title="사이트 소개"
-        description={`${BRAND_NAME}는 정부지원금, 생활비 계산기, 절약 정보를 제공하는 생활비 플랫폼입니다. 서비스 철학과 앞으로의 계획을 소개합니다.`}
-        keywords={`사이트 소개, ${BRAND_NAME}, 생활비 플랫폼`}
+        title={formatPageTitle('사이트 소개')}
+        description={`${BRAND_NAME}(${BRAND_NAME_EN})는 정부지원금, 생활비 계산기, AI 생활비 진단을 제공하는 생활비 플랫폼입니다.`}
+        keywords={`사이트 소개, ${BRAND_NAME}, ${BRAND_NAME_EN}, 생활비 플랫폼`}
         canonical="/about"
         breadcrumbs={BREADCRUMBS}
       />
@@ -29,7 +34,7 @@ export default function AboutPage() {
           <section className="content-page__section">
             <h2>{BRAND_NAME} 소개</h2>
             <p>
-              {BRAND_NAME}는 누구나 쉽게 생활비를 점검하고
+              {BRAND_NAME}({BRAND_NAME_EN})는 누구나 쉽게 생활비를 점검하고
               지원금 정보를 확인할 수 있도록 돕는 웹 플랫폼입니다. 복잡한
               제도와 요금 정보를 이해하기 쉽게 정리해 제공합니다.
             </p>
@@ -40,6 +45,7 @@ export default function AboutPage() {
             <ul>
               <li>나이·가구·소득 조건에 맞는 지원금 찾기</li>
               <li>전기요금 등 생활비 계산기</li>
+              <li>AI 생활비 진단 및 맞춤 추천</li>
               <li>정부지원금 상세 안내 및 FAQ</li>
               <li>생활비 절약 정보 및 블로그 콘텐츠</li>
             </ul>
@@ -55,11 +61,20 @@ export default function AboutPage() {
           </section>
 
           <section className="content-page__section">
+            <h2>운영 정보</h2>
+            <p>
+              서비스명: {BRAND_NAME} ({BRAND_NAME_EN})
+              <br />
+              문의:{' '}
+              <a href={`mailto:${BRAND_CONTACT_EMAIL}`}>{BRAND_CONTACT_EMAIL}</a>
+            </p>
+          </section>
+
+          <section className="content-page__section">
             <h2>앞으로의 계획</h2>
             <ul>
               <li>도시가스·건강보험·국민연금 계산기 확대</li>
               <li>블로그 및 생활비 정보 콘텐츠 고도화</li>
-              <li>AI 기반 맞춤 생활비 추천 서비스</li>
               <li>Search Console·Analytics 기반 SEO 및 품질 개선</li>
             </ul>
           </section>

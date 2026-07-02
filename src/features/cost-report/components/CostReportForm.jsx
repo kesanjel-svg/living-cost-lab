@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ANALYTICS_EVENTS, trackEvent } from '../../../shared/analytics'
 import SupportFinderOptionGroup from '../../support/components/SupportFinderOptionGroup'
 import {
   profileToCostReportInput,
@@ -49,6 +50,7 @@ export default function CostReportForm({ onSubmit }) {
     }
 
     setError('')
+    trackEvent(ANALYTICS_EVENTS.COST_REPORT_START)
     onSubmit(form)
   }
 

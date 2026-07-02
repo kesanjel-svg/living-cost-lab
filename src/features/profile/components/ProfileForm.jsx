@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ANALYTICS_EVENTS, trackEvent } from '../../../shared/analytics'
 import SupportFinderOptionGroup from '../../support/components/SupportFinderOptionGroup'
 import {
   ageOptions,
@@ -46,6 +47,7 @@ export default function ProfileForm({ initialProfile = EMPTY_PROFILE, onSubmit }
 
     setError('')
     onSubmit(form)
+    trackEvent(ANALYTICS_EVENTS.PROFILE_SAVE)
     setSavedMessage('프로필이 저장되었습니다.')
   }
 

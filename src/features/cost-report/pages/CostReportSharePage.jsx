@@ -1,7 +1,9 @@
 import { useMemo } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { formatPageTitle } from '../../../constants/branding'
 import { generateCostReport } from '../../../engines/costReportEngine'
 import Seo from '../../../shared/seo/Seo'
+import { CtaButton, EmptyState } from '../../../shared/ui'
 import CostReportDetailView from '../components/CostReportDetailView'
 import {
   decodeCostReportShare,
@@ -25,14 +27,21 @@ export default function CostReportSharePage() {
   if (!payload) {
     return (
       <div className="cost-report-share page">
+        <Seo
+          title={formatPageTitle('공유 결과를 찾을 수 없습니다')}
+          description="공유 링크가 만료되었거나 잘못된 주소입니다. 새로 AI 생활비 진단을 받아보세요."
+          canonical="/cost-report"
+          noindex
+        />
         <div className="cost-report-share__inner">
-          <h1 className="page__title">공유된 진단 결과를 찾을 수 없습니다</h1>
-          <p className="page__description">
-            링크가 만료되었거나 잘못된 주소입니다. 새로 진단을 받아보세요.
-          </p>
-          <Link to="/cost-report" className="cost-report-share__cta">
-            AI 생활비 진단 시작하기
-          </Link>
+          <EmptyState
+            icon="!"
+            title="공유된 진단 결과를 찾을 수 없습니다"
+            description="링크가 만료되었거나 잘못된 주소입니다. 새로 진단을 받아보세요."
+            actionLabel="AI 생활비 진단 시작하기"
+            actionTo="/cost-report"
+            actionVariant="solid"
+          />
         </div>
       </div>
     )
@@ -48,11 +57,12 @@ export default function CostReportSharePage() {
   return (
     <div className="cost-report-share page">
       <Seo
-        title={`생활비 ${report.score}점 진단 결과 | 생활비연구소`}
+        title={formatPageTitle(`생활비 ${report.score}점 진단 결과`)}
         description={`생활비 점수 ${report.score}점, 예상 절약 월 ${report.estimatedMonthlySavings.toLocaleString('ko-KR')}원. 지원금·계산기·체크리스트 추천 결과입니다.`}
         keywords="AI 생활비 진단, 생활비 점수, 지원금 추천"
         canonical={`/cost-report/share/${token}`}
         breadcrumbs={breadcrumbs}
+        noindex
       />
 
       <div className="cost-report-share__inner">
@@ -62,9 +72,15 @@ export default function CostReportSharePage() {
           <p className="page__description">
             입력 조건을 바탕으로 생성된 생활비 점수와 맞춤 추천입니다.
           </p>
-          <Link to="/cost-report" className="cost-report-share__cta">
-            나도 진단받기 →
-          </Link>
+          <CtaButton
+            to="/cost-report"
+            variant="outline"
+            size="sm"
+            className="cost-report-share__cta"
+            showArrow
+          >
+            나도 진단받기
+          </CtaButton>
         </header>
 
         <CostReportDetailView

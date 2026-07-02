@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatPageTitle } from '../../../constants/branding'
 import Seo from '../../../shared/seo/Seo'
 import ContentBreadcrumb from '../../../shared/content/ContentBreadcrumb'
 import { getTopicsIndexData } from '../services/topicHubService'
@@ -15,7 +16,7 @@ export default function TopicsIndexPage() {
   return (
     <>
       <Seo
-        title="토픽 클러스터 | 생활비연구소"
+        title={formatPageTitle('토픽 클러스터')}
         description="에너지, 청년, 출산, 교육, 주거, 소득 등 생활비 주제별 지원금·가이드·계산기를 모았습니다."
         keywords="생활비 토픽, 지원금 카테고리, 에너지, 청년, 출산, 주거, 소득"
         canonical="/topics"

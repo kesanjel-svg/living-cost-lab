@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { CtaButton } from '../../../shared/ui'
 import './ProfileCompletionCard.css'
 
 export default function ProfileCompletionCard({ completion }) {
@@ -29,9 +29,15 @@ export default function ProfileCompletionCard({ completion }) {
       </p>
 
       {!isComplete && (
-        <Link to="/profile" className="profile-completion__cta">
-          프로필 작성하기 →
-        </Link>
+        <CtaButton
+          to="/profile"
+          variant="soft"
+          size="sm"
+          className="profile-completion__cta"
+          showArrow
+        >
+          프로필 작성하기
+        </CtaButton>
       )}
     </section>
   )

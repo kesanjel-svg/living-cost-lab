@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://living-cost-lab.vercel.app/sitemap.xml

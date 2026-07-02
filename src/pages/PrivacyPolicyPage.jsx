@@ -1,3 +1,4 @@
+import { formatPageTitle, BRAND_CONTACT_EMAIL } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
 import './ContentPage.css'
@@ -11,7 +12,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="page page--privacy">
       <Seo
-        title="개인정보처리방침 | 생활비연구소"
+        title={formatPageTitle('개인정보처리방침')}
         description="생활비연구소의 개인정보 수집·이용, 쿠키, 광고 및 제휴 링크, 보관·파기, 문의 방법에 대한 개인정보처리방침입니다."
         keywords="개인정보처리방침, 생활비연구소, 개인정보, 쿠키"
         canonical="/privacy"
@@ -102,7 +103,9 @@ export default function PrivacyPolicyPage() {
               개인정보 처리와 관련한 문의는 문의하기 페이지 또는 아래
               이메일로 연락해주세요.
             </p>
-            <span className="content-page__email">contact@livingcostlab.kr</span>
+            <a href={`mailto:${BRAND_CONTACT_EMAIL}`} className="content-page__email">
+              {BRAND_CONTACT_EMAIL}
+            </a>
           </section>
 
           <p className="content-page__updated">시행일: 2026년 6월 27일</p>

@@ -3,6 +3,7 @@
 /** @type {BrandingConstants} */
 export const BRAND = {
   name: '생활비연구소',
+  nameEn: 'Living Cost Lab',
   tagline: '정부지원금 · 생활비 계산 플랫폼',
   url: 'https://living-cost-lab.vercel.app',
   logoPath: '/favicon.svg',
@@ -20,9 +21,12 @@ export const BRAND = {
   manifestShortName: '생활비연구소',
   manifestDescription:
     '정부지원금 찾기, 생활비 계산기, 절약 정보를 제공하는 생활비연구소',
+  contactEmail: 'contact@livingcostlab.kr',
+  operatorLabel: '운영',
 }
 
 export const BRAND_NAME = BRAND.name
+export const BRAND_NAME_EN = BRAND.nameEn
 export const BRAND_TAGLINE = BRAND.tagline
 export const BRAND_URL = BRAND.url
 export const BRAND_DEFAULT_TITLE = `${BRAND.name} | ${BRAND.tagline}`
@@ -31,6 +35,8 @@ export const BRAND_KEYWORDS = BRAND.keywords
 export const BRAND_SEARCH_PLACEHOLDER = BRAND.searchPlaceholder
 export const BRAND_SEARCH_PLACEHOLDER_DETAILED = BRAND.searchPlaceholderDetailed
 export const BRAND_COPYRIGHT = BRAND.copyright
+export const BRAND_CONTACT_EMAIL = BRAND.contactEmail
+export const BRAND_OPERATOR_LABEL = BRAND.operatorLabel
 export const BRAND_NOT_FOUND_TITLE = BRAND.notFoundTitle
 export const BRAND_NOT_FOUND_DESCRIPTION = `요청하신 페이지를 찾을 수 없습니다. ${BRAND.name} 홈으로 이동해주세요.`
 

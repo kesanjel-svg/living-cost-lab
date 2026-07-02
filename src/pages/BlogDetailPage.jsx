@@ -8,6 +8,7 @@ import {
   getRelatedPosts,
 } from '../features/blog/services/blogService'
 import { blogPosts } from '../data/blogPosts'
+import { formatPageTitle } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import { EmptyState } from '../shared/ui'
 import { toAbsoluteUrl } from '../shared/seo/siteConfig'
@@ -83,7 +84,7 @@ export default function BlogDetailPage() {
   return (
     <div className="page page--blog-detail">
       <Seo
-        title={`${post.title} | 생활비연구소`}
+        title={formatPageTitle(post.title)}
         description={post.summary}
         keywords={`${post.category}, 생활비, ${post.title}`}
         canonical={getBlogPath(post.slug)}

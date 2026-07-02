@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ANALYTICS_EVENTS, trackEvent } from '../../../shared/analytics'
 import CalculatorLayout from '../components/CalculatorLayout'
 import CalculatorInputCard from '../components/CalculatorInputCard'
 import CalculatorResultCard from '../components/CalculatorResultCard'
@@ -29,6 +30,10 @@ export default function ElectricCalculator() {
 
     setError('')
     setResult(buildElectricResult(value))
+    trackEvent(ANALYTICS_EVENTS.CALCULATOR_SUBMIT, {
+      calculator_name: 'electric',
+      usage_kwh: value,
+    })
   }
 
   return (

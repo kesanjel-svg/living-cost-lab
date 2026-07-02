@@ -1,6 +1,7 @@
 import {
   BRAND_DESCRIPTION,
   BRAND_NAME,
+  BRAND_NAME_EN,
   BRAND_URL,
   getBrandLogoUrl,
   getBrandOgImageUrl,
@@ -18,6 +19,7 @@ export function buildOrganizationSchema() {
   return withContext({
     '@type': 'Organization',
     name: BRAND_NAME,
+    alternateName: BRAND_NAME_EN,
     url: BRAND_URL,
     logo: getBrandLogoUrl(),
   })
@@ -27,6 +29,7 @@ export function buildWebSiteSchema() {
   return withContext({
     '@type': 'WebSite',
     name: BRAND_NAME,
+    alternateName: BRAND_NAME_EN,
     url: BRAND_URL,
     inLanguage: 'ko-KR',
     potentialAction: {

@@ -1,6 +1,7 @@
 import SearchResultItem from './SearchResultItem'
 import PopularSearchChips from './PopularSearchChips'
 import RecentSearchList from './RecentSearchList'
+import { EmptyState, Skeleton } from '../../../shared/ui'
 import './SearchAutocompletePanel.css'
 
 export default function SearchAutocompletePanel({
@@ -39,11 +40,19 @@ export default function SearchAutocompletePanel({
       )}
 
       {loading && hasQuery && (
-        <p className="search-autocomplete__loading">검색 중...</p>
+        <div className="search-autocomplete__loading" aria-busy="true" aria-label="검색 중">
+          <Skeleton height="2.25rem" radius="var(--radius-md)" />
+          <Skeleton height="2.25rem" radius="var(--radius-md)" />
+        </div>
       )}
 
       {showEmptySuggestions && (
-        <p className="search-autocomplete__empty">일치하는 결과가 없습니다.</p>
+        <EmptyState
+          variant="compact"
+          icon="⌕"
+          title="일치하는 결과가 없습니다"
+          description="다른 키워드로 검색해보세요."
+        />
       )}
 
       {!hasQuery && (

@@ -1,5 +1,6 @@
 import SupportFinder from '../components/SupportFinder'
 import SupportSearch from '../components/SupportSearch'
+import { formatPageTitle } from '../../../constants/branding'
 import Seo from '../../../shared/seo/Seo'
 import './SupportPage.css'
 
@@ -12,7 +13,7 @@ export default function SupportPage() {
   return (
     <div className="support-page">
       <Seo
-        title="지원금 찾기 | 생활비연구소"
+        title={formatPageTitle('지원금 찾기')}
         description="나이, 가구 형태, 소득 수준에 맞는 정부지원금을 찾아보세요. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 정보를 확인할 수 있습니다."
         keywords="지원금 찾기, 정부지원금, 근로장려금, 청년월세, 에너지바우처"
         canonical="/support"

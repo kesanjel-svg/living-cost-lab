@@ -1,4 +1,5 @@
 import BlogCard from '../features/blog/components/BlogCard'
+import { formatPageTitle } from '../constants/branding'
 import { getBlogPath } from '../features/blog/services/blogService'
 import { blogPosts } from '../data'
 import Seo from '../shared/seo/Seo'
@@ -22,7 +23,7 @@ export default function BlogPage() {
   return (
     <div className="page page--blog">
       <Seo
-        title="생활비 정보 | 생활비연구소"
+        title={formatPageTitle('생활비 정보')}
         description="전기요금, 지원금, 건강보험 등 생활비 절약에 도움이 되는 정보를 모았습니다. 실생활에 바로 적용할 수 있는 절약 팁과 지원금 안내를 확인하세요."
         keywords="생활비 정보, 전기요금 절약, 지원금 신청, 도시가스 절약"
         canonical="/blog"

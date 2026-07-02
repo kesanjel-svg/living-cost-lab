@@ -5,6 +5,9 @@ import './index.css'
 import './styles/responsive.css'
 import App from './app/App.jsx'
 import ErrorBoundary from './shared/error/ErrorBoundary'
+import { initAnalytics } from './shared/analytics'
+
+initAnalytics()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
