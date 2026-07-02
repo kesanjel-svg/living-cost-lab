@@ -13,8 +13,16 @@ function getScoreLabel(score) {
 }
 
 export default function DiagnosisCard({ report }) {
-  const { score, savingsPotential, supports, nextActions, summary } = report
-  const scoreLabel = getScoreLabel(score)
+  const {
+    score,
+    scoreLabel: reportScoreLabel,
+    scoreGrade,
+    savingsPotential,
+    supports,
+    nextActions,
+    summary,
+  } = report
+  const scoreLabel = reportScoreLabel ?? getScoreLabel(score)
 
   return (
     <article className="diagnosis-card">
@@ -30,6 +38,9 @@ export default function DiagnosisCard({ report }) {
           <p className="diagnosis-card__eyebrow">생활비 점수</p>
           <h2 className="diagnosis-card__score-title">
             {score}점 · {scoreLabel}
+            {scoreGrade && (
+              <span className="diagnosis-card__grade"> ({scoreGrade})</span>
+            )}
           </h2>
           <p className="diagnosis-card__summary">{summary}</p>
         </div>

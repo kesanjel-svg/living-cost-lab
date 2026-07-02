@@ -24,6 +24,9 @@ function ResultLinkList({ title, items }) {
                 <span aria-hidden="true">→</span>
               </Link>
             )}
+            {item.reason && (
+              <p className="cost-report-results__reason">{item.reason}</p>
+            )}
             {item.summary && (
               <p className="cost-report-results__desc">{item.summary}</p>
             )}

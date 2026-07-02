@@ -1,14 +1,27 @@
-import { blogRegistry } from '../constants/blogs'
-import { calculatorRegistry } from '../constants/calculators'
-import { filterSupportPrograms } from '../features/support/services/supportService'
+import supportPrograms from '../data/supportPrograms'
+import { getRecommendationEngine } from './recommendation'
+import { mapBlog, mapCalculator } from './recommendation/mappers'
+import { DEFAULT_LIMITS } from './recommendation/types'
 
-const MAX_SUPPORT_RECOMMENDATIONS = 3
+function toCostReportInput(userInput) {
+  const incomeMap = {
+    low: 'under200',
+    worker: '200to300',
+    selfEmployed: 'over400',
+  }
 
-function toSupportFilters(userInput) {
+  const householdMap = {
+    single: '1',
+    newlywed: '2',
+    withChildren: '3',
+  }
+
   return {
-    age: userInput.age,
-    household: userInput.family,
-    income: userInput.incomeLevel,
+    age: userInput.age ?? '30s',
+    householdSize: householdMap[userInput.family] ?? '2',
+    monthlyIncome: incomeMap[userInput.incomeLevel] ?? '200to300',
+    region: 'metro',
+    housingType: 'monthly',
   }
 }
 
@@ -16,44 +29,25 @@ function mapSupportProgram(program) {
   return {
     id: program.id,
     title: program.title,
-    link: `/support/${program.id}`,
+    link: `/support/${program.slug ?? program.id}`,
     summary: program.summary,
   }
 }
 
-function mapCalculator(id) {
-  const calculator = calculatorRegistry[id]
-  if (!calculator) {
-    return null
-  }
+export function recommendSupport(userInput, programs = supportPrograms) {
+  const engine = getRecommendationEngine()
+  const input = toCostReportInput(userInput)
+  const { supports } = engine.recommend(input, {
+    programs,
+    maxSupport: DEFAULT_LIMITS.maxSupport,
+  })
 
-  return {
-    id,
-    title: calculator.title,
-    link: calculator.href,
-    ...(calculator.available ? {} : { status: '준비중' }),
-  }
-}
-
-function mapBlog(id) {
-  const blog = blogRegistry[id]
-  if (!blog) {
-    return null
-  }
-
-  return {
-    id,
-    title: blog.title,
-    link: blog.href,
-    ...(blog.available ? {} : { status: '준비중' }),
-  }
-}
-
-export function recommendSupport(userInput, programs) {
-  const filters = toSupportFilters(userInput)
-  return filterSupportPrograms(filters, programs)
-    .slice(0, MAX_SUPPORT_RECOMMENDATIONS)
-    .map(mapSupportProgram)
+  return supports.map((item) => ({
+    id: item.id,
+    title: item.title,
+    link: item.link,
+    summary: item.summary,
+  }))
 }
 
 export function recommendCalculators(userInput) {
@@ -113,10 +107,7 @@ export function recommendBlogs(userInput) {
     addBlog('gas-saving')
   }
 
-  if (
-    userInput.incomeLevel === 'low' ||
-    userInput.incomeLevel === 'worker'
-  ) {
+  if (userInput.incomeLevel === 'low' || userInput.incomeLevel === 'worker') {
     addBlog('earned-income-schedule')
   }
 
@@ -141,7 +132,7 @@ export function recommendSavingTips(userInput) {
   return tips
 }
 
-export function generateLivingCostReport(userInput, programs) {
+export function generateLivingCostReport(userInput, programs = supportPrograms) {
   const supports = recommendSupport(userInput, programs)
   const calculators = recommendCalculators(userInput)
   const blogs = recommendBlogs(userInput)

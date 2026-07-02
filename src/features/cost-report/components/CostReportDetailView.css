@@ -1,0 +1,21 @@
+.cost-report-detail {
+  display: grid;
+  gap: 1.5rem;
+  animation: fadeUp 0.5s var(--ease-out) both;
+}
+
+.cost-report-detail__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cost-report-detail__disclaimer {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}

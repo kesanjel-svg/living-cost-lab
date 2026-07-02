@@ -7,10 +7,10 @@ import {
 } from '../../profile/services/profileService'
 import { getSavedProfile } from '../../../shared/storage/profileStorage'
 import { saveCostReport } from '../../../shared/storage/userActivityStorage'
+import { encodeCostReportShare } from '../services/costReportShareService'
 import Seo from '../../../shared/seo/Seo'
 import CostReportForm from '../components/CostReportForm'
-import CostReportResults from '../components/CostReportResults'
-import DiagnosisCard from '../components/DiagnosisCard'
+import CostReportDetailView from '../components/CostReportDetailView'
 import './CostReportPage.css'
 
 const BREADCRUMBS = [
@@ -20,15 +20,22 @@ const BREADCRUMBS = [
 
 export default function CostReportPage() {
   const [report, setReport] = useState(null)
+  const [input, setInput] = useState(null)
   const profileCompletion = useMemo(
     () => calculateProfileCompletion(getSavedProfile()),
     [],
   )
 
-  const handleSubmit = (input) => {
-    const merged = { ...profileToCostReportInput(getSavedProfile()), ...input }
+  const shareToken = useMemo(
+    () => (input ? encodeCostReportShare(input) : null),
+    [input],
+  )
+
+  const handleSubmit = (formInput) => {
+    const merged = { ...profileToCostReportInput(getSavedProfile()), ...formInput }
     const nextReport = generateCostReport(merged)
     saveCostReport({ input: merged, report: nextReport })
+    setInput(merged)
     setReport(nextReport)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -37,8 +44,8 @@ export default function CostReportPage() {
     <div className="cost-report-page page">
       <Seo
         title="AI 생활비 진단 | 생활비연구소"
-        description="나이, 가구원수, 월소득, 거주지역, 주거형태를 입력하면 맞춤 지원금·계산기·블로그 추천과 생활비 점수, 절약 가능 금액을 확인할 수 있습니다."
-        keywords="AI 생활비 진단, 생활비 점검, 정부지원금 추천, 생활비 절약"
+        description="나이, 가구원수, 월소득, 거주지역, 주거형태를 입력하면 생활비 점수, 항목별 분석, 절약 예상 금액, 지원금·계산기·블로그 추천과 실행 체크리스트를 확인할 수 있습니다."
+        keywords="AI 생활비 진단, 생활비 점수, 정부지원금 추천, 생활비 절약"
         canonical="/cost-report"
         breadcrumbs={BREADCRUMBS}
       />
@@ -46,9 +53,8 @@ export default function CostReportPage() {
       <div className="page__header cost-report-page__header">
         <h1 className="page__title">AI 생활비 진단</h1>
         <p className="page__description">
-          간단한 정보를 입력하면 생활비 점수, 추천 지원금, 절약 가능 금액을
-          확인할 수 있습니다. 생활비 프로필이 저장되어 있으면 기본값으로
-          채워집니다.
+          간단한 정보를 입력하면 생활비 점수, 항목별 분석, 절약 예상 금액,
+          맞춤 추천과 실행 체크리스트를 확인할 수 있습니다.
         </p>
         {profileCompletion < 100 && (
           <Link to="/profile" className="cost-report-page__profile-cta">
@@ -58,16 +64,28 @@ export default function CostReportPage() {
       </div>
 
       <div className="cost-report-page__content">
-        <CostReportForm onSubmit={handleSubmit} />
+        {!report && <CostReportForm onSubmit={handleSubmit} />}
 
         {report && (
-          <div className="cost-report-page__results">
-            <DiagnosisCard report={report} />
-            <CostReportResults report={report} />
-            <p className="cost-report-page__disclaimer">
-              본 진단 결과는 MVP 예시 데이터를 기반으로 하며, 실제 지원금
-              수령 여부와 절약 금액은 개인 상황에 따라 달라질 수 있습니다.
-            </p>
+          <CostReportDetailView
+            report={report}
+            input={input}
+            shareToken={shareToken}
+          />
+        )}
+
+        {report && (
+          <div className="cost-report-page__retry">
+            <button
+              type="button"
+              className="cost-report-page__retry-btn"
+              onClick={() => {
+                setReport(null)
+                setInput(null)
+              }}
+            >
+              다시 진단하기
+            </button>
           </div>
         )}
       </div>

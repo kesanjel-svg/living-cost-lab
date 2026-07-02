@@ -24,6 +24,28 @@
   padding: 1.5rem;
 }
 
+.cost-report-page__retry {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.cost-report-page__retry-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--blue-800);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+}
+
+.cost-report-page__retry-btn:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-300);
+}
+
 .cost-report-page__results {
   display: grid;
   gap: 1.5rem;
