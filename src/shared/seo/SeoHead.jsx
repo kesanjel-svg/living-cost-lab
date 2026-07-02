@@ -1,13 +1,29 @@
 import { Helmet } from 'react-helmet-async'
 import { resolvePageTitle } from '../../constants/branding'
 import { collectPageSchemas } from './schemaBuilders'
-import StructuredData from './StructuredData'
 import {
   DEFAULT_KEYWORDS,
   DEFAULT_OG_IMAGE,
   SITE_NAME,
   toAbsoluteUrl,
 } from './siteConfig'
+
+function renderSchemaScripts(schema) {
+  if (!schema) {
+    return null
+  }
+
+  const schemas = Array.isArray(schema) ? schema : [schema]
+
+  return schemas.map((item, index) => (
+    <script
+      key={`${item['@type'] ?? 'schema'}-${index}`}
+      type="application/ld+json"
+    >
+      {JSON.stringify(item)}
+    </script>
+  ))
+}
 
 export default function SeoHead({
   title,
@@ -58,7 +74,7 @@ export default function SeoHead({
       {description && <meta name="twitter:description" content={description} />}
       <meta name="twitter:image" content={image} />
 
-      <StructuredData schema={schemas} />
+      {renderSchemaScripts(schemas)}
     </Helmet>
   )
 }
