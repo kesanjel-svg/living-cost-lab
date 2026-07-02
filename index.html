@@ -8,10 +8,11 @@
     />
     <meta name="theme-color" content="#2563eb" />
 
+    <!-- Branding: keep in sync with src/constants/branding.js -->
     <title>생활비연구소 | 정부지원금 · 생활비 계산 플랫폼</title>
     <meta
       name="description"
-      content="생활비연구소(Living Cost Lab)는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
+      content="생활비연구소는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
     />
     <meta
       name="keywords"
@@ -24,6 +25,7 @@
     <link rel="canonical" href="https://living-cost-lab.vercel.app/" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="생활비연구소" />
@@ -34,7 +36,7 @@
     />
     <meta
       property="og:description"
-      content="생활비연구소(Living Cost Lab)는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
+      content="생활비연구소는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
     />
     <meta property="og:url" content="https://living-cost-lab.vercel.app/" />
     <meta
@@ -49,7 +51,7 @@
     />
     <meta
       name="twitter:description"
-      content="생활비연구소(Living Cost Lab)는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
+      content="생활비연구소는 정부지원금 찾기, 전기요금·도시가스 계산기, 생활비 절약 정보를 제공하는 웹 플랫폼입니다. 에너지바우처, 근로장려금, 청년월세지원 등 다양한 지원금 신청 방법을 한곳에서 확인하세요."
     />
     <meta
       name="twitter:image"
@@ -62,22 +64,20 @@
         "@graph": [
           {
             "@type": "Organization",
-            "name": "Living Cost Lab",
-            "alternateName": "생활비연구소",
+            "name": "생활비연구소",
             "url": "https://living-cost-lab.vercel.app",
             "logo": "https://living-cost-lab.vercel.app/favicon.svg"
           },
           {
             "@type": "WebSite",
             "name": "생활비연구소",
-            "alternateName": "Living Cost Lab",
             "url": "https://living-cost-lab.vercel.app",
             "inLanguage": "ko-KR",
             "potentialAction": {
               "@type": "SearchAction",
               "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": "https://living-cost-lab.vercel.app/support?q={search_term_string}"
+                "urlTemplate": "https://living-cost-lab.vercel.app/search?q={search_term_string}"
               },
               "query-input": "required name=search_term_string"
             }
@@ -85,7 +85,6 @@
           {
             "@type": "WebApplication",
             "name": "생활비연구소",
-            "alternateName": "Living Cost Lab",
             "description": "정부지원금 찾기와 생활비 계산 기능을 제공하는 생활비 계산 플랫폼",
             "applicationCategory": "FinanceApplication",
             "operatingSystem": "Web",

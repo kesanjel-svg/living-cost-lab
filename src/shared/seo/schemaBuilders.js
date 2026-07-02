@@ -1,11 +1,11 @@
 import {
-  DEFAULT_LOGO,
-  DEFAULT_OG_IMAGE,
-  SITE_NAME,
-  SITE_NAME_EN,
-  SITE_URL,
-  toAbsoluteUrl,
-} from './siteConfig'
+  BRAND_DESCRIPTION,
+  BRAND_NAME,
+  BRAND_URL,
+  getBrandLogoUrl,
+  getBrandOgImageUrl,
+  toAbsoluteBrandUrl,
+} from '../../constants/branding'
 
 function withContext(schema) {
   return {
@@ -17,25 +17,23 @@ function withContext(schema) {
 export function buildOrganizationSchema() {
   return withContext({
     '@type': 'Organization',
-    name: SITE_NAME_EN,
-    alternateName: SITE_NAME,
-    url: SITE_URL,
-    logo: DEFAULT_LOGO,
+    name: BRAND_NAME,
+    url: BRAND_URL,
+    logo: getBrandLogoUrl(),
   })
 }
 
 export function buildWebSiteSchema() {
   return withContext({
     '@type': 'WebSite',
-    name: SITE_NAME,
-    alternateName: SITE_NAME_EN,
-    url: SITE_URL,
+    name: BRAND_NAME,
+    url: BRAND_URL,
     inLanguage: 'ko-KR',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/support?q={search_term_string}`,
+        urlTemplate: `${BRAND_URL}/search?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -45,15 +43,14 @@ export function buildWebSiteSchema() {
 export function buildWebApplicationSchema(description) {
   return withContext({
     '@type': 'WebApplication',
-    name: SITE_NAME,
-    alternateName: SITE_NAME_EN,
+    name: BRAND_NAME,
     description:
       description ||
       '정부지원금 찾기와 생활비 계산 기능을 제공하는 생활비 계산 플랫폼',
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Web',
     browserRequirements: 'Requires JavaScript',
-    url: SITE_URL,
+    url: BRAND_URL,
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -69,7 +66,7 @@ export function buildBreadcrumbSchema(items) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: toAbsoluteUrl(item.path),
+      item: toAbsoluteBrandUrl(item.path),
     })),
   })
 }
@@ -104,7 +101,7 @@ export function buildSoftwareApplicationSchema({
     description,
     applicationCategory,
     operatingSystem: 'Web',
-    url: toAbsoluteUrl(path),
+    url: toAbsoluteBrandUrl(path),
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -112,9 +109,8 @@ export function buildSoftwareApplicationSchema({
     },
     provider: {
       '@type': 'Organization',
-      name: SITE_NAME_EN,
-      alternateName: SITE_NAME,
-      url: SITE_URL,
+      name: BRAND_NAME,
+      url: BRAND_URL,
     },
   })
 }
@@ -125,7 +121,7 @@ export function buildArticleSchema({
   path,
   datePublished,
   dateModified,
-  image = DEFAULT_OG_IMAGE,
+  image = getBrandOgImageUrl(),
 }) {
   return withContext({
     '@type': 'Article',
@@ -136,21 +132,20 @@ export function buildArticleSchema({
     dateModified: dateModified || datePublished,
     author: {
       '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE_URL,
+      name: BRAND_NAME,
+      url: BRAND_URL,
     },
     publisher: {
       '@type': 'Organization',
-      name: SITE_NAME_EN,
-      alternateName: SITE_NAME,
+      name: BRAND_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: DEFAULT_LOGO,
+        url: getBrandLogoUrl(),
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': toAbsoluteUrl(path),
+      '@id': toAbsoluteBrandUrl(path),
     },
   })
 }
@@ -197,7 +192,7 @@ export function collectPageSchemas({
 }
 
 export function buildHomeSchemaGraph(description) {
-  const schemas = buildHomeSchemas(description)
+  const schemas = buildHomeSchemas(description || BRAND_DESCRIPTION)
 
   return {
     '@context': 'https://schema.org',

@@ -1,10 +1,11 @@
+import { BRAND_SEARCH_PLACEHOLDER_DETAILED } from '../../../constants/branding'
 import './SearchInput.css'
 
 export default function SearchInput({
   value,
   onChange,
   onSubmit,
-  placeholder = '지원금, 블로그, 계산기 검색',
+  placeholder = BRAND_SEARCH_PLACEHOLDER_DETAILED,
   autoFocus = false,
   size = 'md',
   id = 'search-input',

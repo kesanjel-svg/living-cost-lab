@@ -1,3 +1,4 @@
+import { formatPageTitle } from '../../../constants/branding'
 import { useState } from 'react'
 import { buildCostReportShareUrl } from '../services/costReportShareService'
 import './ShareResultButton.css'
@@ -11,7 +12,7 @@ export default function ShareResultButton({ input }) {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'AI 생활비 진단 결과 | 생활비연구소',
+          title: formatPageTitle('AI 생활비 진단 결과'),
           text: '내 생활비 진단 결과를 확인해보세요.',
           url,
         })

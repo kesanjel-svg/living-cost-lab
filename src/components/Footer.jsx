@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { BRAND_COPYRIGHT, BRAND_NAME } from '../constants/branding'
 import { getBlogPath, getLatestPosts } from '../features/blog/services/blogService'
 import { blogPosts } from '../data/blogPosts'
 import './Footer.css'
@@ -18,7 +19,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <p className="footer__brand">생활비연구소</p>
+        <p className="footer__brand">{BRAND_NAME}</p>
 
         <nav className="footer__nav" aria-label="푸터 링크">
           {FOOTER_NAV.map((link) => (
@@ -41,7 +42,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <p className="footer__copyright">© 2026 Living Cost Lab</p>
+        <p className="footer__copyright">{BRAND_COPYRIGHT}</p>
       </div>
     </footer>
   )

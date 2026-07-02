@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import {
+  BRAND_NAME,
+  BRAND_SEARCH_PLACEHOLDER_DETAILED,
+} from '../../../constants/branding'
 import Seo from '../../../shared/seo/Seo'
 import { POPULAR_SEARCHES } from '../data/popularSearches'
 import PopularSearchChips from '../components/PopularSearchChips'
@@ -63,13 +67,11 @@ export default function SearchPage() {
     navigate(`/search?${params.toString()}`)
   }
 
-  const seoTitle = queryParam
-    ? `"${queryParam}" 검색 결과 | 생활비연구소`
-    : '통합 검색 | 생활비연구소'
+  const seoTitle = queryParam ? `"${queryParam}" 검색 결과` : '통합 검색'
 
   const seoDescription = queryParam
-    ? `생활비연구소에서 "${queryParam}"에 대한 지원금, 블로그, 계산기 검색 결과를 확인하세요.`
-    : '정부지원금, 블로그, 계산기를 한 번에 검색하는 생활비연구소 통합 검색입니다.'
+    ? `${BRAND_NAME}에서 "${queryParam}"에 대한 지원금, 블로그, 계산기 검색 결과를 확인하세요.`
+    : `정부지원금, 블로그, 계산기를 한 번에 검색하는 ${BRAND_NAME} 통합 검색입니다.`
 
   return (
     <div className="search-page page">
@@ -96,7 +98,7 @@ export default function SearchPage() {
           onSubmit={handleSubmit}
           size="lg"
           autoFocus
-          placeholder="지원금, 블로그, 계산기 검색"
+          placeholder={BRAND_SEARCH_PLACEHOLDER_DETAILED}
         />
 
         {!queryParam.trim() && (

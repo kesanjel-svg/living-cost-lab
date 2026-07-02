@@ -1,3 +1,5 @@
+import { formatPageTitle } from '../../../constants/branding'
+
 export function getSupportPath(program) {
   return `/support/${program.slug ?? program.id}`
 }
@@ -33,7 +35,7 @@ export function buildSupportSeoConfig(program) {
   const description = `${program.summary} ${program.description}`.slice(0, 160)
 
   return {
-    title: `${program.title} 신청방법 | 생활비연구소`,
+    title: formatPageTitle(`${program.title} 신청방법`),
     description,
     keywords: program.tags?.join(', '),
     canonical: path,

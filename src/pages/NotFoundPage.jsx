@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { BRAND_NOT_FOUND_DESCRIPTION, BRAND_NOT_FOUND_TITLE } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
 import './NotFoundPage.css'
@@ -7,8 +8,8 @@ export default function NotFoundPage() {
   return (
     <div className="page page--not-found">
       <Seo
-        title="페이지를 찾을 수 없습니다 | 생활비연구소"
-        description="요청하신 페이지를 찾을 수 없습니다. 생활비연구소 홈으로 이동해주세요."
+        title={BRAND_NOT_FOUND_TITLE}
+        description={BRAND_NOT_FOUND_DESCRIPTION}
         canonical="/404"
         noindex
       />

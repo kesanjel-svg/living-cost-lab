@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BRAND_SEARCH_PLACEHOLDER } from '../../../constants/branding'
 import { POPULAR_SEARCHES } from '../data/popularSearches'
 import { useSearchAutocomplete } from '../hooks/useSearchAutocomplete'
 import {
@@ -75,7 +76,7 @@ export default function HeaderSearch() {
         onChange={setQuery}
         onSubmit={runSearch}
         size="sm"
-        placeholder="통합 검색"
+        placeholder={BRAND_SEARCH_PLACEHOLDER}
         ariaControls={panelId}
         ariaExpanded={open}
         onFocus={() => setOpen(true)}
