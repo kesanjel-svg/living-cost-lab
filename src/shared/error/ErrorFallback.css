@@ -1,0 +1,29 @@
+.error-fallback {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.error-fallback__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.error-fallback__retry {
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--blue-800);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.error-fallback__retry:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-200);
+}

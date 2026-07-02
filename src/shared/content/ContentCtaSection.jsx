@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { CtaButton } from '../ui'
 import './ContentCtaSection.css'
 
 export default function ContentCtaSection({
@@ -11,6 +12,12 @@ export default function ContentCtaSection({
     return null
   }
 
+  const variantMap = {
+    primary: 'inverse-primary',
+    secondary: 'inverse-secondary',
+    ghost: 'inverse-ghost',
+  }
+
   return (
     <section id={id} className="content-cta" aria-labelledby="content-cta-title">
       <h2 id="content-cta-title" className="content-cta__title">
@@ -19,13 +26,14 @@ export default function ContentCtaSection({
       {description && <p className="content-cta__desc">{description}</p>}
       <div className="content-cta__actions">
         {actions.map((action) => (
-          <Link
+          <CtaButton
             key={action.to}
             to={action.to}
-            className={`content-cta__btn content-cta__btn--${action.variant ?? 'secondary'}`}
+            variant={variantMap[action.variant ?? 'secondary']}
+            size="sm"
           >
             {action.label}
-          </Link>
+          </CtaButton>
         ))}
       </div>
     </section>

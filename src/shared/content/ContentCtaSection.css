@@ -25,36 +25,3 @@
   flex-wrap: wrap;
   gap: 0.625rem;
 }
-
-.content-cta__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.625rem 1.125rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 999px;
-  transition: transform 0.2s var(--ease-out);
-}
-
-.content-cta__btn:hover {
-  transform: translateY(-1px);
-}
-
-.content-cta__btn--primary {
-  color: var(--blue-900);
-  background: #ffffff;
-}
-
-.content-cta__btn--secondary {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.content-cta__btn--ghost {
-  color: rgba(255, 255, 255, 0.92);
-  background: transparent;
-  border: 1px dashed rgba(255, 255, 255, 0.45);
-}

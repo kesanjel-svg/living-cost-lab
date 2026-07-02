@@ -11,6 +11,7 @@ import RelatedBenefits from '../../../shared/content/RelatedBenefits'
 import RelatedBlogs from '../../../shared/content/RelatedBlogs'
 import RelatedCalculators from '../../../shared/content/RelatedCalculators'
 import Seo from '../../../shared/seo/Seo'
+import { EmptyState } from '../../../shared/ui'
 import { addRecentSupportView } from '../../../shared/storage/userActivityStorage'
 import SupportDetailHeader from '../components/detail/SupportDetailHeader'
 import SupportDetailSeo from '../components/detail/SupportDetailSeo'
@@ -78,7 +79,7 @@ export default function SupportDetailPage() {
     return (
       <div className="page page--detail">
         <Seo
-          title="지원금을 찾을 수 없습니다 | 생활비연구소"
+          title="지원금을 찾을 수 없습니다"
           description="요청하신 지원금 정보를 찾을 수 없습니다."
           canonical={`/support/${id}`}
           noindex
@@ -94,7 +95,13 @@ export default function SupportDetailPage() {
               { name: '지원금 찾기', path: '/support' },
             ]}
           />
-          <p className="page__empty">지원금을 찾을 수 없습니다.</p>
+          <EmptyState
+            title="지원금을 찾을 수 없습니다"
+            description="주소가 변경되었거나 삭제된 지원금일 수 있습니다."
+            actionLabel="지원금 찾기"
+            actionTo="/support"
+            actionVariant="soft"
+          />
           <Link to="/support" className="page__back">
             ← 지원금 찾기
           </Link>

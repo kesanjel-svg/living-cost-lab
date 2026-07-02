@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import { BRAND_NOT_FOUND_DESCRIPTION, BRAND_NOT_FOUND_TITLE } from '../constants/branding'
+import { CtaButton } from '../shared/ui'
 import Seo from '../shared/seo/Seo'
 import './Page.css'
 import './NotFoundPage.css'
@@ -22,10 +22,9 @@ export default function NotFoundPage() {
         </p>
       </div>
       <div className="page__content not-found__content">
-        <Link to="/" className="not-found__btn">
+        <CtaButton to="/" variant="solid" size="md" showArrow>
           홈으로 이동
-          <span aria-hidden="true">→</span>
-        </Link>
+        </CtaButton>
       </div>
     </div>
   )

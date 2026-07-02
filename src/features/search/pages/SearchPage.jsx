@@ -8,6 +8,7 @@ import Seo from '../../../shared/seo/Seo'
 import { POPULAR_SEARCHES } from '../data/popularSearches'
 import PopularSearchChips from '../components/PopularSearchChips'
 import SearchEmptyState from '../components/SearchEmptyState'
+import { SearchResultsSkeleton } from '../../../shared/ui'
 import SearchInput from '../components/SearchInput'
 import SearchResultGroup from '../components/SearchResultGroup'
 import { SEARCH_TYPE_LABELS } from '../types'
@@ -111,9 +112,7 @@ export default function SearchPage() {
           </div>
         )}
 
-        {loading && (
-          <p className="search-page__status">검색 중...</p>
-        )}
+        {loading && <SearchResultsSkeleton />}
 
         {!loading && queryParam.trim() && response?.total === 0 && (
           <SearchEmptyState

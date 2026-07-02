@@ -9,6 +9,7 @@ import {
 } from '../features/blog/services/blogService'
 import { blogPosts } from '../data/blogPosts'
 import Seo from '../shared/seo/Seo'
+import { EmptyState } from '../shared/ui'
 import { toAbsoluteUrl } from '../shared/seo/siteConfig'
 import './Page.css'
 import './BlogDetailPage.css'
@@ -58,7 +59,7 @@ export default function BlogDetailPage() {
     return (
       <div className="page page--blog-detail">
         <Seo
-          title="글을 찾을 수 없습니다 | 생활비연구소"
+          title="글을 찾을 수 없습니다"
           description="요청하신 블로그 글을 찾을 수 없습니다."
           canonical={`/blog/${slug}`}
           noindex
@@ -67,7 +68,13 @@ export default function BlogDetailPage() {
           <Link to="/blog" className="page__back">
             ← 생활비 정보
           </Link>
-          <p className="page__empty">글을 찾을 수 없습니다.</p>
+          <EmptyState
+            title="글을 찾을 수 없습니다"
+            description="주소가 변경되었거나 삭제된 글일 수 있습니다."
+            actionLabel="생활비 정보 목록"
+            actionTo="/blog"
+            actionVariant="soft"
+          />
         </div>
       </div>
     )

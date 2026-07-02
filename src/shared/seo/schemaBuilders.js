@@ -170,7 +170,7 @@ export function collectPageSchemas({
   const schemas = []
 
   if (includeHomeSchemas) {
-    schemas.push(...buildHomeSchemas(description))
+    schemas.push(buildHomeSchemaGraph(description))
   } else if (breadcrumbs.length > 0) {
     schemas.push(buildBreadcrumbSchema(breadcrumbs))
   }

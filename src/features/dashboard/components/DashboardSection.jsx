@@ -1,18 +1,6 @@
 import { Link } from 'react-router-dom'
+import { EmptyState } from '../../../shared/ui'
 import './DashboardSection.css'
-
-function EmptyState({ message, linkLabel, linkTo }) {
-  return (
-    <div className="dashboard-section__empty">
-      <p>{message}</p>
-      {linkTo && (
-        <Link to={linkTo} className="dashboard-section__empty-link">
-          {linkLabel}
-        </Link>
-      )}
-    </div>
-  )
-}
 
 export default function DashboardSection({
   title,
@@ -60,9 +48,12 @@ export default function DashboardSection({
         </ul>
       ) : (
         <EmptyState
-          message={emptyMessage}
-          linkLabel={emptyLinkLabel}
-          linkTo={emptyLinkTo}
+          variant="inline"
+          icon=""
+          title={emptyMessage}
+          actionLabel={emptyLinkLabel}
+          actionTo={emptyLinkTo}
+          actionVariant="soft"
         />
       )}
     </section>

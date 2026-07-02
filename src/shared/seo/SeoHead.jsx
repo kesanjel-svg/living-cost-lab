@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { resolvePageTitle } from '../../constants/branding'
 import { collectPageSchemas } from './schemaBuilders'
+import StructuredData from './StructuredData'
 import {
   DEFAULT_KEYWORDS,
   DEFAULT_OG_IMAGE,
@@ -21,17 +22,20 @@ export default function SeoHead({
   articles = [],
   includeHomeSchemas = false,
   noindex = false,
+  structuredData,
 }) {
   const pageTitle = resolvePageTitle(title)
   const canonicalUrl = canonical ? toAbsoluteUrl(canonical) : undefined
-  const schemas = collectPageSchemas({
-    includeHomeSchemas,
-    description,
-    breadcrumbs,
-    faq,
-    calculators,
-    articles,
-  })
+  const schemas =
+    structuredData ??
+    collectPageSchemas({
+      includeHomeSchemas,
+      description,
+      breadcrumbs,
+      faq,
+      calculators,
+      articles,
+    })
 
   return (
     <Helmet>
@@ -54,14 +58,7 @@ export default function SeoHead({
       {description && <meta name="twitter:description" content={description} />}
       <meta name="twitter:image" content={image} />
 
-      {schemas.map((schema, index) => (
-        <script
-          key={`${schema['@type']}-${index}`}
-          type="application/ld+json"
-        >
-          {JSON.stringify(schema)}
-        </script>
-      ))}
+      <StructuredData schema={schemas} />
     </Helmet>
   )
 }

@@ -1,3 +1,4 @@
+import { EmptyState } from '../../../shared/ui'
 import HubContentCard from './HubContentCard'
 import './HubContentSection.css'
 
@@ -12,7 +13,7 @@ export default function HubContentSection({ title, description, items, emptyText
         <header className="hub-content-section__header">
           <h2 className="hub-content-section__title">{title}</h2>
         </header>
-        <p className="hub-content-section__empty">{emptyText}</p>
+        <EmptyState variant="compact" icon="" title={emptyText} />
       </section>
     )
   }

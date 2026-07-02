@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { CtaButton } from '../shared/ui'
 import './Hero.css'
 
 export default function Hero() {
@@ -10,12 +10,12 @@ export default function Hero() {
           정부지원금, 생활비 계산기, AI 진단을 한곳에서.
         </p>
         <div className="hero__actions">
-          <Link to="/support" className="hero__cta hero__cta--primary">
+          <CtaButton to="/support" variant="solid" size="md">
             지원금 찾기
-          </Link>
-          <Link to="/cost-report" className="hero__cta hero__cta--secondary">
+          </CtaButton>
+          <CtaButton to="/cost-report" variant="outline" size="md">
             AI 생활비 진단
-          </Link>
+          </CtaButton>
         </div>
       </div>
     </section>

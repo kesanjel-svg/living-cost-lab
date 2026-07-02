@@ -1,4 +1,4 @@
-import './SearchEmptyState.css'
+import EmptyState from '../../../shared/ui/EmptyState'
 
 export default function SearchEmptyState({
   title = '검색 결과가 없습니다',
@@ -6,13 +6,8 @@ export default function SearchEmptyState({
   children,
 }) {
   return (
-    <div className="search-empty">
-      <div className="search-empty__icon" aria-hidden="true">
-        ⌕
-      </div>
-      <h2 className="search-empty__title">{title}</h2>
-      <p className="search-empty__desc">{description}</p>
+    <EmptyState icon="⌕" title={title} description={description}>
       {children}
-    </div>
+    </EmptyState>
   )
 }

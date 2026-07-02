@@ -1,27 +1,45 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Home from '../pages/Home'
-import SupportPage from '../features/support/pages/SupportPage'
-import SupportDetailPage from '../features/support/pages/SupportDetailPage'
-import CalculatorsPage from '../pages/CalculatorsPage'
-import ElectricCalculatorPage from '../features/calculators/electric/ElectricCalculatorPage'
-import BlogPage from '../pages/BlogPage'
-import BlogDetailPage from '../pages/BlogDetailPage'
-import NotFoundPage from '../pages/NotFoundPage'
-import PrivacyPolicyPage from '../pages/PrivacyPolicyPage'
-import TermsPage from '../pages/TermsPage'
-import ContactPage from '../pages/ContactPage'
-import AboutPage from '../pages/AboutPage'
-import SeoAuditPage from '../features/seo/pages/SeoAuditPage'
-import CostReportPage from '../features/cost-report/pages/CostReportPage'
-import CostReportSharePage from '../features/cost-report/pages/CostReportSharePage'
-import DashboardPage from '../features/dashboard/pages/DashboardPage'
-import ProfilePage from '../features/profile/pages/ProfilePage'
-import SearchPage from '../features/search/pages/SearchPage'
-import TopicsIndexPage from '../features/topics/pages/TopicsIndexPage'
-import TopicHubPage from '../features/topics/pages/TopicHubPage'
+import { PageSkeleton } from '../shared/ui'
+import ErrorBoundary from '../shared/error/ErrorBoundary'
 import './App.css'
+
+const SupportPage = lazy(() => import('../features/support/pages/SupportPage'))
+const SupportDetailPage = lazy(
+  () => import('../features/support/pages/SupportDetailPage'),
+)
+const CalculatorsPage = lazy(() => import('../pages/CalculatorsPage'))
+const ElectricCalculatorPage = lazy(
+  () => import('../features/calculators/electric/ElectricCalculatorPage'),
+)
+const BlogPage = lazy(() => import('../pages/BlogPage'))
+const BlogDetailPage = lazy(() => import('../pages/BlogDetailPage'))
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
+const PrivacyPolicyPage = lazy(() => import('../pages/PrivacyPolicyPage'))
+const TermsPage = lazy(() => import('../pages/TermsPage'))
+const ContactPage = lazy(() => import('../pages/ContactPage'))
+const AboutPage = lazy(() => import('../pages/AboutPage'))
+const SeoAuditPage = lazy(() => import('../features/seo/pages/SeoAuditPage'))
+const CostReportPage = lazy(() => import('../features/cost-report/pages/CostReportPage'))
+const CostReportSharePage = lazy(
+  () => import('../features/cost-report/pages/CostReportSharePage'),
+)
+const DashboardPage = lazy(() => import('../features/dashboard/pages/DashboardPage'))
+const ProfilePage = lazy(() => import('../features/profile/pages/ProfilePage'))
+const SearchPage = lazy(() => import('../features/search/pages/SearchPage'))
+const TopicsIndexPage = lazy(() => import('../features/topics/pages/TopicsIndexPage'))
+const TopicHubPage = lazy(() => import('../features/topics/pages/TopicHubPage'))
+
+function RouteFallback() {
+  return <PageSkeleton />
+}
+
+function LazyRoute({ children }) {
+  return <Suspense fallback={<RouteFallback />}>{children}</Suspense>
+}
 
 function App() {
   return (
@@ -29,33 +47,165 @@ function App() {
       <div className="app">
         <Header />
         <main className="app__main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/support" element={<SupportPage />} />
-            <Route path="/support/:id" element={<SupportDetailPage />} />
-            <Route path="/cost-report" element={<CostReportPage />} />
-            <Route path="/cost-report/share/:token" element={<CostReportSharePage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/topics" element={<TopicsIndexPage />} />
-            <Route path="/topics/:slug" element={<TopicHubPage />} />
-            <Route path="/calculators" element={<CalculatorsPage />} />
-            <Route
-              path="/calculators/electric"
-              element={<ElectricCalculatorPage />}
-            />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogDetailPage />} />
-            <Route path="/privacy" element={<PrivacyPolicyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            {import.meta.env.DEV && (
-              <Route path="/seo/audit" element={<SeoAuditPage />} />
-            )}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/support"
+                element={
+                  <LazyRoute>
+                    <SupportPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/support/:id"
+                element={
+                  <LazyRoute>
+                    <SupportDetailPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/cost-report"
+                element={
+                  <LazyRoute>
+                    <CostReportPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/cost-report/share/:token"
+                element={
+                  <LazyRoute>
+                    <CostReportSharePage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <LazyRoute>
+                    <DashboardPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <LazyRoute>
+                    <ProfilePage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <LazyRoute>
+                    <SearchPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/topics"
+                element={
+                  <LazyRoute>
+                    <TopicsIndexPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/topics/:slug"
+                element={
+                  <LazyRoute>
+                    <TopicHubPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators"
+                element={
+                  <LazyRoute>
+                    <CalculatorsPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators/electric"
+                element={
+                  <LazyRoute>
+                    <ElectricCalculatorPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/blog"
+                element={
+                  <LazyRoute>
+                    <BlogPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/blog/:slug"
+                element={
+                  <LazyRoute>
+                    <BlogDetailPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/privacy"
+                element={
+                  <LazyRoute>
+                    <PrivacyPolicyPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/terms"
+                element={
+                  <LazyRoute>
+                    <TermsPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <LazyRoute>
+                    <ContactPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <LazyRoute>
+                    <AboutPage />
+                  </LazyRoute>
+                }
+              />
+              {import.meta.env.DEV && (
+                <Route
+                  path="/seo/audit"
+                  element={
+                    <LazyRoute>
+                      <SeoAuditPage />
+                    </LazyRoute>
+                  }
+                />
+              )}
+              <Route
+                path="*"
+                element={
+                  <LazyRoute>
+                    <NotFoundPage />
+                  </LazyRoute>
+                }
+              />
+            </Routes>
+          </ErrorBoundary>
         </main>
         <Footer />
       </div>
