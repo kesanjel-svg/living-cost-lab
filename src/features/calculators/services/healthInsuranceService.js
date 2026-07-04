@@ -20,6 +20,17 @@ export const HEALTH_TIPS = [
   '지역가입자는 소득·재산·자동차 점수를 합산해 별도로 산정됩니다',
 ]
 
+// 지역가입자 실제 부과 방식: (소득점수+재산점수+자동차점수) × 점수당 금액.
+// 출처: 국민건강보험공단(nhis.or.kr) 지역가입자 보험료 안내, 2026년 기준 점수당 208.4원.
+// 다만 소득·재산·자동차를 점수로 환산하는 공식 등급표(수십 개 구간)는
+// 이 계산기에서 정확히 재현하지 않음 — 아래 계산은 "소득 기반 간이 추정치"만
+// 제공하며, 재산·자동차 보유에 따른 추가 보험료는 반영하지 않는다.
+// 정확한 금액은 국민건강보험공단 4대보험료 모의계산(nhis.or.kr)에서 확인 필요.
+export const REGIONAL_MIN_PREMIUM = 19780 // 2026년 지역가입자 최저보험료
+
+export const REGIONAL_DISCLAIMER =
+  '이 결과는 소득만 반영한 간이 추정치입니다. 재산·자동차 보유에 따라 실제 보험료는 더 높을 수 있으니, 정확한 금액은 국민건강보험공단 홈페이지의 4대보험료 모의계산을 이용해주세요.'
+
 export function calculateEmployeeHealthInsurance(monthlyWage) {
   const totalHealthInsurance = Math.floor(monthlyWage * HEALTH_INSURANCE_RATE)
   const employeeHealthShare = Math.floor(totalHealthInsurance / 2)
@@ -43,6 +54,22 @@ export function calculateEmployeeHealthInsurance(monthlyWage) {
   }
 }
 
+export function calculateRegionalHealthInsuranceEstimate(monthlyIncome) {
+  const incomeBasedEstimate = Math.floor(monthlyIncome * HEALTH_INSURANCE_RATE)
+  const longTermCareEstimate = Math.floor(incomeBasedEstimate * LONG_TERM_CARE_RATE_OF_HEALTH)
+  const rawTotal = incomeBasedEstimate + longTermCareEstimate
+  const total = Math.max(rawTotal, REGIONAL_MIN_PREMIUM)
+
+  return {
+    insuredType: INSURED_TYPES.REGIONAL,
+    monthlyIncome,
+    incomeBasedEstimate,
+    longTermCareEstimate,
+    total,
+    isMinimumApplied: rawTotal < REGIONAL_MIN_PREMIUM,
+  }
+}
+
 export function getHealthInsuranceRecommendations() {
   return getProgramsByCalculator('health')
     .slice(0, 3)
@@ -61,5 +88,19 @@ export function buildEmployeeHealthInsuranceResult(monthlyWage) {
     breakdown,
     analysis: '보수월액을 기준으로 건강보험료와 장기요양보험료를 근로자·사업주가 절반씩 부담합니다.',
     badge: { label: '직장가입자', variant: 'normal' },
+  }
+}
+
+export function buildRegionalHealthInsuranceResult(monthlyIncome) {
+  const breakdown = calculateRegionalHealthInsuranceEstimate(monthlyIncome)
+  const minimumNote = breakdown.isMinimumApplied
+    ? `소득 기반 추정액이 최저보험료(${REGIONAL_MIN_PREMIUM.toLocaleString()}원)보다 낮아 최저보험료가 적용됩니다. `
+    : ''
+
+  return {
+    insuredType: INSURED_TYPES.REGIONAL,
+    breakdown,
+    analysis: `${minimumNote}${REGIONAL_DISCLAIMER}`,
+    badge: { label: '지역가입자', variant: 'warning' },
   }
 }
