@@ -21,6 +21,11 @@ const CALCULATOR_SCHEMAS = [
     description: '도시가스 사용량 기준 예상 요금을 확인하는 생활비 계산기',
     path: '/calculators/gas',
   },
+  {
+    name: '국민연금 계산기',
+    description: '월 소득 기준 예상 국민연금 보험료를 계산하는 무료 계산기',
+    path: '/calculators/pension',
+  },
 ]
 
 export default function CalculatorsPage() {
@@ -57,7 +62,7 @@ export default function CalculatorsPage() {
           ))}
         </div>
         <p className="page__notice">
-          전기요금 계산기를 이용할 수 있습니다. 다른 계산기는 준비 중입니다.
+          전기요금·국민연금 계산기를 이용할 수 있습니다. 다른 계산기는 준비 중입니다.
         </p>
       </div>
     </div>

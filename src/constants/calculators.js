@@ -17,6 +17,6 @@ export const calculatorRegistry = {
   pension: {
     title: '국민연금 계산기',
     href: '/calculators/pension',
-    available: false,
+    available: true,
   },
 }

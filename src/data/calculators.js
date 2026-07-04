@@ -24,7 +24,7 @@ export const popularCalculators = [
     id: 'pension',
     icon: '🏦',
     title: '국민연금 계산기',
-    description: '납부 예상액과 수령 예상액을 확인합니다.',
-    href: '/calculators',
+    description: '월 소득 기준 예상 국민연금 보험료를 계산합니다.',
+    href: '/calculators/pension',
   },
 ]

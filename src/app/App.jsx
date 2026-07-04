@@ -16,6 +16,9 @@ const CalculatorsPage = lazy(() => import('../pages/CalculatorsPage'))
 const ElectricCalculatorPage = lazy(
   () => import('../features/calculators/electric/ElectricCalculatorPage'),
 )
+const PensionCalculatorPage = lazy(
+  () => import('../features/calculators/pension/PensionCalculatorPage'),
+)
 const BlogPage = lazy(() => import('../pages/BlogPage'))
 const BlogDetailPage = lazy(() => import('../pages/BlogDetailPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
@@ -140,6 +143,14 @@ function App() {
                 element={
                   <LazyRoute>
                     <ElectricCalculatorPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators/pension"
+                element={
+                  <LazyRoute>
+                    <PensionCalculatorPage />
                   </LazyRoute>
                 }
               />
