@@ -7,7 +7,7 @@ export const BRAND = {
   tagline: '정부지원금부터 생활비 계산까지, 한곳에서',
   url: 'https://living-cost-lab.vercel.app',
   logoPath: '/favicon.svg',
-  ogImagePath: '/og-image.svg',
+  ogImagePath: '/og-image.png',
   themeColor: '#2563eb',
   locale: 'ko_KR',
   copyright: '© 2026 생활비연구소',

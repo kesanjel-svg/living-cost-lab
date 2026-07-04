@@ -39,7 +39,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!sitemap.xml|robots.txt|ads.txt|site.webmanifest|favicon.svg|og-image.svg).*)",
+      "source": "/((?!sitemap.xml|robots.txt|ads.txt|site.webmanifest|favicon.svg|og-image.svg|og-image.png).*)",
       "destination": "/index.html"
     }
   ]
