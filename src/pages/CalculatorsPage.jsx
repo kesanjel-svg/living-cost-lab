@@ -26,6 +26,11 @@ const CALCULATOR_SCHEMAS = [
     description: '월 소득 기준 예상 국민연금 보험료를 계산하는 무료 계산기',
     path: '/calculators/pension',
   },
+  {
+    name: '건강보험 계산기',
+    description: '보수월액 기준 예상 건강보험료·장기요양보험료를 계산하는 무료 계산기',
+    path: '/calculators/health',
+  },
 ]
 
 export default function CalculatorsPage() {
@@ -62,7 +67,7 @@ export default function CalculatorsPage() {
           ))}
         </div>
         <p className="page__notice">
-          전기요금·국민연금 계산기를 이용할 수 있습니다. 다른 계산기는 준비 중입니다.
+          전기요금·국민연금·건강보험(직장가입자) 계산기를 이용할 수 있습니다. 다른 계산기는 준비 중입니다.
         </p>
       </div>
     </div>

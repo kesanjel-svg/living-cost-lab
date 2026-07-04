@@ -17,8 +17,8 @@ export const popularCalculators = [
     id: 'health-insurance',
     icon: '🏥',
     title: '건강보험 계산기',
-    description: '소득과 가구 구성에 따른 건강보험료를 계산합니다.',
-    href: '/calculators',
+    description: '보수월액 기준 예상 건강보험료·장기요양보험료를 계산합니다.',
+    href: '/calculators/health',
   },
   {
     id: 'pension',

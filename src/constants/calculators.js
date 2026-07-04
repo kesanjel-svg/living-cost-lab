@@ -12,7 +12,7 @@ export const calculatorRegistry = {
   health: {
     title: '건강보험 계산기',
     href: '/calculators/health',
-    available: false,
+    available: true,
   },
   pension: {
     title: '국민연금 계산기',
