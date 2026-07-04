@@ -14,6 +14,7 @@ export const ANALYTICS_EVENTS = {
   PROFILE_SAVE: 'profile_save',
   CTA_CLICK: 'cta_click',
   OUTBOUND_LINK: 'outbound_link',
+  EXCEPTION: 'exception',
 }
 
 /** Human-readable labels for internal docs and QA. */
@@ -30,4 +31,5 @@ export const ANALYTICS_EVENT_LABELS = {
   [ANALYTICS_EVENTS.PROFILE_SAVE]: '프로필 저장',
   [ANALYTICS_EVENTS.CTA_CLICK]: 'CTA 클릭',
   [ANALYTICS_EVENTS.OUTBOUND_LINK]: '외부 링크 클릭',
+  [ANALYTICS_EVENTS.EXCEPTION]: '예외 발생',
 }

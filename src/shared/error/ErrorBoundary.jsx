@@ -1,7 +1,10 @@
 import { Component } from 'react'
 import { BRAND_NAME } from '../../constants/branding'
+import { ANALYTICS_EVENTS, trackEvent } from '../analytics'
 import { CtaButton, EmptyState } from '../ui'
 import './ErrorFallback.css'
+
+const MAX_STACK_LENGTH = 500
 
 export default class ErrorBoundary extends Component {
   constructor(props) {
@@ -17,6 +20,13 @@ export default class ErrorBoundary extends Component {
     if (import.meta.env.DEV) {
       console.error('[ErrorBoundary]', error, info)
     }
+
+    trackEvent(ANALYTICS_EVENTS.EXCEPTION, {
+      description: error?.message ?? 'Unknown error',
+      error_stack: (error?.stack ?? '').slice(0, MAX_STACK_LENGTH),
+      page_path: window.location.pathname,
+      fatal: true,
+    })
   }
 
   handleRetry = () => {
