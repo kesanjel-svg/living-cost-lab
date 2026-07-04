@@ -1,10 +1,14 @@
+import { Fragment } from 'react'
 import BlogCard from '../features/blog/components/BlogCard'
 import { formatPageTitle } from '../constants/branding'
 import { getBlogPath } from '../features/blog/services/blogService'
 import { blogPosts } from '../data'
 import Seo from '../shared/seo/Seo'
+import AdSlot, { AD_SLOT_IDS } from '../shared/ads/AdSlot'
 import './Page.css'
 import './BlogPage.css'
+
+const ADS_EVERY_N_CARDS = 5
 
 const BREADCRUMBS = [
   { name: '홈', path: '/' },
@@ -40,7 +44,15 @@ export default function BlogPage() {
       <div className="page__content">
         <div className="blog-page__grid">
           {blogPosts.map((post, index) => (
-            <BlogCard key={post.slug} post={post} index={index} />
+            <Fragment key={post.slug}>
+              <BlogCard post={post} index={index} />
+              {(index + 1) % ADS_EVERY_N_CARDS === 0 && (
+                <AdSlot
+                  slotId={AD_SLOT_IDS.BLOG_LIST}
+                  className="blog-page__ad-slot"
+                />
+              )}
+            </Fragment>
           ))}
         </div>
       </div>

@@ -4,6 +4,10 @@
   gap: 1.125rem;
 }
 
+.blog-page__ad-slot {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 768px) {
   .blog-page__grid {
     grid-template-columns: 1fr;

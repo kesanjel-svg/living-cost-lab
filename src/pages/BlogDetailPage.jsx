@@ -12,6 +12,7 @@ import { formatPageTitle } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import { EmptyState } from '../shared/ui'
 import { toAbsoluteUrl } from '../shared/seo/siteConfig'
+import AdSlot, { AD_SLOT_IDS } from '../shared/ads/AdSlot'
 import './Page.css'
 import './BlogDetailPage.css'
 
@@ -149,6 +150,8 @@ export default function BlogDetailPage() {
             </div>
 
             <ShareButtons title={post.title} slug={post.slug} />
+
+            <AdSlot slotId={AD_SLOT_IDS.BLOG_DETAIL} className="blog-detail__ad-slot" />
           </article>
 
           {relatedPosts.length > 0 && (

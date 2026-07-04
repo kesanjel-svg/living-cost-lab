@@ -12,6 +12,7 @@ import RelatedBlogs from '../../../shared/content/RelatedBlogs'
 import RelatedCalculators from '../../../shared/content/RelatedCalculators'
 import Seo from '../../../shared/seo/Seo'
 import { EmptyState } from '../../../shared/ui'
+import AdSlot, { AD_SLOT_IDS } from '../../../shared/ads/AdSlot'
 import { addRecentSupportView } from '../../../shared/storage/userActivityStorage'
 import SupportDetailHeader from '../components/detail/SupportDetailHeader'
 import SupportDetailSeo from '../components/detail/SupportDetailSeo'
@@ -185,6 +186,11 @@ export default function SupportDetailPage() {
             <RelatedBlogs posts={relatedPosts} />
 
             <RelatedCalculators calculators={relatedCalculators} />
+
+            <AdSlot
+              slotId={AD_SLOT_IDS.SUPPORT_DETAIL}
+              className="support-detail-page__ad-slot"
+            />
 
             <ContentCtaSection
               title="맞춤 추천 받기"
