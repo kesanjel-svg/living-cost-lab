@@ -35,11 +35,20 @@
           "value": "application/manifest+json; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/og-meta.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!sitemap.xml|robots.txt|ads.txt|site.webmanifest|favicon.svg|og-image.svg|og-image.png).*)",
+      "source": "/((?!sitemap.xml|robots.txt|ads.txt|site.webmanifest|favicon.svg|og-image.svg|og-image.png|og-meta.json).*)",
       "destination": "/index.html"
     }
   ]

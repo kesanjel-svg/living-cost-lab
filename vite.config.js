@@ -14,6 +14,7 @@ import {
 import { buildHomeSchemaGraph } from './src/shared/seo/schemaBuilders.js'
 import {
   buildAdsTxt,
+  buildOgMetaManifest,
   buildRobotsTxt,
   buildSitemapXml,
 } from './src/shared/seo/buildSeoAssets.js'
@@ -84,6 +85,11 @@ function seoAssetsPlugin(env) {
       writeFileSync(join(outDir, 'sitemap.xml'), buildSitemapXml(), 'utf8')
       writeFileSync(join(outDir, 'robots.txt'), buildRobotsTxt(), 'utf8')
       writeFileSync(join(outDir, 'ads.txt'), buildAdsTxt(publisherId), 'utf8')
+      writeFileSync(
+        join(outDir, 'og-meta.json'),
+        JSON.stringify(buildOgMetaManifest()),
+        'utf8',
+      )
     },
   }
 }

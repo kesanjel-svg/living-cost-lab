@@ -1,7 +1,11 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { BRAND_URL } from '../../constants/branding.js'
+import {
+  BRAND_URL,
+  formatPageTitle,
+  getBrandOgImageUrl,
+} from '../../constants/branding.js'
 import { blogPosts } from '../../data/blogPosts.js'
 import clusters from '../../data/topics/clusters.json'
 
@@ -25,8 +29,8 @@ const ROBOTS_DISALLOW = ['/dashboard', '/profile', '/cost-report/share/']
 const moduleDir = dirname(fileURLToPath(import.meta.url))
 const supportRoot = join(moduleDir, '../../data/support')
 
-function loadSupportSlugs() {
-  const slugs = []
+function loadSupportPrograms() {
+  const programs = []
 
   for (const category of readdirSync(supportRoot, { withFileTypes: true })) {
     if (!category.isDirectory()) {
@@ -42,11 +46,15 @@ function loadSupportSlugs() {
       const raw = JSON.parse(
         readFileSync(join(categoryPath, file.name), 'utf8'),
       )
-      slugs.push(raw.slug ?? raw.id)
+      programs.push(raw)
     }
   }
 
-  return slugs
+  return programs
+}
+
+function loadSupportSlugs() {
+  return loadSupportPrograms().map((program) => program.slug ?? program.id)
 }
 
 function toAbsolute(path) {
@@ -100,6 +108,46 @@ ${disallowRules}
 
 Sitemap: ${toAbsolute('/sitemap.xml')}
 `
+}
+
+/**
+ * Route -> OG meta manifest for the Edge Middleware social-crawler bypass.
+ * Only covers content routes that are actually shared (blog/support/topics) —
+ * static pages already get correct default meta from index.html.
+ */
+export function buildOgMetaManifest() {
+  const image = getBrandOgImageUrl()
+  const manifest = {}
+
+  blogPosts.forEach((post) => {
+    manifest[`/blog/${post.slug}`] = {
+      title: formatPageTitle(post.title),
+      description: post.summary,
+      image,
+      type: 'article',
+    }
+  })
+
+  loadSupportPrograms().forEach((program) => {
+    const slug = program.slug ?? program.id
+    manifest[`/support/${slug}`] = {
+      title: formatPageTitle(program.title),
+      description: program.summary,
+      image,
+      type: 'article',
+    }
+  })
+
+  Object.values(clusters).forEach((topic) => {
+    manifest[`/topics/${topic.slug}`] = {
+      title: formatPageTitle(topic.title),
+      description: topic.description,
+      image,
+      type: 'website',
+    }
+  })
+
+  return manifest
 }
 
 export function buildAdsTxt(publisherId) {

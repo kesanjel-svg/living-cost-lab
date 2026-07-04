@@ -16,6 +16,12 @@ tools: Read, Bash, Grep, Glob
    - 실패하는 빌드인지
    - oxlint 대신 다른 린터를 추가하거나 TS로 전환하지 않았는지
 6. 변경된 파일들이 계획(planner 체크리스트)과 일치하는지 확인
+7. **`middleware.js`(Edge Middleware, 소셜 크롤러용 OG 메타 주입)를 건드린 경우 반드시 아래 회귀 테스트를 통과해야 함**:
+   - 일반 브라우저 User-Agent(예: `Mozilla/5.0 ...`)로 요청 시 `middleware(request)`가 **반드시 `undefined`를 반환**해야 함 — SPA(index.html)가 그대로 나가는지 확인. 봇이 아닌 사용자 경험을 깨는 건 이 미들웨어의 가장 치명적인 회귀이므로 최우선으로 검증
+   - 봇 UA(`facebookexternalhit`, `Twitterbot`, `KakaoTalk` 등) + 매니페스트(`og-meta.json`)에 있는 경로(blog/support/topics)로 요청 시 og:title/description/image/url/canonical이 해당 페이지 값으로 정확히 치환되는지 확인
+   - 봇 UA인데 매니페스트에 없는 경로(예: `/about`, `/`)는 `undefined`를 반환해 기본 SPA로 통과하는지 확인
+   - 테스트 방법: `vercel dev`가 없는 환경이면 `npm run build` 후 `vite preview`로 `dist/`를 띄우고, Node에서 `import('./middleware.js')`로 함수를 직접 불러와 `new Request(url, { headers: { 'user-agent': ... } })`를 넣어 호출 — 실제 미들웨어가 쓰는 `fetch`/`Request`/`Response`/`URL`은 표준 Web API라 Node에서도 동일하게 재현 가능
+   - `dist/og-meta.json`이 실제로 blog/support/topics 슬러그 수와 일치하는 라우트 수를 담고 있는지도 함께 확인
 
 ## 통과 시
 - "커밋 가능" 명시 + 추천 커밋 메시지 제안 (커밋 컨벤션 따라)
