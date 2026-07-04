@@ -4,7 +4,7 @@
 export const BRAND = {
   name: '생활비연구소',
   nameEn: 'Living Cost Lab',
-  tagline: '정부지원금 · 생활비 계산 플랫폼',
+  tagline: '정부지원금부터 생활비 계산까지, 한곳에서',
   url: 'https://living-cost-lab.vercel.app',
   logoPath: '/favicon.svg',
   ogImagePath: '/og-image.svg',
