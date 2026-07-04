@@ -12,10 +12,12 @@ import {
   buildElectricResult,
   ELECTRIC_TIPS,
   getElectricRecommendations,
+  isCurrentSummerPeriod,
 } from '../services/electricService'
 
 export default function ElectricCalculator() {
   const [usage, setUsage] = useState(() => getDefaultElectricUsageFromProfile())
+  const [isSummer, setIsSummer] = useState(() => isCurrentSummerPeriod())
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
 
@@ -29,10 +31,11 @@ export default function ElectricCalculator() {
     }
 
     setError('')
-    setResult(buildElectricResult(value))
+    setResult(buildElectricResult(value, isSummer))
     trackEvent(ANALYTICS_EVENTS.CALCULATOR_SUBMIT, {
       calculator_name: 'electric',
       usage_kwh: value,
+      is_summer_rate: isSummer,
     })
   }
 
@@ -41,6 +44,15 @@ export default function ElectricCalculator() {
       title="전기요금 계산기"
       description="월 사용 전력(kWh)을 입력하면 예상 전기요금과 사용량 분석 결과를 확인할 수 있습니다."
     >
+      <label className="calculator__summer-toggle">
+        <input
+          type="checkbox"
+          checked={isSummer}
+          onChange={(event) => setIsSummer(event.target.checked)}
+        />
+        하계요금(7~8월) 구간 적용
+      </label>
+
       <CalculatorInputCard
         inputId="electric-usage"
         label="월 사용량(kWh)"
@@ -62,6 +74,15 @@ export default function ElectricCalculator() {
             progressValue={result.progress}
             progressLabel={`${result.usage}kWh`}
           />
+
+          <ul className="calculator__breakdown">
+            <li>기본요금 {formatCurrency(result.breakdown.baseFee)}</li>
+            <li>전력량요금 {formatCurrency(result.breakdown.energyCharge)}</li>
+            <li>기후환경요금 {formatCurrency(result.breakdown.climateCharge)}</li>
+            <li>연료비조정요금 {formatCurrency(result.breakdown.fuelAdjustment)}</li>
+            <li>부가가치세 {formatCurrency(result.breakdown.vat)}</li>
+            <li>전력산업기반기금 {formatCurrency(result.breakdown.fund)}</li>
+          </ul>
 
           <CalculatorSavingCard
             savingItems={[
