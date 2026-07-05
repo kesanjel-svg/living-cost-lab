@@ -150,6 +150,32 @@ export const GAS_REGIONS = {
     source: 'https://www.skens.com/gangwon/rate/guide.do',
     note: '강원도시가스 공급권역(춘천·홍천·영월·정선·태백) 대표값. 강원 영동지역(강릉·속초 등)은 참빛에너지 등 별도 공급사 관할로 요금이 다름. 강원도시가스 공식 홈페이지 요금안내 페이지에서 직접 확인(2026-07-01 적용).',
   },
+  cheongju: {
+    name: '청주',
+    provider: '충청에너지서비스',
+    effectiveDate: '2026-07-01',
+    baseFee: 1050,
+    unitPrices: {
+      cooking: 23.4509,
+      heating: 23.2208,
+    },
+    vatIncluded: false,
+    source: 'https://www.skens.com/cheongju/rate/guide.do',
+    note: '충청에너지서비스 공식 홈페이지 요금안내 페이지에서 직접 확인(2026-07-01 적용).',
+  },
+  cheonan: {
+    name: '천안',
+    provider: '중부도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1000,
+    unitPrices: {
+      cooking: 24.1111,
+      heating: 24.1111,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '한국도시가스협회 공식 요금표(2026-06-01 조정분) 기준. 중부도시가스 자체 홈페이지 요금표 페이지 접근이 되지 않아 협회 취합 자료를 사용했으며, 정확한 금액은 고객센터(1544-0041)로 재확인 권장. 아산·공주·보령 등 중부도시가스 공급권역 내 타 지역도 유사하나 정확한 수치는 별도 확인 필요.',
+  },
 }
 
 export const GAS_REGION_ORDER = [
@@ -164,6 +190,8 @@ export const GAS_REGION_ORDER = [
   'gyeongnam',
   'sejong',
   'gangwon',
+  'cheongju',
+  'cheonan',
 ]
 
 export const NATIONWIDE_AVERAGE_REGION_ID = 'nationwide-average'
@@ -176,7 +204,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 11개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 13개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -193,7 +221,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 11개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 13개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원·청주·천안) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
