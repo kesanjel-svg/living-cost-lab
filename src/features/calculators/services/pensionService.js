@@ -7,7 +7,9 @@ import { getProgramsByCalculator } from '../../support/services/supportService'
 export const CONTRIBUTION_RATE = 0.095
 
 // 기준소득월액 상·하한액, 2026-07-01~2027-06-30 적용분.
-// 출처: 국민연금공단 "2026년도 국민연금 기준소득월액 상·하한액 조정 안내" 고시.
+// 출처: 국민연금공단(nps.or.kr) 연금보험료 안내 페이지, 2026-07-05 재확인 완료.
+// (직전 적용분인 2025-07-01~2026-06-30 기준 하한 40만원/상한 637만원과는
+//  적용기간이 다른 값이므로 혼동 주의 — 매년 7월 1일부로 갱신됨)
 export const MIN_INCOME_BASE = 410000
 export const MAX_INCOME_BASE = 6590000
 
