@@ -101,9 +101,20 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - 국가장학금 9구간 신설, 청년전세자금대출 금리(2026.2.27 고시 기준)는 logic-data가 작성 시점에 WebSearch로 확인한 값 — qa-reviewer 세션에는 웹 접근 도구가 없어 재검증은 못했으므로, 다음 세션에서 시간 날 때 한 번 더 공식 출처 재확인 권장
    - `git add` + 커밋 완료 (`content: 지원금 콘텐츠 12종 추가 — 출산·육아교육·에너지·청년 (9개→21개)`), push는 사용자 확인 후 별도 진행
 
+16. **애드센스 퍼블리셔 ID 반영 + SDK 실제 로드 구현 (완료, 2026-07-05)**
+   - 사용자가 이미 구글 애드센스 가입 완료, 퍼블리셔 ID 발급받음 — Vercel 환경변수에 `VITE_ADSENSE_CLIENT=ca-pub-1859885343476436`, `VITE_ADSENSE_PUBLISHER_ID=pub-1859885343476436` 반영 완료(사용자 직접 설정)
+   - 코드 점검 중 **`<ins class="adsbygoogle">` 요소만 렌더링될 뿐 실제 애드센스 SDK 스크립트 로드도, `adsbygoogle.push({})` 슬롯 초기화도 없어서 환경변수를 넣어도 광고가 실제로 표시되지 않는 문제**를 발견 — 이번에 같이 구현
+   - `src/shared/ads/adsConfig.js`에 `initAdSense()` 추가: `isAdSenseEnabled()`(프로덕션 + 클라이언트ID 존재) 조건일 때만 `<head>`에 SDK 스크립트(`pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=...`) 동적 삽입, 중복 삽입 방지(`sdkInjected` 플래그 + `querySelector` 이중 체크), `async`/`crossOrigin="anonymous"` 적용
+   - `src/main.jsx`에서 `initAnalytics()` 패턴 그대로 따라 앱 진입 시 `initAdSense()` 1회 호출 추가
+   - `src/shared/ads/AdSlot.jsx`에 `useEffect` 추가: 마운트/`slotId` 변경 시 `(window.adsbygoogle = window.adsbygoogle || []).push({})` 호출(개발 모드·slotId 없음이면 미호출), try/catch로 감싸 광고차단 확장 등으로 인한 예외가 앱을 깨뜨리지 않도록 처리, `react/rules-of-hooks` 준수(훅이 조건부 return보다 먼저 선언)
+   - 새 의존성 추가 없음, 로컬 dev 환경(`.env` 없음)에서는 기존과 동일하게 광고 비활성 상태 유지 확인(회귀 없음)
+   - qa-reviewer 검증: 빌드/린트 통과, DEV 모드 비활성/중복삽입 방지/Hooks 규칙 준수 확인, `BlogPage`/`BlogDetailPage`/`SupportDetailPage` 3곳 AdSlot 사용처 회귀 없음 확인
+   - 커밋 `14b9629` (`feat: 애드센스 SDK 스크립트 로드 및 광고 슬롯 초기화 구현`), push 완료
+   - **주의**: Windows 로컬 PC의 `COMPUTERNAME`이 한글이라 Node의 `os.hostname()`이 비ASCII 값을 반환 → `npx vercel login` 등 Vercel CLI 사용 시 `ByteString` 변환 오류로 로그인 불가(환경변수 override로도 우회 안 됨, Node가 Windows API 직접 호출). CLI 대신 Vercel 대시보드(웹)로 환경변수 확인/설정 필요 — 컴퓨터 이름을 영문으로 바꾸면 해결 가능하나 재시작 필요한 시스템 변경이라 보류 중
+
 ### 🔜 다음 할 일
 아래 중 우선순위는 사용자 확인 후 진행:
-1. **AdSense 실제 신청** — 콘텐츠량 재확인 필요(도시가스 지역 확장 + 지원금 15종 추가로 콘텐츠 크게 증가, 정확한 현재 콘텐츠 수는 재집계 필요)
+1. **애드센스 실제 심사 결과 대기/확인** — SDK 로드 구현 완료, 배포 반영됨. 사이트에서 실제 광고가 노출되는지 프로덕션에서 육안 확인 필요. 콘텐츠량은 계산기 4 + 지원금 21 = 25개로 크게 증가했으나 여전히 통상 권장(20~30+)의 하한 근처라 심사 통과 여부는 지켜봐야 함
 2. **Search Console 크롤링 최종 확인**
 3. **도시가스 계산기 지역 5차 확장** (전라/경상 소도시, 경기 내 타 공급사 권역, 강원 영동지역 등 — 중부도시가스 권역은 아산/공주/보령까지 완료)
 4. **국가장학금 9구간 신설 여부 / 청년전세자금대출 금리(2.5~3.5%)** 공식 출처 재확인 (다음 세션 WebSearch 가능 시)
