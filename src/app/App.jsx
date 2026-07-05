@@ -16,6 +16,9 @@ const CalculatorsPage = lazy(() => import('../pages/CalculatorsPage'))
 const ElectricCalculatorPage = lazy(
   () => import('../features/calculators/electric/ElectricCalculatorPage'),
 )
+const GasCalculatorPage = lazy(
+  () => import('../features/calculators/gas/GasCalculatorPage'),
+)
 const PensionCalculatorPage = lazy(
   () => import('../features/calculators/pension/PensionCalculatorPage'),
 )
@@ -146,6 +149,14 @@ function App() {
                 element={
                   <LazyRoute>
                     <ElectricCalculatorPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators/gas"
+                element={
+                  <LazyRoute>
+                    <GasCalculatorPage />
                   </LazyRoute>
                 }
               />

@@ -10,8 +10,8 @@ export const popularCalculators = [
     id: 'gas',
     icon: '🔥',
     title: '도시가스 계산기',
-    description: '가스 사용량 기준 예상 요금을 확인합니다.',
-    href: '/calculators',
+    description: '지역별 도시가스사 요금표 기준 예상 요금을 확인합니다.',
+    href: '/calculators/gas',
   },
   {
     id: 'health-insurance',

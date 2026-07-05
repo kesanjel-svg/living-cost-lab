@@ -1,5 +1,6 @@
 import supportPrograms from '../../../data/supportPrograms'
 import { generateLivingCostReport } from '../../../engines/recommendationEngine'
+import { mapCalculator } from '../../../engines/recommendation/mappers'
 import { getProgramsByCalculator } from '../../support/services/supportService'
 
 // 한국전력공사 주택용 전력(저압) 누진제 요금표, 2026-07 기준.
@@ -97,13 +98,13 @@ function buildElectricRecommendCards(report, userInput) {
     buttonText: '준비중',
   })
 
-  const gasCalculator = report.calculators.find((calc) => calc.id === 'gas')
+  const gasCalculator = mapCalculator('gas')
   if (gasCalculator) {
-    items.push({
-      title: gasCalculator.title,
-      status: gasCalculator.status || '준비중',
-      buttonText: '준비중',
-    })
+    items.push(
+      gasCalculator.status
+        ? { title: gasCalculator.title, status: gasCalculator.status, buttonText: '준비중' }
+        : { title: gasCalculator.title, link: gasCalculator.link, buttonText: '계산하기' },
+    )
   } else {
     items.push({
       title: '도시가스 계산기',

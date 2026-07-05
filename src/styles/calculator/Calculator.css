@@ -109,6 +109,27 @@
   color: var(--text-muted);
 }
 
+.calculator-input--select {
+  margin-bottom: 1rem;
+}
+
+.calculator-input__field--select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 1.25rem) center, calc(100% - 1rem) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.calculator-input__hint {
+  margin: 0.625rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
 .calculator-input__error {
   margin: 0.875rem 0 0;
   padding: 0.75rem 1rem;

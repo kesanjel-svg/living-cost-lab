@@ -7,7 +7,7 @@ export const calculatorRegistry = {
   gas: {
     title: '도시가스 계산기',
     href: '/calculators/gas',
-    available: false,
+    available: true,
   },
   health: {
     title: '건강보험 계산기',
