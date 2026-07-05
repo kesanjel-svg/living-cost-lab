@@ -1,0 +1,32 @@
+{
+  "id": "childcare-fee",
+  "slug": "childcare-fee",
+  "title": "영유아보육료 지원",
+  "category": "보육",
+  "summary": "어린이집을 이용하는 만 0~5세 영유아에게 보육료를 지원하는 제도입니다.",
+  "description": "어린이집을 이용하는 영유아의 보육료를 국가가 지원하여 부모의 양육 부담을 줄이는 제도로, 지원금은 국민행복카드를 통해 어린이집에 직접 결제됩니다.",
+  "target": "어린이집을 이용하는 만 0~5세 영유아",
+  "income": "소득·재산 무관(전 가구 지원)",
+  "benefit": "만 0세반 월 584,000원, 만 1세반 월 515,000원, 만 2세반 월 426,000원, 만 3~5세반(누리과정) 월 280,000원 (2026년 기준, 기본보육 시간 기준)",
+  "applyPeriod": "연중 수시 신청(어린이집 입소와 함께 신청)",
+  "applyMethod": "복지로 온라인 신청 또는 주민센터 방문 신청 후 국민행복카드로 어린이집에서 결제",
+  "organization": "보건복지부 / 지자체",
+  "website": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003250&wlfareInfoReldBztpCd=01",
+  "documents": ["국민행복카드(아이행복카드)", "어린이집 입소(재원) 확인서", "아동 주민등록등본"],
+  "tags": ["보육료", "어린이집", "영유아", "정부지원금"],
+  "age": "all",
+  "family": "child",
+  "incomeLevel": "all",
+  "relatedCalculators": [],
+  "relatedPosts": ["child-benefit-guide"],
+  "faq": [
+    {
+      "question": "부모급여와 중복으로 받을 수 있나요?",
+      "answer": "네. 어린이집을 이용하면 보육료는 바우처로 지원되고, 부모급여와의 차액은 현금으로 지급됩니다."
+    },
+    {
+      "question": "야간·24시간 어린이집도 지원되나요?",
+      "answer": "네. 기본보육 외에 야간·24시간 반은 별도의 지원 단가가 적용됩니다."
+    }
+  ]
+}

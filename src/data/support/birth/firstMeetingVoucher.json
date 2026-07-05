@@ -1,0 +1,32 @@
+{
+  "id": "first-meeting-voucher",
+  "slug": "first-meeting-voucher",
+  "title": "첫만남이용권",
+  "category": "출산·육아",
+  "summary": "모든 출생아에게 국민행복카드 포인트로 목돈을 지급하는 출산 초기 지원금입니다.",
+  "description": "출생 초기 양육 부담을 줄이기 위해 소득·재산과 무관하게 모든 출생아에게 국민행복카드 포인트 형태로 일시금을 지급하는 제도입니다.",
+  "target": "2024년 1월 1일 이후 출생하여 주민등록번호를 부여받은 아동(출생일로부터 2년 이내)",
+  "income": "소득·재산 무관(전 가구 지원)",
+  "benefit": "출생아당 200만원 이상 지급 / 첫째아 200만원, 둘째아 이상 300만원 (국민행복카드 포인트, 출생일로부터 1년간 사용 가능)",
+  "applyPeriod": "출생신고 후 아동 주민등록 기준일로부터 1년 이내",
+  "applyMethod": "복지로 온라인 신청 또는 주민센터 방문 신청, 출생신고와 동시에 신청 가능",
+  "organization": "보건복지부",
+  "website": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004656",
+  "documents": ["출생신고 완료 후 아동 주민등록등본", "국민행복카드(카드사 또는 은행 앱에서 발급)", "신청인(부모) 신분증"],
+  "tags": ["첫만남이용권", "출산", "국민행복카드", "정부지원금"],
+  "age": "all",
+  "family": "child",
+  "incomeLevel": "all",
+  "relatedCalculators": [],
+  "relatedPosts": ["child-benefit-guide"],
+  "faq": [
+    {
+      "question": "소득이 많아도 받을 수 있나요?",
+      "answer": "네. 첫만남이용권은 소득·재산 기준 없이 출생아 모두에게 지급됩니다."
+    },
+    {
+      "question": "부모급여나 아동수당과 중복으로 받을 수 있나요?",
+      "answer": "네. 첫만남이용권은 부모급여, 아동수당 등 다른 출산·육아 지원과 중복 수령이 가능합니다."
+    }
+  ]
+}

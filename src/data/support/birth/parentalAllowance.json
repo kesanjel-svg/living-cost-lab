@@ -1,0 +1,32 @@
+{
+  "id": "parental-allowance",
+  "slug": "parental-allowance",
+  "title": "부모급여",
+  "category": "출산·육아",
+  "summary": "만 0~1세 아동을 둔 모든 가정에 매월 현금을 지급하는 영아기 양육 지원금입니다.",
+  "description": "출산·양육으로 인한 소득 감소를 보전하고 영아기 가정 양육의 경제적 부담을 줄이기 위해 만 0세와 1세 아동을 둔 가정에 매월 현금을 지급하는 제도입니다. 가정에서 직접 양육하든 어린이집을 이용하든 동일하게 적용됩니다.",
+  "target": "만 0세~1세(생후 0~23개월) 아동을 양육하는 가정",
+  "income": "소득·재산 무관(전 가구 지원)",
+  "benefit": "만 0세 월 100만원, 만 1세 월 50만원 현금 지급 (어린이집 이용 시 보육료 바우처와 현금 차액으로 지급)",
+  "applyPeriod": "출생일로부터 60일 이내 신청 시 출생 월부터 소급 지원(그 외 신청일이 속한 달부터 지급)",
+  "applyMethod": "복지로 온라인 신청 또는 주민센터 방문 신청, 출생신고와 동시에 신청 가능",
+  "organization": "보건복지부",
+  "website": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004657",
+  "documents": ["아동 주민등록등본", "신청인(부모) 신분증", "지급 계좌(신청인 명의) 통장 사본"],
+  "tags": ["부모급여", "출산", "육아", "정부지원금"],
+  "age": "all",
+  "family": "child",
+  "incomeLevel": "all",
+  "relatedCalculators": [],
+  "relatedPosts": ["child-benefit-guide"],
+  "faq": [
+    {
+      "question": "어린이집을 이용하면 부모급여를 못 받나요?",
+      "answer": "아니요. 어린이집 이용 시 보육료는 바우처로, 부모급여와의 차액은 현금으로 지급됩니다."
+    },
+    {
+      "question": "2세부터는 지원이 끊기나요?",
+      "answer": "만 2세부터는 부모급여 대신 가정양육수당 등 다른 제도가 적용됩니다."
+    }
+  ]
+}
