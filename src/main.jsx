@@ -8,8 +8,10 @@ import './styles/responsive.css'
 import App from './app/App.jsx'
 import ErrorBoundary from './shared/error/ErrorBoundary'
 import { initAnalytics } from './shared/analytics'
+import { initAdSense } from './shared/ads/adsConfig.js'
 
 initAnalytics()
+initAdSense()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

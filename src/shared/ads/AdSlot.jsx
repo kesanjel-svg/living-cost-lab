@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { AD_SLOT_IDS, getAdSenseClientId, isAdSenseEnabled } from './adsConfig.js'
 import './AdSlot.css'
 
@@ -12,8 +13,23 @@ export default function AdSlot({
   label = '광고',
 }) {
   const clientId = getAdSenseClientId()
+  const enabled = isAdSenseEnabled() && Boolean(slotId)
 
-  if (!isAdSenseEnabled() || !slotId) {
+  useEffect(() => {
+    if (!enabled) {
+      return
+    }
+
+    try {
+      ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.debug('[AdSlot] adsbygoogle push failed', error)
+      }
+    }
+  }, [enabled, slotId])
+
+  if (!enabled) {
     return null
   }
 
