@@ -83,9 +83,17 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - `gasRegions.js`에 `asan`/`gongju`/`boryeong` 추가, `GAS_REGION_ORDER` 갱신(16개), 전국평균 note 13→16개 지역, `GasCalculatorPage.jsx` SEO description도 16개 지역으로 갱신
    - 빌드/평균 산출 로직 재검증 완료(logic-data 에이전트 단독 진행, 코드 변경 최소화 원칙에 따라 gasService.js/GasCalculator.jsx는 수정하지 않음)
 
+14. **지원금 콘텐츠(income 카테고리) 3종 추가 — 아동수당/국민취업지원제도/생계급여 (완료, 2026-07-05)**
+   - `src/data/support/income/childcareAllowance.json`(id `childcare-allowance`): 아동수당 — 소득·재산 무관 만 9세 미만(만 8세 이하) 모든 아동에게 월 10만원(비수도권 10.5만원, 인구감소지역 우대 11만원, 특별지역 12만원(지역화폐 포함)) 지급. 출처: 보건복지부 공식 페이지(`www.mohw.go.kr/menu.es?mid=a10711030100`, 2026-07-05 확인) — 2026-04-24부로 지급대상이 기존 만 7세 이하에서 만 8세 이하로 확대된 최신 상태 반영
+   - `src/data/support/income/jobSeekerSupport.json`(id `job-seeker-support`): 국민취업지원제도 — Ⅰ유형 구직촉진수당 2026년 월 60만원(2025년 50만원에서 인상, `'26.1.1.~` 적용)×최대 6개월 + 부양가족 가산(1인당 월 10만원, 최대 40만원) + 취업성공수당 최대 150만원, Ⅱ유형 취업활동비용 지원. 출처: 고용노동부 국정성과 페이지(`www.moel.go.kr/news/achievements/view.do?bbs_seq=20260201211`) + 고용24 공식 제도안내 페이지(`www.work24.go.kr`, systId=SI00000316), 2026-07-05 확인
+   - `src/data/support/income/livelihoodBenefit.json`(id `livelihood-benefit`): 생계급여 — 선정기준 기준 중위소득 32% 이하, 2026년 선정기준액(=최대 지급액) 1인가구 82만 556원 / 2인 134만 3,773원 / 3인 171만 4,892원 / 4인 207만 8,316원 / 5인 241만 8,150원 / 6인 273만 7,905원. 출처: 보건복지부 보도자료 "2026년도 기준 중위소득 6.51% 역대 최대로 인상"(작성일 2025-07-31, 제77차 중앙생활보장위원회 의결, `www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&list_no=1487098`), 2026-07-05 확인
+   - 3개 파일 모두 `src/data/support/index.js`의 `import.meta.glob` 자동 로드 구조를 그대로 활용 — 라우팅/등록 코드 수정 없음
+   - id/slug 중복 없음 확인(기존 `child`/`work`/`youth-rent`/`energy`/`birth`/`training`과 겹치지 않음), `filters.json` 기반 enum(`age`: all, `family`: child/all/all, `incomeLevel`: all/all/low) 준수, `relatedCalculators`/`relatedPosts`는 실제 존재하는 계산기 id와 blogPosts.js slug 중 직접 관련된 항목만 사용(대부분 빈 배열, 생계급여만 `electric`/`gas` 연결)
+   - 빌드(`npm run build`) 및 린트(`npm run lint`) 통과 확인, JSON 유효성 검증 완료
+
 ### 🔜 다음 할 일
 아래 중 우선순위는 사용자 확인 후 진행:
-1. **AdSense 실제 신청** — 콘텐츠량 재확인 필요(도시가스 지역 확장으로 소폭 증가했으나 정확한 현재 콘텐츠 수는 재집계 필요)
+1. **AdSense 실제 신청** — 콘텐츠량 재확인 필요(도시가스 지역 확장 + 지원금 3종 추가로 콘텐츠 소폭 증가, 정확한 현재 콘텐츠 수는 재집계 필요)
 2. **Search Console 크롤링 최종 확인**
 3. **도시가스 계산기 지역 5차 확장** (전라/경상 소도시, 경기 내 타 공급사 권역, 강원 영동지역 등 — 중부도시가스 권역은 아산/공주/보령까지 완료)
 
