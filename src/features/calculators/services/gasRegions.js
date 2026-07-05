@@ -176,6 +176,48 @@ export const GAS_REGIONS = {
     source: 'http://www.citygas.or.kr/info/charge.jsp',
     note: '한국도시가스협회 공식 요금표(2026-06-01 조정분) 기준. 중부도시가스 자체 홈페이지 요금표 페이지 접근이 되지 않아 협회 취합 자료를 사용했으며, 정확한 금액은 고객센터(1544-0041)로 재확인 권장. 아산·공주·보령 등 중부도시가스 공급권역 내 타 지역도 유사하나 정확한 수치는 별도 확인 필요.',
   },
+  asan: {
+    name: '아산',
+    provider: '중부도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1000,
+    baseFeeApproximate: true,
+    unitPrices: {
+      cooking: 24.1111,
+      heating: 24.1111,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '중부도시가스 공급권역(천안·아산·공주·보령 등 충남 일대)이나, 한국도시가스협회 공식 요금표(2026-06-01 조정분)에는 "충남 천안시(JB)" 대표값 하나로만 취합되어 아산 개별 수치가 공시되지 않음. 중부도시가스 자체 홈페이지에서도 아산 지역 요금표 페이지를 확인하지 못해, 천안과 동일한 대표값을 근사치로 사용. 정확한 금액은 고객센터(1544-0041)로 재확인 권장.',
+  },
+  gongju: {
+    name: '공주',
+    provider: '중부도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1000,
+    baseFeeApproximate: true,
+    unitPrices: {
+      cooking: 24.1111,
+      heating: 24.1111,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '중부도시가스 공급권역(천안·아산·공주·보령 등 충남 일대)이나, 한국도시가스협회 공식 요금표(2026-06-01 조정분)에는 "충남 천안시(JB)" 대표값 하나로만 취합되어 공주 개별 수치가 공시되지 않음. 중부도시가스 자체 홈페이지에서도 공주 지역 요금표 페이지를 확인하지 못해, 천안과 동일한 대표값을 근사치로 사용. 정확한 금액은 고객센터(1544-0041)로 재확인 권장.',
+  },
+  boryeong: {
+    name: '보령',
+    provider: '중부도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1000,
+    baseFeeApproximate: true,
+    unitPrices: {
+      cooking: 24.1111,
+      heating: 24.1111,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '중부도시가스 공급권역(천안·아산·공주·보령 등 충남 일대)이나, 한국도시가스협회 공식 요금표(2026-06-01 조정분)에는 "충남 천안시(JB)" 대표값 하나로만 취합되어 보령 개별 수치가 공시되지 않음. 중부도시가스 자체 홈페이지에서도 보령 지역 요금표 페이지를 확인하지 못해, 천안과 동일한 대표값을 근사치로 사용. 정확한 금액은 고객센터(1544-0041)로 재확인 권장.',
+  },
 }
 
 export const GAS_REGION_ORDER = [
@@ -192,6 +234,9 @@ export const GAS_REGION_ORDER = [
   'gangwon',
   'cheongju',
   'cheonan',
+  'asan',
+  'gongju',
+  'boryeong',
 ]
 
 export const NATIONWIDE_AVERAGE_REGION_ID = 'nationwide-average'
@@ -204,7 +249,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 13개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 16개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -221,7 +266,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 13개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원·청주·천안) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 16개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원·청주·천안·아산·공주·보령) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
