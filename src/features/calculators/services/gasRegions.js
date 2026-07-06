@@ -107,7 +107,33 @@ export const GAS_REGIONS = {
     },
     vatIncluded: false,
     source: 'http://www.citygas.or.kr/info/charge.jsp',
-    note: '경기도 내 다수 지역(수원·성남·안양 등)을 공급하는 삼천리 기준 요금이며, 일부 시군(코원에너지·예스코 등 타 공급사 관할 지역)은 요금이 다를 수 있음. 한국도시가스협회 공식 요금표(2026-06-01 조정분) 기준.',
+    note: '경기도 내 다수 지역(수원·부천·평택·안양 등, 삼천리 관할)을 포함한 대표값. 경기도는 공급사(삼천리·코원에너지서비스·예스코 등)와 무관하게 도 전체에 동일한 소매요금이 적용됨을 코원에너지서비스·예스코 공식 요금조회 결과로 교차 확인함(2026-07-06 확인, 상세는 "성남"·"남양주" 지역 항목 참고).',
+  },
+  seongnam: {
+    name: '성남(경기)',
+    provider: '코원에너지서비스',
+    effectiveDate: '2026-07-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'https://www.skens.com/koone/rate/guide.do',
+    note: '코원에너지서비스㈜ 공급권역(과천·성남·하남·광주·이천·여주시 등, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준) 자체 요금조회 페이지에서 직접 확인. "경기도" 항목(삼천리 기준)과 수치가 동일해, 경기도는 공급사와 무관하게 도 전체 동일 소매요금이 적용됨을 확인함.',
+  },
+  namyangju: {
+    name: '남양주(경기)',
+    provider: '예스코',
+    effectiveDate: '2025-08-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'https://www.lsyesco.com/CustGuide/gasCostManage.view',
+    note: '예스코 공급권역(구리·남양주시·가평군, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준) 요금조회 페이지는 화면이 스크립트로 렌더링되어 페이지 내부 API 응답을 직접 조회해 확인(2026-07-06). "경기도" 항목(삼천리 기준)과 수치가 동일함.',
   },
   gyeongnam: {
     name: '경남',
@@ -255,6 +281,8 @@ export const GAS_REGION_ORDER = [
   'daejeon',
   'ulsan',
   'gyeonggi',
+  'seongnam',
+  'namyangju',
   'gyeongnam',
   'sejong',
   'gangwon',
@@ -277,7 +305,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 18개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 20개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -294,7 +322,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 18개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원·강릉·속초·청주·천안·아산·공주·보령) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 20개 지역(서울·인천·부산·대구·광주·대전·울산·경기·성남·남양주·경남·세종·강원·강릉·속초·청주·천안·아산·공주·보령) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
