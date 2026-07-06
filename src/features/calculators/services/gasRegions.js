@@ -430,6 +430,71 @@ export const GAS_REGIONS = {
     source: 'http://www.citygas.or.kr/info/charge.jsp',
     note: '경동도시가스㈜의 경남 양산 사업장 공급권역. 기본요금은 취사전용·개별난방 850원이며, 지역난방(집단에너지) 요금제는 1,700원으로 더 높음. 울산 사업장과 같은 회사이나 요금은 지역별로 달라 별도 항목으로 분리(한국도시가스협회 공식 요금표, 2026-06-01 조정분 기준).',
   },
+  uijeongbu: {
+    name: '의정부(경기 북부)',
+    provider: '대륜이엔에스',
+    effectiveDate: '2026-07-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'http://www.daeryunens.com/daeryunens/bbs/bbs_list.asp?bbs_code=54',
+    note: '㈜대륜이엔에스 공급권역(의정부·양주·동두천시, 연천군, 포천시 일부 및 서울 노원·도봉·강북구 일부, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준). 5차 확장 세션에서는 자체 요금조회 페이지가 로그인 장벽으로 막혀 제외했으나, 이번에는 회사 게시판("가스 요금표 및 경제성 비교")에 첨부된 공식 PDF "도시가스 단가표 / 2026. 7. 1."에서 직접 확인. 대륜이엔에스는 서울 권역엔 "서울" 요금, 경기(의정부 등) 권역엔 "경기" 요금(기본요금 1,250원, 22.6226원/MJ)을 적용하며, 이는 기존 "경기도" 항목(삼천리 기준)과 동일 — 경기도는 공급사와 무관하게 도 전체 동일 소매요금이 적용됨을 재확인.',
+  },
+  wonju: {
+    name: '원주(강원)',
+    provider: '참빛원주도시가스',
+    effectiveDate: '2026-07-01',
+    baseFee: 1150,
+    unitPrices: {
+      cooking: 23.4348,
+      heating: 23.4348,
+    },
+    vatIncluded: false,
+    source: 'http://www.cwjgas.co.kr/charge/charge01.do',
+    note: '참빛원주도시가스㈜ 공급권역(원주시·횡성군, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준) 자체 홈페이지 요금안내 페이지에서 직접 확인("적용일자 : 2026-07-01 기준" 명시). 한국도시가스협회 공식 요금표(2026-06-01 조정분)와도 수치 일치(기본요금 1,150원, 23.4348원/MJ). 기존 "강원(춘천 등)" 지역(강원도시가스 관할)과는 공급사가 달라 요금이 다름.',
+  },
+  chungju: {
+    name: '충주',
+    provider: '참빛충북도시가스',
+    effectiveDate: '2026-07-01',
+    baseFee: 1050,
+    unitPrices: {
+      cooking: 23.8443,
+      heating: 23.5906,
+    },
+    vatIncluded: false,
+    source: 'http://www.ccbgas.co.kr/charge/charge01.do',
+    note: '참빛충북도시가스㈜ 공급권역(충주시, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준) 자체 홈페이지 요금안내 페이지에서 직접 확인("적용일자 : 2026-07-01 기준" 명시, 취사용 23.8443원/MJ과 개별난방 23.5906원/MJ 단가가 서로 다름). 한국도시가스협회 공식 요금표(2026-06-01 조정분)와도 수치 일치. 기존 "청주" 지역(충청에너지서비스 관할)과는 공급사가 달라 요금이 다름.',
+  },
+  seosan: {
+    name: '서산(당진 포함)',
+    provider: '미래엔서해에너지',
+    effectiveDate: '2026-06-01',
+    baseFee: 1000,
+    unitPrices: {
+      cooking: 24.0552,
+      heating: 24.0552,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '미래엔서해에너지㈜ 공급권역(당진·서산시, 홍성·예산·태안군, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준). 자체 홈페이지(shgas.co.kr)의 요금정보 페이지가 이미지/스크립트 기반이라 개별 단가를 직접 확인하지 못해 한국도시가스협회 공식 요금표(2026-06-01 조정분)를 사용. 당진시도 동일 공급사·동일 요금이 적용됨. 정확한 금액은 고객센터(1577-6580)로 재확인 권장.',
+  },
+  jeju: {
+    name: '제주',
+    provider: '제주도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1000,
+    unitPrices: {
+      cooking: 27.0619,
+      heating: 27.0619,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '㈜제주도시가스 공급권역(제주·서귀포시, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준). 자체 홈페이지가 위지(Wix) 기반 동적 사이트라 요금표를 직접 확인하지 못해 한국도시가스협회 공식 요금표(2026-06-01 조정분)를 사용(기본요금은 개별난방 기준 1,000원이며, 일반용은 2,400원으로 더 높음). 정확한 금액은 고객센터(1600-3437)로 재확인 권장.',
+  },
 }
 
 export const GAS_REGION_ORDER = [
@@ -443,6 +508,7 @@ export const GAS_REGION_ORDER = [
   'gyeonggi',
   'seongnam',
   'namyangju',
+  'uijeongbu',
   'gyeongnam',
   'jinju',
   'yangsan',
@@ -450,11 +516,14 @@ export const GAS_REGION_ORDER = [
   'gangwon',
   'gangneung',
   'sokcho',
+  'wonju',
   'cheongju',
+  'chungju',
   'cheonan',
   'asan',
   'gongju',
   'boryeong',
+  'seosan',
   'jeonju',
   'gunsan',
   'iksan',
@@ -465,6 +534,7 @@ export const GAS_REGION_ORDER = [
   'yeosu',
   'suncheon',
   'mokpo',
+  'jeju',
 ]
 
 export const NATIONWIDE_AVERAGE_REGION_ID = 'nationwide-average'
@@ -477,7 +547,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 32개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 37개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -494,7 +564,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 32개 지역(서울·인천·부산·대구·광주·대전·울산·경기·성남·남양주·경남·진주·양산·세종·강원·강릉·속초·청주·천안·아산·공주·보령·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 37개 지역(서울·인천·부산·대구·광주·대전·울산·경기·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
