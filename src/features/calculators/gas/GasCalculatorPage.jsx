@@ -22,7 +22,7 @@ export default function GasCalculatorPage() {
     <div className="page page--gas-calculator">
       <Seo
         title={formatPageTitle('도시가스 계산기')}
-        description="서울·인천·부산·대구·광주·대전·울산·경기·성남·남양주·경남·진주·양산·세종·강원·강릉·속초·청주·천안·아산·공주·보령·전주·포항·여수·순천·목포 등 27개 지역 도시가스사 요금표 기준으로 예상 도시가스요금을 계산하세요. 무료 도시가스 계산기로 생활비를 점검해보세요."
+        description="서울·인천·부산·대구·광주·대전·울산·경기·성남·남양주·경남·진주·양산·세종·강원·강릉·속초·청주·천안·아산·공주·보령·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포 등 32개 지역 도시가스사 요금표 기준으로 예상 도시가스요금을 계산하세요. 무료 도시가스 계산기로 생활비를 점검해보세요."
         keywords="도시가스 계산기, 도시가스 요금, 가스비 계산기, 도시가스 요금표"
         canonical="/calculators/gas"
         breadcrumbs={BREADCRUMBS}
