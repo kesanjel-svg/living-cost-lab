@@ -128,12 +128,18 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - `GAS_REGION_ORDER` 16→27개 갱신, `getNationwideAverageRegion()`의 전국평균 note 27개 지역으로 갱신, `GasCalculatorPage.jsx` SEO description도 27개 지역으로 갱신. `GasCalculator.jsx`/`gasService.js`는 지역 목록을 동적 렌더링하므로 수정 불필요(과거 확장 라운드와 동일)
    - 단계별 3회 커밋 완료(`b658ad3` 1단계, `07100aa` 2단계, `a297aab` 3단계), 각 단계마다 `npm run build`/`npm run lint` 통과 확인. **push는 아직 하지 않음 — 사용자 확인 후 진행**
 
+19. **Search Console 크롤링 확인 시도 — sitemap.xml 누락 버그 발견 및 수정 (완료, 2026-07-06)**
+   - Claude 브라우저 확장이 연결되어 있지 않아 Google Search Console 대시보드 자체(크롤링 상태·색인 현황)는 직접 확인 불가 — **사용자가 Search Console에서 직접 확인 필요** (연결 시 다음 세션에서 재시도 가능)
+   - 대신 프로덕션 `robots.txt`/`sitemap.xml`을 WebFetch로 점검하다가 **`/calculators/gas`(도시가스 계산기) 페이지가 sitemap.xml에서 누락**되어 있는 것을 발견 — `src/shared/seo/buildSeoAssets.js`의 `STATIC_PATHS` 배열에 가스 계산기 라우트가 애초에 추가되지 않았던 것이 원인(계산기 자체는 정상 배포·서빙 중이었으나 sitemap에서만 빠져 있어 Search Console이 자동 발견하기 어려운 상태였음)
+   - `STATIC_PATHS`에 `/calculators/gas` 추가, 빌드 후 `dist/sitemap.xml`에 정상 포함됨을 직접 확인, 린트도 통과(기존 무관 warning만 존재)
+   - `robots.txt`는 정상(Sitemap 위치 명시, `/dashboard`·`/profile`·`/cost-report/share/`만 Disallow, 나머지 전체 허용) — 문제 없음
+   - 커밋 `fb2fecf`(`fix: sitemap.xml에 도시가스 계산기 페이지 누락 추가`)
+
 ### 🔜 다음 할 일
 아래 중 우선순위는 사용자 확인 후 진행:
 1. **애드센스 실제 심사 결과 대기/확인** — SDK 로드 구현 완료, 배포 반영됨. 사이트에서 실제 광고가 노출되는지 프로덕션에서 육안 확인 필요. 콘텐츠량은 계산기 4 + 지원금 21 = 25개로 크게 증가했으나 여전히 통상 권장(20~30+)의 하한 근처라 심사 통과 여부는 지켜봐야 함
-2. **Search Console 크롤링 최종 확인**
+2. **Search Console 대시보드 직접 확인** — sitemap 누락 버그는 수정 완료(19번 항목), 이제 재제출 후 실제 색인 상태는 사용자가 Search Console에서 직접 확인하거나 브라우저 확장 연결 후 재시도
 3. **도시가스 계산기 지역 6차 확장 후보**: 구미·경주·안동(경북), 군산·익산(전북) — 협회 요금표에 이미 개별 수치가 있어 데이터 추가 조사 없이 바로 반영 가능. 의정부(대륜이엔에스)는 공식 사이트 로그인 장벽 재시도 또는 대체 출처 필요
-4. ~~17번 항목(청년전세자금대출 금리 정정) 커밋 여부 확인~~ → 확인 완료, 커밋 `5385fba`(`content: 청년전세자금대출 기본금리 정정 (2.5~3.5% → 2.2~3.3%)`)로 이미 반영되어 있음(2026-07-06 확인)
 
 ### ✅ 국민연금 기준소득월액 재검증 결과 (2026-07-05)
 - 결론: **기존 구현값(하한 41만원 / 상한 659만원, 2026.7.1~2027.6.30 적용)이 정확함 — 수정 불필요**
