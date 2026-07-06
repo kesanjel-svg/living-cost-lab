@@ -17,6 +17,7 @@ const STATIC_PATHS = [
   '/calculators/electric',
   '/calculators/pension',
   '/calculators/health',
+  '/calculators/gas',
   '/blog',
   '/topics',
   '/search',
