@@ -148,7 +148,33 @@ export const GAS_REGIONS = {
     },
     vatIncluded: false,
     source: 'https://www.skens.com/gangwon/rate/guide.do',
-    note: '강원도시가스 공급권역(춘천·홍천·영월·정선·태백) 대표값. 강원 영동지역(강릉·속초 등)은 참빛에너지 등 별도 공급사 관할로 요금이 다름. 강원도시가스 공식 홈페이지 요금안내 페이지에서 직접 확인(2026-07-01 적용).',
+    note: '강원도시가스 공급권역(춘천·홍천·영월·정선·태백) 대표값. 강원 영동지역(강릉·동해·삼척은 참빛영동도시가스, 속초·고성·양양은 참빛도시가스 관할)은 요금이 달라 "강릉"·"속초" 지역을 별도로 선택할 수 있음.',
+  },
+  gangneung: {
+    name: '강릉(강원 영동)',
+    provider: '참빛영동도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1150,
+    unitPrices: {
+      cooking: 25.0337,
+      heating: 25.0337,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '참빛영동도시가스㈜ 공급권역(강릉·동해·삼척, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준). 한국도시가스협회 공식 요금표(2026-06-01 조정분)에는 인접한 속초 지역(참빛도시가스㈜ 관할)과 "강원 영동지역"으로 합산 표기되어 있어 동일 수치를 사용. 정확한 금액은 고객센터(1899-9100)로 재확인 권장.',
+  },
+  sokcho: {
+    name: '속초(강원 영동)',
+    provider: '참빛도시가스',
+    effectiveDate: '2026-06-01',
+    baseFee: 1150,
+    unitPrices: {
+      cooking: 25.0337,
+      heating: 25.0337,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '참빛도시가스㈜ 공급권역(속초·고성·양양, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준). 한국도시가스협회 공식 요금표(2026-06-01 조정분)에는 인접한 강릉 지역(참빛영동도시가스㈜ 관할)과 "강원 영동지역"으로 합산 표기되어 있어 동일 수치를 사용. 정확한 금액은 고객센터(1899-9100)로 재확인 권장.',
   },
   cheongju: {
     name: '청주',
@@ -232,6 +258,8 @@ export const GAS_REGION_ORDER = [
   'gyeongnam',
   'sejong',
   'gangwon',
+  'gangneung',
+  'sokcho',
   'cheongju',
   'cheonan',
   'asan',
@@ -249,7 +277,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 16개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 18개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -266,7 +294,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 16개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원·청주·천안·아산·공주·보령) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 18개 지역(서울·인천·부산·대구·광주·대전·울산·경기·경남·세종·강원·강릉·속초·청주·천안·아산·공주·보령) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
