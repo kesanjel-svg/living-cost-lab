@@ -483,6 +483,19 @@ export const GAS_REGIONS = {
     source: 'http://www.cwjgas.co.kr/charge/charge01.do',
     note: '참빛원주도시가스㈜ 공급권역(원주시·횡성군, 자체 홈페이지 공급권역 안내 http://www.cwjgas.co.kr/introduction/intro03.do 및 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준)이 원주와 동일하여 원주 지역과 완전히 동일한 요금이 적용됨. 확인일 2026-07-08(자체 홈페이지 요금안내 페이지 "적용일자 : 2026-07-01 기준" 재확인, 기본요금 1,150원/월, 23.4348원/MJ 변동 없음).',
   },
+  pyeongchang: {
+    name: '평창(강원)',
+    provider: '명성파워그린',
+    effectiveDate: '2026-06-01',
+    baseFee: 1150,
+    unitPrices: {
+      cooking: 24.6592,
+      heating: 24.6592,
+    },
+    vatIncluded: false,
+    source: 'http://www.citygas.or.kr/info/charge.jsp',
+    note: '명성파워그린㈜ 공급권역(평창군, 한국가스공사 공식 공급구역 안내 https://www.kogas.or.kr/site/koGas/1020408040000 기준). 한국도시가스협회 공식 요금표(2026-06-01 조정분)에 "평창(명성)"으로 개별 게재된 수치를 사용(강릉·속초처럼 인근 지역과 합산 표기되지 않은 단독 항목). 자체 홈페이지(myungsungpower.com)에는 요금표 페이지가 게시되어 있지 않아 직접 교차 확인은 하지 못함. 정확한 금액은 고객센터(033-332-6430)로 재확인 권장. 원주·횡성(참빛원주도시가스)과는 공급사가 달라 요금이 다름.',
+  },
   chungju: {
     name: '충주',
     provider: '참빛충북도시가스',
@@ -546,6 +559,7 @@ export const GAS_REGION_ORDER = [
   'sokcho',
   'wonju',
   'hoengseong',
+  'pyeongchang',
   'cheongju',
   'chungju',
   'cheonan',
@@ -576,7 +590,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 39개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 40개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -593,7 +607,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 39개 지역(서울·인천·부산·대구·경산·광주·대전·울산·경기·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·횡성·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 40개 지역(서울·인천·부산·대구·경산·광주·대전·울산·경기·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·횡성·평창·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
