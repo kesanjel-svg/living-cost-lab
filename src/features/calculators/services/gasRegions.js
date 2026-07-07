@@ -48,7 +48,7 @@ export const GAS_REGIONS = {
     name: '대구',
     provider: '대성에너지',
     effectiveDate: '2026-07-01',
-    baseFee: 950,
+    baseFee: 900,
     baseFeeApproximate: true,
     unitPrices: {
       cooking: 23.6361,
@@ -56,7 +56,21 @@ export const GAS_REGIONS = {
     },
     vatIncluded: false,
     source: 'https://cyber.daesungenergy.com/charge/pricetable',
-    note: '공식 요금단가표에 기본요금이 게시되어 있지 않아 타 지역 평균치로 근사. 정확한 금액은 고객센터(1577-1190) 확인 필요.',
+    note: '공식 요금단가표(2026-07-01 적용)에는 기본요금이 게시되어 있지 않음. 에너지신문 대구시 도시가스 소매공급비용 조정 보도(2025-07-31, https://www.energy-news.co.kr/news/articleView.html?idxno=216275)에 따르면 주택용 기본요금은 취사난방용(개별난방) 900원/월, 취사전용 1,490원/격월(2개월)로 구성되며 해당 조정에서 동결됨. 본 계산기는 개별난방(취사난방용) 기준 900원만 반영하며, 취사 전용으로 검침되는 가구의 격월 청구 기본요금(1,490원/2개월)은 반영하지 못함. 정확한 금액은 고객센터(1577-1190) 확인 필요.',
+  },
+  gyeongsan: {
+    name: '경산',
+    provider: '대성에너지',
+    effectiveDate: '2026-07-01',
+    baseFee: 900,
+    baseFeeApproximate: true,
+    unitPrices: {
+      cooking: 23.6361,
+      heating: 23.6361,
+    },
+    vatIncluded: false,
+    source: 'https://cyber.daesungenergy.com/charge/pricetable',
+    note: '대성에너지는 대구광역시·경산시 전역·고령군·칠곡군 동명면을 단일 공급권역으로 하는 하나의 공급사이므로 대구와 동일한 요금(기본요금·단가)이 적용됨. 기본요금 근사치의 한계(취사전용 1,490원/격월 미반영)도 대구 항목과 동일. 정확한 금액은 고객센터(1577-1190) 확인 필요.',
   },
   gwangju: {
     name: '광주',
@@ -502,6 +516,7 @@ export const GAS_REGION_ORDER = [
   'incheon',
   'busan',
   'daegu',
+  'gyeongsan',
   'gwangju',
   'daejeon',
   'ulsan',
@@ -547,7 +562,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 37개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 38개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -564,7 +579,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 37개 지역(서울·인천·부산·대구·광주·대전·울산·경기·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 38개 지역(서울·인천·부산·대구·경산·광주·대전·울산·경기·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
