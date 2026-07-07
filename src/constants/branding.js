@@ -21,7 +21,7 @@ export const BRAND = {
   manifestShortName: '생활비연구소',
   manifestDescription:
     '정부지원금 찾기, 생활비 계산기, 절약 정보를 제공하는 생활비연구소',
-  contactEmail: 'contact@livingcostlab.kr',
+  contactEmail: 'contact@livingcostlabs.com',
   operatorLabel: '운영',
 }
 
