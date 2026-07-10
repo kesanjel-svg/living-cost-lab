@@ -3,6 +3,7 @@ import { ANALYTICS_EVENTS, trackEvent } from '../../../shared/analytics'
 import CalculatorLayout from '../components/CalculatorLayout'
 import CalculatorInputCard from '../components/CalculatorInputCard'
 import CalculatorResultCard from '../components/CalculatorResultCard'
+import CalculatorBreakdownChart from '../components/CalculatorBreakdownChart'
 import CalculatorSavingCard from '../components/CalculatorSavingCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
@@ -118,7 +119,7 @@ export default function GasCalculator() {
         <div className="calculator__results">
           <CalculatorResultCard
             resultLabel={`예상 도시가스요금 (${result.breakdown.region.name})`}
-            resultValue={formatCurrency(result.fee)}
+            resultAmount={result.fee}
             badge={result.badge}
             analysis={result.analysis}
             progressValue={result.progress}
@@ -127,12 +128,14 @@ export default function GasCalculator() {
             progressEndLabel="100㎥+"
           />
 
-          <ul className="calculator__breakdown">
-            <li>환산 사용량 {result.breakdown.usageMJ.toLocaleString('ko-KR')}MJ</li>
-            <li>기본요금 {formatCurrency(result.breakdown.baseFee)}</li>
-            <li>사용량요금 {formatCurrency(result.breakdown.usageCharge)}</li>
-            <li>부가가치세 {formatCurrency(result.breakdown.vat)}</li>
-          </ul>
+          <CalculatorBreakdownChart
+            items={[
+              { label: '기본요금', value: result.breakdown.baseFee },
+              { label: '사용량요금', value: result.breakdown.usageCharge },
+              { label: '부가가치세', value: result.breakdown.vat },
+            ]}
+            note={`환산 사용량 ${result.breakdown.usageMJ.toLocaleString('ko-KR')}MJ 기준`}
+          />
 
           <CalculatorSavingCard
             savingItems={[

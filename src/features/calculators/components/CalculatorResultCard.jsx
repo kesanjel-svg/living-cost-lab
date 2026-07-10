@@ -1,6 +1,15 @@
+import { formatCurrency } from '../../../utils/formatCurrency'
+import useCountUp from '../hooks/useCountUp'
+
+function AnimatedAmount({ amount }) {
+  const animated = useCountUp(amount)
+  return <p className="calculator-result__amount">{formatCurrency(animated)}</p>
+}
+
 export default function CalculatorResultCard({
   resultLabel,
   resultValue,
+  resultAmount,
   badge,
   analysis,
   progressValue,
@@ -20,7 +29,11 @@ export default function CalculatorResultCard({
           </span>
         )}
       </div>
-      <p className="calculator-result__amount">{resultValue}</p>
+      {typeof resultAmount === 'number' ? (
+        <AnimatedAmount amount={resultAmount} />
+      ) : (
+        <p className="calculator-result__amount">{resultValue}</p>
+      )}
 
       {analysis && <p className="calculator-result__analysis">{analysis}</p>}
 

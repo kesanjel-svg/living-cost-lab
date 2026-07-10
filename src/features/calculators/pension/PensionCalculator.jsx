@@ -79,7 +79,7 @@ export default function PensionCalculator() {
         <div className="calculator__results">
           <CalculatorResultCard
             resultLabel={result.isEmployed ? '내 부담분(근로자)' : '납부 보험료(전액)'}
-            resultValue={formatCurrency(result.breakdown.employeeShare)}
+            resultAmount={result.breakdown.employeeShare}
             badge={result.badge}
             analysis={result.analysis}
           />

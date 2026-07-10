@@ -202,6 +202,12 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - **카드 절제**: 호버 리프트 -5px→-2px, 호버 그림자 md→sm, 아이콘 타일 그라디언트→플랫(blue-50+보더), subsidy 카드 하드코딩 그라디언트→`--gradient-surface` 토큰
    - **SourceBadge 신규 컴포넌트** (`src/shared/ui/SourceBadge.jsx`+css, index.js 배럴 등록): 방패 아이콘 + "출처 {기관/요금표 링크} · YYYY.M월 기준" 형태의 신뢰 배지. 4개 계산기 모두에 상시 노출 — 전기(ELECTRIC_SOURCE, KEPCO 요금표 2026-07), 국민연금(PENSION_SOURCE, nps.or.kr 2026-07), 건강보험(HEALTH_SOURCE, nhis.or.kr 2026-01), 도시가스(선택 지역의 provider/source/effectiveDate/note 동적 연동). 각 서비스 파일에 SOURCE 상수 export 추가
    - 검증: `npm run build`/`npm run lint` 통과(기존 무관 warning 1건만), 브라우저 프리뷰에서 홈·가스 계산기 실측 — 새 팔레트 적용(결과 금액 #101830, 버튼 그림자 rgba(47,69,124)), tabular-nums 활성, 가스 45㎥ 계산 48,150원 정상 동작, SourceBadge "출처 서울도시가스 요금표 · 2026.7월 기준" 렌더링, 콘솔 에러 없음
+   - 커밋 `50dd042`. **push는 아직 하지 않음 — 사용자 확인 후 진행**
+
+27. **디자인 리프레시 2단계 — 계산기 결과 시각화 (완료, 2026-07-10)**
+   - **요금 구성 스택 바 차트** (`CalculatorBreakdownChart.jsx` 신규, 라이브러리 없이 순수 CSS): 비율 막대(네이비 6단계 램프 세그먼트) + 범례(항목명·금액·비율%), `role="img"` + aria-label로 접근성 처리, note prop으로 부가 정보 표시. 전기(6항목: 전력량·기본·기후환경·연료비조정·부가세·전력기금)·가스(3항목: 기본·사용량·부가세 + "환산 사용량 X,XXXMJ 기준" note) 계산기의 기존 텍스트 나열식 `<ul class="calculator__breakdown">`을 교체. 연금·건보는 요금 "구성"이 아닌 부담 주체 분담이라 기존 리스트 유지
+   - **결과 금액 카운트업 애니메이션** (`useCountUp.js` 훅 신규): rAF + easeOutCubic 700ms, 첫 계산은 0부터·재계산은 직전 값부터, `prefers-reduced-motion` 존중(즉시 표시). `CalculatorResultCard`에 `resultAmount`(숫자) prop 추가 — 숫자면 애니메이션, 기존 `resultValue`(문자열)는 하위호환 유지. 4개 계산기 모두 resultAmount로 전환
+   - 검증: 빌드/린트 통과, 브라우저 실측 — 전기 350kWh(하계) 59,990원 카운트업 + 6항목 차트(전력량요금 78% 등), 가스 45㎥ 48,150원 + 3항목 차트(사용량요금 88% 등), 콘솔 에러 없음
    - **push는 아직 하지 않음 — 사용자 확인 후 진행**
 
 ### 🔜 다음 할 일

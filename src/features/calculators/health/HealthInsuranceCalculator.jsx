@@ -97,7 +97,7 @@ export default function HealthInsuranceCalculator() {
         <div className="calculator__results">
           <CalculatorResultCard
             resultLabel="내 부담분(근로자)"
-            resultValue={formatCurrency(result.breakdown.employeeTotal)}
+            resultAmount={result.breakdown.employeeTotal}
             badge={result.badge}
             analysis={result.analysis}
           />
@@ -120,7 +120,7 @@ export default function HealthInsuranceCalculator() {
         <div className="calculator__results">
           <CalculatorResultCard
             resultLabel="예상 보험료(간이 추정치)"
-            resultValue={formatCurrency(result.breakdown.total)}
+            resultAmount={result.breakdown.total}
             badge={result.badge}
             analysis={result.analysis}
           />

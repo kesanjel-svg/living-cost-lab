@@ -278,6 +278,91 @@
   transition: width 0.4s var(--ease-out);
 }
 
+/* Breakdown chart — 요금 구성 스택 바 */
+.calculator-chart {
+  margin-top: 1rem;
+  padding: 1.25rem 1.375rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.calculator-chart__title {
+  margin: 0 0 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.calculator-chart__bar {
+  display: flex;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--bg-muted);
+}
+
+.calculator-chart__segment {
+  display: block;
+  min-width: 2px;
+  transition: width 0.5s var(--ease-out);
+}
+
+.calculator-chart__segment--0 { background: var(--blue-800); }
+.calculator-chart__segment--1 { background: var(--blue-600); }
+.calculator-chart__segment--2 { background: var(--blue-500); }
+.calculator-chart__segment--3 { background: var(--blue-400); }
+.calculator-chart__segment--4 { background: var(--blue-300); }
+.calculator-chart__segment--5 { background: var(--blue-200); }
+
+.calculator-chart__legend {
+  margin: 0.875rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.calculator-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3125rem 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.calculator-chart__dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+
+.calculator-chart__label {
+  min-width: 0;
+}
+
+.calculator-chart__value {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--blue-950);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.calculator-chart__percent {
+  margin-left: 0.5rem;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.calculator-chart__note {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
 /* Saving */
 .calculator-saving {
   display: grid;

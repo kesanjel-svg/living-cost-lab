@@ -3,6 +3,7 @@ import { ANALYTICS_EVENTS, trackEvent } from '../../../shared/analytics'
 import CalculatorLayout from '../components/CalculatorLayout'
 import CalculatorInputCard from '../components/CalculatorInputCard'
 import CalculatorResultCard from '../components/CalculatorResultCard'
+import CalculatorBreakdownChart from '../components/CalculatorBreakdownChart'
 import CalculatorSavingCard from '../components/CalculatorSavingCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
@@ -70,21 +71,23 @@ export default function ElectricCalculator() {
         <div className="calculator__results">
           <CalculatorResultCard
             resultLabel="예상 전기요금"
-            resultValue={formatCurrency(result.fee)}
+            resultAmount={result.fee}
             badge={result.badge}
             analysis={result.analysis}
             progressValue={result.progress}
             progressLabel={`${result.usage}kWh`}
           />
 
-          <ul className="calculator__breakdown">
-            <li>기본요금 {formatCurrency(result.breakdown.baseFee)}</li>
-            <li>전력량요금 {formatCurrency(result.breakdown.energyCharge)}</li>
-            <li>기후환경요금 {formatCurrency(result.breakdown.climateCharge)}</li>
-            <li>연료비조정요금 {formatCurrency(result.breakdown.fuelAdjustment)}</li>
-            <li>부가가치세 {formatCurrency(result.breakdown.vat)}</li>
-            <li>전력산업기반기금 {formatCurrency(result.breakdown.fund)}</li>
-          </ul>
+          <CalculatorBreakdownChart
+            items={[
+              { label: '전력량요금', value: result.breakdown.energyCharge },
+              { label: '기본요금', value: result.breakdown.baseFee },
+              { label: '기후환경요금', value: result.breakdown.climateCharge },
+              { label: '연료비조정요금', value: result.breakdown.fuelAdjustment },
+              { label: '부가가치세', value: result.breakdown.vat },
+              { label: '전력산업기반기금', value: result.breakdown.fund },
+            ]}
+          />
 
           <CalculatorSavingCard
             savingItems={[
