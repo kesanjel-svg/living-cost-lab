@@ -12,6 +12,11 @@ const BREADCRUMBS = [
 
 const CALCULATOR_SCHEMAS = [
   {
+    name: '연봉 실수령액 계산기',
+    description: '월급여와 부양가족 수로 4대보험료·소득세 제외 예상 실수령액을 계산하는 무료 계산기',
+    path: '/calculators/net-salary',
+  },
+  {
     name: '전기요금 계산기',
     description: '월 전력 사용량(kWh)으로 예상 전기요금을 계산하는 무료 계산기',
     path: '/calculators/electric',
@@ -67,7 +72,7 @@ export default function CalculatorsPage() {
           ))}
         </div>
         <p className="page__notice">
-          전기요금·도시가스·국민연금·건강보험(직장가입자) 계산기를 이용할 수 있습니다.
+          연봉 실수령액·전기요금·도시가스·국민연금·건강보험(직장가입자) 계산기를 이용할 수 있습니다.
           도시가스 계산기는 서울·부산·대구·인천·광주·대전 등 46개 지역의 실제 요금표를 지원하며, 그 외 지역은 전국 평균 근사치로 계산됩니다.
         </p>
       </div>

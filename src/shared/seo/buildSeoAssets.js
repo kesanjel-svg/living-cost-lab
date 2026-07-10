@@ -18,6 +18,7 @@ export const STATIC_PATHS = [
   '/calculators/pension',
   '/calculators/health',
   '/calculators/gas',
+  '/calculators/net-salary',
   '/blog',
   '/topics',
   '/search',

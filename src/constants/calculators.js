@@ -19,4 +19,9 @@ export const calculatorRegistry = {
     href: '/calculators/pension',
     available: true,
   },
+  netSalary: {
+    title: '연봉 실수령액 계산기',
+    href: '/calculators/net-salary',
+    available: true,
+  },
 }

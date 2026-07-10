@@ -1,5 +1,12 @@
 export const popularCalculators = [
   {
+    id: 'net-salary',
+    icon: '💰',
+    title: '연봉 실수령액 계산기',
+    description: '월급여와 부양가족 수로 4대보험·세금 제외 실수령액을 계산합니다.',
+    href: '/calculators/net-salary',
+  },
+  {
     id: 'electric',
     icon: '⚡',
     title: '전기요금 계산기',
