@@ -21,7 +21,7 @@
   font-weight: 600;
   color: #fff;
   text-decoration: none;
-  background: var(--blue-700);
+  background: var(--primary-solid);
   border-radius: var(--radius-md);
 }
 

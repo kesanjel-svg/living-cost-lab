@@ -38,7 +38,7 @@
 .search-page__results {
   margin-top: 1.5rem;
   padding: 1.25rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xs);

@@ -5,7 +5,7 @@
   gap: 0.5rem;
   margin-bottom: 2rem;
   padding: 2rem;
-  background: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
+  background: var(--gradient-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
@@ -46,7 +46,7 @@
 
 .seo-audit__card {
   padding: 1.25rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
@@ -99,13 +99,13 @@
 }
 
 .seo-audit__badge--warning {
-  color: #b45309;
-  background: #fffbeb;
+  color: var(--warn-text);
+  background: var(--warn-bg);
 }
 
 .seo-audit__badge--error {
-  color: #b91c1c;
-  background: #fef2f2;
+  color: var(--danger-text);
+  background: var(--danger-bg);
 }
 
 .seo-audit__list {

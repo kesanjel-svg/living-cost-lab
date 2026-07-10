@@ -1,6 +1,6 @@
 .diagnosis-card {
   padding: 1.75rem;
-  background: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
+  background: var(--gradient-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
@@ -33,7 +33,7 @@
   position: absolute;
   inset: 8px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .diagnosis-card__score-value {
@@ -87,7 +87,7 @@
   flex-direction: column;
   gap: 0.35rem;
   padding: 1rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -119,8 +119,8 @@
 }
 
 .diagnosis-card__badge--high {
-  color: #b45309;
-  background: #fffbeb;
+  color: var(--warn-text);
+  background: var(--warn-bg);
 }
 
 .diagnosis-card__badge--medium {

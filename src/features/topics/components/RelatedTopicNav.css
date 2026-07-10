@@ -1,7 +1,7 @@
 .related-topic-nav {
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-border, #e5e7eb);
+  border-top: 1px solid var(--border);
 }
 
 .related-topic-nav__title {
@@ -23,9 +23,9 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.55rem 1rem;
-  border: 1px solid var(--color-border, #e5e7eb);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: var(--color-surface, #fff);
+  background: var(--surface);
   text-decoration: none;
   color: inherit;
   font-size: 0.9rem;
@@ -33,7 +33,7 @@
 }
 
 .related-topic-nav__chip:hover {
-  border-color: var(--color-primary, #3b5697);
+  border-color: var(--blue-600);
   background: #eff6ff;
 }
 

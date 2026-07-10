@@ -52,7 +52,7 @@
 
 .cta-btn--outline {
   color: var(--blue-800);
-  background: #ffffff;
+  background: var(--surface);
   border-color: var(--border);
   box-shadow: var(--shadow-xs);
 }
@@ -70,7 +70,7 @@
 
 .cta-btn--inverse-primary {
   color: var(--blue-900);
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 999px;
 }
 

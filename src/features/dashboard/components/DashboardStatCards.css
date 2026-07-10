@@ -11,7 +11,7 @@
   min-width: 0;
   padding: 1rem;
   text-decoration: none;
-  background: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
+  background: var(--gradient-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);

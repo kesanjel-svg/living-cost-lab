@@ -34,7 +34,7 @@
   font-size: 0.9375rem;
   font-family: inherit;
   color: var(--blue-950);
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
@@ -59,7 +59,7 @@
   font-weight: 600;
   font-family: inherit;
   color: var(--blue-700);
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;

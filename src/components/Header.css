@@ -3,7 +3,7 @@
   top: 0;
   z-index: 100;
   width: 100%;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   animation: fadeDown 0.5s ease-out;
@@ -60,7 +60,7 @@
   width: 20px;
   height: 2px;
   margin: 0 auto;
-  background: var(--blue-800);
+  background: var(--primary-solid);
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }

@@ -65,7 +65,7 @@
 
 .hero__cta--primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+  background: var(--gradient-primary);
   box-shadow:
     0 4px 16px rgba(47, 69, 124, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -80,7 +80,7 @@
 
 .hero__cta--secondary {
   color: var(--blue-800);
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-xs);
 }

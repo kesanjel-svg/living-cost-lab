@@ -4,7 +4,7 @@
   gap: 0.5rem;
   width: 100%;
   padding: 0.35rem 0.35rem 0.35rem 0.875rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
   box-shadow: var(--shadow-xs);
@@ -57,14 +57,14 @@
   font-weight: 600;
   font-family: inherit;
   color: #ffffff;
-  background: var(--blue-600);
+  background: var(--primary-solid);
   border: none;
   border-radius: 999px;
   cursor: pointer;
 }
 
 .search-input__submit:hover {
-  background: var(--blue-700);
+  background: var(--primary-solid-strong);
 }
 
 .search-input--lg {

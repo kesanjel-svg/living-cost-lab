@@ -2,7 +2,7 @@
   width: 100%;
   margin-top: auto;
   padding: 2.5rem 1.5rem;
-  background: var(--blue-950);
+  background: var(--ink);
   color: rgba(255, 255, 255, 0.85);
   box-sizing: border-box;
 }

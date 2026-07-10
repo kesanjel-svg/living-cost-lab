@@ -6,7 +6,7 @@
 .cost-report-results__highlight {
   padding: 1.5rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+  background: var(--gradient-primary);
   border-radius: var(--radius-xl);
   color: #ffffff;
   box-shadow: 0 8px 24px rgba(47, 69, 124, 0.16);
@@ -39,7 +39,7 @@
 
 .cost-report-results__section {
   padding: 1.25rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);

@@ -30,7 +30,7 @@
   margin: 0 0 0.35rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--color-primary, #3b5697);
+  color: var(--blue-600);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -43,7 +43,7 @@
 
 .hub-layout__description {
   margin: 0;
-  color: var(--color-text-muted, #6b7280);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -57,9 +57,9 @@
 .hub-layout__stats span {
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: var(--color-surface-muted, #f3f4f6);
+  background: var(--bg-muted);
   font-size: 0.8rem;
-  color: var(--color-text-muted, #4b5563);
+  color: var(--text-secondary);
 }
 
 @media (max-width: 640px) {

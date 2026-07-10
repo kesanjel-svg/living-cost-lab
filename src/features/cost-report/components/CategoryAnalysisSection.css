@@ -1,6 +1,6 @@
 .category-analysis {
   padding: 1.5rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xs);
@@ -40,7 +40,7 @@
 }
 
 .category-analysis__card--warning {
-  border-left: 3px solid #b45309;
+  border-left: 3px solid var(--warn-text);
 }
 
 .category-analysis__card-head {

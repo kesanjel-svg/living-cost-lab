@@ -1,6 +1,6 @@
 .action-checklist {
   padding: 1.5rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xs);
@@ -67,7 +67,7 @@
 }
 
 .action-checklist__item--high {
-  background: linear-gradient(90deg, #fffbeb 0%, transparent 100%);
+  background: linear-gradient(90deg, var(--warn-bg) 0%, transparent 100%);
   padding-inline: 0.5rem;
   margin-inline: -0.5rem;
   border-radius: var(--radius-md);

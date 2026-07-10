@@ -9,7 +9,7 @@
 
 .support-detail {
   padding: 2rem;
-  background: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
+  background: var(--gradient-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);

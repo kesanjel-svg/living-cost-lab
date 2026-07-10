@@ -6,7 +6,7 @@
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--blue-800);
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--blue-200);
   border-radius: var(--radius-lg);
   cursor: pointer;

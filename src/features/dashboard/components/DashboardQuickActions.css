@@ -24,7 +24,7 @@
   text-align: center;
   color: var(--blue-900);
   text-decoration: none;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);

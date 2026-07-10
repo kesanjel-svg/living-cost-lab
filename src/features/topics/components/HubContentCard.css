@@ -3,9 +3,9 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.25rem;
-  border: 1px solid var(--color-border, #e5e7eb);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--color-surface, #fff);
+  background: var(--surface);
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
@@ -13,7 +13,7 @@
 }
 
 .hub-content-card:hover {
-  border-color: var(--color-primary, #3b5697);
+  border-color: var(--blue-600);
   box-shadow: 0 4px 16px rgba(47, 69, 124, 0.08);
   transform: translateY(-2px);
 }
@@ -43,7 +43,7 @@
 
 .hub-content-card__badge--calculator {
   background: #fef3c7;
-  color: #b45309;
+  color: var(--warn-text);
 }
 
 .hub-content-card__title {
@@ -55,14 +55,14 @@
 .hub-content-card__summary {
   margin: 0;
   font-size: 0.875rem;
-  color: var(--color-text-muted, #6b7280);
+  color: var(--text-secondary);
   line-height: 1.5;
   flex: 1;
 }
 
 .hub-content-card__date {
   font-size: 0.75rem;
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--text-muted);
 }
 
 @keyframes hubCardIn {

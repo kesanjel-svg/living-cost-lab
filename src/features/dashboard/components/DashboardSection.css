@@ -1,6 +1,6 @@
 .dashboard-section {
   padding: 1.25rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);

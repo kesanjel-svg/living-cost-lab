@@ -17,7 +17,7 @@
   font-weight: 500;
   font-family: inherit;
   color: var(--blue-700);
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;

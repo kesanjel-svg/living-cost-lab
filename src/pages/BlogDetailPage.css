@@ -9,7 +9,7 @@
 
 .blog-detail__article {
   padding: 2rem;
-  background: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
+  background: var(--gradient-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
@@ -81,7 +81,7 @@
 .blog-detail__toc {
   margin-bottom: 1.5rem;
   padding: 1.25rem;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -167,7 +167,7 @@
   font-family: inherit;
   color: var(--blue-700);
   text-decoration: none;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;

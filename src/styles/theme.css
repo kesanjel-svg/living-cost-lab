@@ -1,6 +1,10 @@
 /* Theme tokens — synced with src/constants/theme.js */
 :root {
-  /* Deep indigo-navy scale — 채도를 낮춘 프리미엄 네이비 (2026-07 디자인 리프레시) */
+  color-scheme: light;
+
+  /* Deep indigo-navy scale — 채도를 낮춘 프리미엄 네이비 (2026-07 디자인 리프레시)
+     사용 규칙: 950~800은 텍스트, 50~200은 옅은 배경/보더 틴트.
+     다크모드에서는 이 명도 축이 통째로 뒤집힌다. */
   --blue-50: #f4f6fb;
   --blue-100: #e8edf7;
   --blue-200: #d2dcf0;
@@ -25,6 +29,22 @@
   --text-secondary: #5c6575;
   --text-muted: #8f97a8;
 
+  /* 카드/패널 표면 — 다크모드에서 --bg보다 한 단계 밝게 뜨는 면 */
+  --surface: #ffffff;
+  /* 모드와 무관하게 항상 어두운 면(푸터 등, 흰색 알파 텍스트 전제) */
+  --ink: #101830;
+  --header-bg: rgba(255, 255, 255, 0.92);
+
+  /* 흰 텍스트를 얹는 단색 버튼 배경 — 다크모드에서도 어두운 네이비 유지 */
+  --primary-solid: #2f457c;
+  --primary-solid-strong: #263763;
+
+  --warn-text: #b45309;
+  --warn-bg: #fffbeb;
+  --warn-border: #fde68a;
+  --danger-text: #b91c1c;
+  --danger-bg: #fef2f2;
+
   --max-width: 1120px;
   --section-gap: 4.5rem;
 
@@ -46,7 +66,64 @@
   --sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Noto Sans KR', sans-serif;
 
-  --gradient-primary: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-900) 100%);
+  /* 그라디언트는 흰 텍스트를 얹으므로 리터럴로 고정 — 다크모드에서 별도 재정의 */
+  --gradient-primary: linear-gradient(135deg, #3b5697 0%, #263763 100%);
   --gradient-surface: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
-  --gradient-cta: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-950) 100%);
+  --gradient-cta: linear-gradient(135deg, #263763 0%, #101830 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    /* 명도 축 반전: 950(텍스트)이 밝아지고 50(틴트 배경)이 어두워진다 */
+    --blue-50: #1b2438;
+    --blue-100: #223050;
+    --blue-200: #2e4066;
+    --blue-300: #40567f;
+    --blue-400: #5f7bab;
+    --blue-500: #7e97c5;
+    --blue-600: #9cb1d9;
+    --blue-700: #b3c4e6;
+    --blue-800: #c9d6ef;
+    --blue-900: #dde5f6;
+    --blue-950: #edf1fa;
+
+    --green-50: #0c2b21;
+    --green-600: #34d399;
+    --green-700: #6ee7b7;
+
+    --bg: #0f1420;
+    --bg-subtle: #151b2a;
+    --bg-muted: #1c2334;
+    --border: #283147;
+    --border-light: #202940;
+    --text-secondary: #a6b0c5;
+    --text-muted: #7c86a0;
+
+    --surface: #151c2c;
+    --ink: #0b101c;
+    --header-bg: rgba(15, 20, 32, 0.9);
+
+    --primary-solid: #34508f;
+    --primary-solid-strong: #3f5da3;
+
+    --warn-text: #fbbf24;
+    --warn-bg: #2c2312;
+    --warn-border: #4a3a15;
+    --danger-text: #f87171;
+    --danger-bg: #2c1515;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.25);
+
+    --ring: 0 0 0 3px rgba(126, 151, 197, 0.3);
+
+    --gradient-primary: linear-gradient(135deg, #34508f 0%, #22345c 100%);
+    --gradient-surface: linear-gradient(145deg, #151c2c 0%, #1a2337 100%);
+    --gradient-cta: linear-gradient(135deg, #22345c 0%, #131c31 100%);
+  }
 }

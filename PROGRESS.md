@@ -217,6 +217,15 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - **삽질 기록 2 (메타 주입)**: react-helmet-async v3 + React 19 조합에서는 helmetContext가 채워지지 않고, React 19가 `<title>/<meta>/<link>`를 **렌더 스트림 맨 앞으로 hoist**해서 내보냄(React 19의 의도된 fragment prerender 패턴). prerender.mjs가 스트림 선두의 메타 블록을 정규식으로 잘라 `<head>`로 옮기고, 템플릿의 기본 title/description/keywords/canonical/og/twitter/홈 스키마는 제거해 중복 방지(페이지가 메타를 선언하지 않으면 템플릿 기본값 유지). JSON-LD는 본문 위치에 남지만 유효한 패턴(Google은 body 내 ld+json도 읽음)
    - **검증**: 52/52 경로 프리렌더 성공. 가스 계산기·홈·지원금 상세·블로그 상세·토픽·about 샘플에서 title/og:title/description 각 1개, 페이지별 canonical, 본문 콘텐츠 포함 확인. `vite preview`(4173)로 하이드레이션 검증 — 콘솔 경고/에러 0건, 클라이언트 라우팅 시 탭 제목 정상 갱신(React가 정적 title을 인수), `/support/livelihood-benefit` 등 중첩 딥 라우트도 정적 서빙+하이드레이션 정상. 린트 통과(기존 무관 warning 1건)
    - **배포 참고**: vercel.json 수정 불필요(Vercel은 rewrites보다 파일시스템 우선이라 프리렌더된 정적 파일이 먼저 서빙됨), 봇 미들웨어도 기존 정규식이 그대로 매칭되어 무수정. Vercel 빌드가 이제 SSR 빌드+프리렌더까지 수행하므로 첫 배포 시 빌드 로그에서 "[prerender] 52/52" 확인 권장
+   - push 완료(2026-07-11 사용자 승인). 프로덕션 검증: `livingcostlabs.com/calculators/gas` 원본 HTML에 페이지 전용 title("도시가스 계산기 | 생활비연구소")과 본문 콘텐츠 포함 확인 — SSG 배포 정상 반영
+
+29. **디자인 리프레시 4단계(전반) — 다크모드 (완료, 2026-07-11)**
+   - `prefers-color-scheme: dark` 미디어쿼리 기반(수동 토글 없음, OS/브라우저 설정 따라감). 라이브러리·JS 변경 없이 `src/styles/theme.css` 토큰 재정의만으로 구현
+   - **다크 팔레트 설계**: 네이비 스케일(--blue-50~950)의 명도 축을 반전(950=텍스트가 밝아지고 50=틴트 배경이 어두워짐 — 기존 CSS의 "950은 텍스트, 50~200은 틴트" 사용 규칙이 일관돼서 가능했던 방식). 뉴트럴은 딥 네이비 블랙(#0f1420) 기반, `color-scheme: light/dark`로 폼 컨트롤·스크롤바도 대응
+   - **신규 시맨틱 토큰**: `--surface`(카드 표면), `--ink`(모드 무관 항상 어두운 면 — 푸터가 화이트 알파 텍스트 전제라 필수), `--header-bg`(반투명 헤더), `--primary-solid/-strong`(흰 텍스트 얹는 단색 버튼 — 다크에서도 어두운 네이비 유지), `--warn-*`/`--danger-*`(경고·위험 상태색). 그라디언트 토큰은 흰 텍스트 전제라 리터럴로 고정하고 다크에서 별도 재정의
+   - **하드코딩 색상 토큰화**: 45개 CSS 파일의 `background: #ffffff`→`--surface`, 서피스 그라디언트→`--gradient-surface`, 인라인 버튼 그라디언트(7개 파일)→`--gradient-primary`, 경고/위험 hex(9개 파일)→`--warn-*`/`--danger-*`, topics 레거시 `--color-*` 폴백 토큰→표준 토큰으로 정리. `color: #fff`(버튼 텍스트)와 화이트 알파 인셋 하이라이트는 다크에서도 유효해 유지
+   - **삽질 기록**: 전역 sed 치환이 theme.css 자신의 토큰 정의부(`--warn-text: #b45309` 등)까지 치환해 자기참조(`--warn-text: var(--warn-text)`)가 생겼음 — 정의부 복구로 해결. 대량 색상 치환 시 토큰 정의 파일은 반드시 치환 대상에서 제외할 것
+   - 검증: 빌드(52/52 프리렌더 포함)/린트 통과, 브라우저에서 `colorScheme: dark` 에뮬레이션 — 홈(카드·아이콘 타일·블로그 섹션)·전기 계산기(버튼·결과 카드·요금 구성 차트) 다크 렌더링 정상, 콘솔 에러 0건, 라이트 모드 회귀 없음
    - push 대기 — 사용자 확인 후 진행
 
 ### 🔜 다음 할 일
