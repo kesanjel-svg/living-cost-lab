@@ -18,17 +18,30 @@ export const GAS_REGIONS = {
     source: 'https://www.seoulgas.co.kr/mobile/payment/gasPayTable',
   },
   incheon: {
-    name: '인천',
+    name: '인천(미추홀·연수 등, 삼천리 권역)',
     provider: '삼천리',
-    effectiveDate: '2025-08-01',
+    effectiveDate: '2026-07-01',
     baseFee: 1000,
     unitPrices: {
       cooking: 22.5084,
       heating: 22.5084,
     },
     vatIncluded: false,
-    source: 'https://www.incheon.go.kr/eco/ECO020806',
-    note: '삼천리 공식 페이지 직접 열람이 되지 않아 인천광역시 공공요금 안내 자료(2025-08-01 기준) 값을 사용. 최신 고시 여부는 삼천리 고객센터로 재확인 필요. (2026-07-11 확인: 인천 관내에는 삼천리 외에 인천도시가스㈜도 별도 권역을 공급 — 자세한 내용은 김포(gimpo) 항목 note 참고)',
+    source: 'https://cs.samchully.co.kr/scenario/1583',
+    note: '한국가스공사 공식 공급구역 안내(kogas.or.kr, 2026-07-11 확인)로 삼천리㈜ 인천 관할이 미추홀구·연수구 및 중구·동구·남동구 일부임을 확인 — 인천 전역이 아님(부평·계양·서구·강화군은 인천도시가스㈜ 관할, "인천(부평·계양 등)" 항목 참고). 삼천리 디지털 고객센터(cs.samchully.co.kr)에서 직접 조회한 값이며, 2026-07-01자 요금단가 변동 공지에서도 민수용(가정용) 요금은 변동 없음으로 확인(상업용·발전용만 인상). 인천광역시 공공요금 안내 자료(incheon.go.kr, 2025-08-01 기준)와도 동일 수치로 교차검증됨.',
+  },
+  'incheon-icgas': {
+    name: '인천(부평·계양 등, 인천도시가스 권역)',
+    provider: '인천도시가스',
+    effectiveDate: '2024-08-01',
+    baseFee: 1200,
+    unitPrices: {
+      cooking: 22.5593,
+      heating: 22.5258,
+    },
+    vatIncluded: false,
+    source: 'http://www.icgas.co.kr/custom/Chargecost.htm',
+    note: '한국가스공사 공식 공급구역 안내(kogas.or.kr, 2026-07-11 확인)로 인천도시가스㈜ 관할이 부평구·계양구·서구·강화군 및 중구·동구·남동구 일부임을 확인 — 위 "인천(미추홀·연수 등)" 항목(삼천리)과는 별개 회사·권역. 인천도시가스 자체 공식 요금단가표(엑셀 파일 직접 확인, 2024-08-01 시행분)를 사용했으며, 언론 보도(에너지신문 등)에 따르면 인천 지역 도시가스 요금은 2023년부터 동결되어 2026-08 인상 예정 — 그 전까지는 이 값이 최신. 정확한 금액은 고객센터(1600-0002) 확인 권장.',
   },
   gimpo: {
     name: '김포(경기, 인천도시가스 권역)',
@@ -41,7 +54,7 @@ export const GAS_REGIONS = {
     },
     vatIncluded: false,
     source: 'http://www.icgas.co.kr/custom/Chargecost.htm',
-    note: '인천도시가스㈜ 공급권역(통진읍·대곶면·월곶면·양촌읍 일부 등 김포시 서부/북부)에 적용. 김포시 내 나머지 권역(구래동 등)은 서울도시가스 관할로 "경기도" 항목과 동일 요금 적용. 인천도시가스 자체 공식 요금단가표(엑셀 파일 직접 확인, 2024-08-01 시행분)를 사용했으며, 언론 보도(에너지신문 등)에 따르면 인천 지역 도시가스 요금은 2023년부터 동결되어 2026-08 인상 예정 — 그 전까지는 이 값이 최신. 참고: 같은 인천 관내라도 삼천리(인천 항목)와 인천도시가스는 별도 회사로 요금이 다를 수 있음.',
+    note: '인천도시가스㈜ 공급권역(통진읍·대곶면·월곶면·양촌읍 일부 등 김포시 서부/북부)에 적용 — 요금은 "인천(부평·계양 등, 인천도시가스 권역)" 항목과 동일(같은 공급사). 김포시 내 나머지 권역(구래동 등)은 서울도시가스 관할로 "경기도" 항목과 동일 요금 적용.',
   },
   busan: {
     name: '부산',
@@ -631,6 +644,7 @@ export const GAS_REGIONS = {
 export const GAS_REGION_ORDER = [
   'seoul',
   'incheon',
+  'incheon-icgas',
   'gimpo',
   'busan',
   'daegu',
@@ -688,7 +702,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 47개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 48개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -705,7 +719,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 47개 지역(서울·인천·김포·부산·대구·경산·광주·대전·울산·경기·용인·화성·고양·안산·파주·시흥·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·횡성·평창·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 48개 지역(서울·인천·인천(부평)·김포·부산·대구·경산·광주·대전·울산·경기·용인·화성·고양·안산·파주·시흥·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·횡성·평창·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
