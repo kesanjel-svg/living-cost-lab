@@ -121,7 +121,59 @@ export const GAS_REGIONS = {
     },
     vatIncluded: false,
     source: 'http://www.citygas.or.kr/info/charge.jsp',
-    note: '경기도 내 다수 지역(수원·부천·평택·안양 등, 삼천리 관할)을 포함한 대표값. 경기도는 공급사(삼천리·코원에너지서비스·예스코 등)와 무관하게 도 전체에 동일한 소매요금이 적용됨을 코원에너지서비스·예스코 공식 요금조회 결과로 교차 확인함(2026-07-06 확인, 상세는 "성남"·"남양주" 지역 항목 참고).',
+    note: '경기도 내 다수 지역(수원·부천·평택·안양 등, 삼천리 관할)을 포함한 대표값. 경기도는 공급사(삼천리·코원에너지서비스·예스코·대륜이엔에스 등)와 무관하게 도 전체에 동일한 소매요금이 적용됨을 다수 공급사 공식 요금조회 결과로 교차 확인함(2026-07-06 확인, 상세는 "성남"·"남양주"·"의정부"·"용인" 등 지역 항목 참고).',
+  },
+  yongin: {
+    name: '용인(경기)',
+    provider: '삼천리',
+    effectiveDate: '2026-06-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'https://www.kogas.or.kr/site/koGas/1020408040000',
+    note: '한국가스공사 공식 공급구역 안내(2026-07-10 확인) 기준 삼천리㈜ 공급권역(부천·시흥·안산·안양·광명·의왕·군포·수원·화성·용인·안성·평택·오산시). 이미 "경기도" 항목의 근거인 삼천리 관할에 포함되는 지역이라 별도 자체 요금조회 없이 동일 수치를 적용.',
+  },
+  hwaseong: {
+    name: '화성(경기)',
+    provider: '삼천리',
+    effectiveDate: '2026-06-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'https://www.kogas.or.kr/site/koGas/1020408040000',
+    note: '한국가스공사 공식 공급구역 안내(2026-07-10 확인) 기준 삼천리㈜ 공급권역(부천·시흥·안산·안양·광명·의왕·군포·수원·화성·용인·안성·평택·오산시). 이미 "경기도" 항목의 근거인 삼천리 관할에 포함되는 지역이라 별도 자체 요금조회 없이 동일 수치를 적용.',
+  },
+  ansan: {
+    name: '안산(경기)',
+    provider: '삼천리',
+    effectiveDate: '2026-06-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'https://www.kogas.or.kr/site/koGas/1020408040000',
+    note: '한국가스공사 공식 공급구역 안내(2026-07-10 확인) 기준 삼천리㈜ 공급권역(부천·시흥·안산·안양·광명·의왕·군포·수원·화성·용인·안성·평택·오산시). 이미 "경기도" 항목의 근거인 삼천리 관할에 포함되는 지역이라 별도 자체 요금조회 없이 동일 수치를 적용.',
+  },
+  siheung: {
+    name: '시흥(경기)',
+    provider: '삼천리',
+    effectiveDate: '2026-06-01',
+    baseFee: 1250,
+    unitPrices: {
+      cooking: 22.6226,
+      heating: 22.6226,
+    },
+    vatIncluded: false,
+    source: 'https://www.kogas.or.kr/site/koGas/1020408040000',
+    note: '한국가스공사 공식 공급구역 안내(2026-07-10 확인) 기준 삼천리㈜ 공급권역(부천·시흥·안산·안양·광명·의왕·군포·수원·화성·용인·안성·평택·오산시). 이미 "경기도" 항목의 근거인 삼천리 관할에 포함되는 지역이라 별도 자체 요금조회 없이 동일 수치를 적용.',
   },
   seongnam: {
     name: '성남(경기)',
@@ -547,6 +599,10 @@ export const GAS_REGION_ORDER = [
   'daejeon',
   'ulsan',
   'gyeonggi',
+  'yongin',
+  'hwaseong',
+  'ansan',
+  'siheung',
   'seongnam',
   'namyangju',
   'uijeongbu',
@@ -590,7 +646,7 @@ function toFlatUnitPrice(heating) {
   return typeof heating === 'number' ? heating : heating.below516
 }
 
-// 미지원 지역용 근사치. 조사 완료된 40개 지역의 단순 평균으로 산출하며,
+// 미지원 지역용 근사치. 조사 완료된 44개 지역의 단순 평균으로 산출하며,
 // 실제 거주 지역 도시가스사 요금표와 차이가 있을 수 있음을 계산기 UI에서 안내한다.
 export function getNationwideAverageRegion() {
   const regions = GAS_REGION_ORDER.map((id) => GAS_REGIONS[id])
@@ -607,7 +663,7 @@ export function getNationwideAverageRegion() {
     },
     vatIncluded: false,
     source: null,
-    note: '아직 지원하지 않는 지역이라 조사 완료된 40개 지역(서울·인천·부산·대구·경산·광주·대전·울산·경기·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·횡성·평창·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
+    note: '아직 지원하지 않는 지역이라 조사 완료된 44개 지역(서울·인천·부산·대구·경산·광주·대전·울산·경기·용인·화성·안산·시흥·성남·남양주·의정부·경남·진주·양산·세종·강원·강릉·속초·원주·횡성·평창·청주·충주·천안·아산·공주·보령·서산·전주·군산·익산·포항·구미·경주·안동·여수·순천·목포·제주) 요금의 단순 평균으로 근사 계산한 값입니다. 실제 거주 지역 도시가스사 요금표를 확인하세요.',
     isApproximate: true,
   }
 }
