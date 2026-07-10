@@ -94,8 +94,15 @@ function seoAssetsPlugin(env) {
   }
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, isSsrBuild }) => {
   const env = loadEnv(mode, process.cwd(), '')
+
+  // SSR 번들(프리렌더용)에는 SEO 자산 생성/청크 분리가 불필요 — 클라이언트 빌드에만 적용
+  if (isSsrBuild) {
+    return {
+      plugins: [react()],
+    }
+  }
 
   return {
     plugins: [

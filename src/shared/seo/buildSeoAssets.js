@@ -9,7 +9,7 @@ import {
 import { blogPosts } from '../../data/blogPosts.js'
 import clusters from '../../data/topics/clusters.json'
 
-const STATIC_PATHS = [
+export const STATIC_PATHS = [
   '/',
   '/support',
   '/cost-report',

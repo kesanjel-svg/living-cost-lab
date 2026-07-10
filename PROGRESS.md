@@ -210,6 +210,15 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - 검증: 빌드/린트 통과, 브라우저 실측 — 전기 350kWh(하계) 59,990원 카운트업 + 6항목 차트(전력량요금 78% 등), 가스 45㎥ 48,150원 + 3항목 차트(사용량요금 88% 등), 콘솔 에러 없음
    - push 완료(2026-07-10 사용자 승인)
 
+28. **디자인 리프레시 3단계 — 전체 색인 페이지 정적 프리렌더링(SSG) (완료, 2026-07-11)**
+   - 배경: 순수 CSR SPA라 모든 경로가 빈 `<div id="root">`로 서빙 → sitemap의 52개 색인 페이지 전부를 빌드 타임에 완성된 HTML로 생성하도록 전환. 추가 의존성 없음(react-dom/static·react-router StaticRouter 등 기존 패키지만 사용)
+   - **구조**: ① `App.jsx`에서 라우터 분리(`AppShell` named export — 클라이언트는 BrowserRouter, 서버는 StaticRouter로 감쌈) ② `src/entry-server.jsx` 신설 — React 19 `prerender`(react-dom/static)로 렌더(Suspense/lazy 라우트 완료까지 대기하므로 코드 스플리팅 유지), 프리렌더 경로 목록도 여기서 export ③ `scripts/prerender.mjs` 신설 — SSR 번들 로드 → 52개 경로 렌더 → `dist/<경로>/index.html` 저장, 실패 1건이라도 있으면 빌드 실패(exit 1) ④ `main.jsx` — 프리렌더된 페이지는 `hydrateRoot`, 아니면 기존 `createRoot` 폴백 ⑤ `package.json` build 스크립트 3단계 체인(client build → `--ssr` build(outDir dist-ssr, .gitignore 기존 항목 재사용) → prerender), `build:spa`로 기존 단독 빌드도 보존 ⑥ `vite.config.js` — `isSsrBuild`면 SEO 자산/manualChunks 플러그인 제외
+   - **삽질 기록 1 (경로 수집)**: `buildSeoAssets.js`의 `collectSitemapPaths()`는 `import.meta.url` 기준 node:fs 상대경로로 support JSON을 읽는데, SSR 번들(dist-ssr) 안에서는 이 경로가 어긋나 ENOENT — entry-server에서는 Vite 네이티브 임포트(support/index.js의 import.meta.glob 결과·blogPosts·clusters.json + `STATIC_PATHS` export 추가)로 동일 목록을 재구성하는 `getPrerenderPaths()`를 별도 구현
+   - **삽질 기록 2 (메타 주입)**: react-helmet-async v3 + React 19 조합에서는 helmetContext가 채워지지 않고, React 19가 `<title>/<meta>/<link>`를 **렌더 스트림 맨 앞으로 hoist**해서 내보냄(React 19의 의도된 fragment prerender 패턴). prerender.mjs가 스트림 선두의 메타 블록을 정규식으로 잘라 `<head>`로 옮기고, 템플릿의 기본 title/description/keywords/canonical/og/twitter/홈 스키마는 제거해 중복 방지(페이지가 메타를 선언하지 않으면 템플릿 기본값 유지). JSON-LD는 본문 위치에 남지만 유효한 패턴(Google은 body 내 ld+json도 읽음)
+   - **검증**: 52/52 경로 프리렌더 성공. 가스 계산기·홈·지원금 상세·블로그 상세·토픽·about 샘플에서 title/og:title/description 각 1개, 페이지별 canonical, 본문 콘텐츠 포함 확인. `vite preview`(4173)로 하이드레이션 검증 — 콘솔 경고/에러 0건, 클라이언트 라우팅 시 탭 제목 정상 갱신(React가 정적 title을 인수), `/support/livelihood-benefit` 등 중첩 딥 라우트도 정적 서빙+하이드레이션 정상. 린트 통과(기존 무관 warning 1건)
+   - **배포 참고**: vercel.json 수정 불필요(Vercel은 rewrites보다 파일시스템 우선이라 프리렌더된 정적 파일이 먼저 서빙됨), 봇 미들웨어도 기존 정규식이 그대로 매칭되어 무수정. Vercel 빌드가 이제 SSR 빌드+프리렌더까지 수행하므로 첫 배포 시 빌드 로그에서 "[prerender] 52/52" 확인 권장
+   - push 대기 — 사용자 확인 후 진행
+
 ### 🔜 다음 할 일
 아래 중 우선순위는 사용자 확인 후 진행:
 1. **애드센스 실제 심사 결과 대기/확인** — SDK 로드 구현 완료, 배포 반영됨. 사이트에서 실제 광고가 노출되는지 프로덕션에서 육안 확인 필요. 콘텐츠량은 계산기 4 + 지원금 21 = 25개로 크게 증가했으나 여전히 통상 권장(20~30+)의 하한 근처라 심사 통과 여부는 지켜봐야 함. (2026-07-10: Claude 브라우저 확장 미연결로 자동 확인 불가 — 사용자 직접 확인 필요)

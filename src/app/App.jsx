@@ -51,10 +51,13 @@ function LazyRoute({ children }) {
   return <Suspense fallback={<RouteFallback />}>{children}</Suspense>
 }
 
-function App() {
+/**
+ * 라우터를 제외한 앱 본체.
+ * 클라이언트는 BrowserRouter(App), 프리렌더(entry-server)는 StaticRouter로 감싼다.
+ */
+export function AppShell() {
   return (
-    <BrowserRouter>
-      <div className="app">
+    <div className="app">
         <a href="#main-content" className="skip-link">
           본문 바로가기
         </a>
@@ -247,6 +250,13 @@ function App() {
         </main>
         <Footer />
       </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   )
 }
