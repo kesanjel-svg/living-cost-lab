@@ -13,6 +13,13 @@ export const CONTRIBUTION_RATE = 0.095
 export const MIN_INCOME_BASE = 410000
 export const MAX_INCOME_BASE = 6590000
 
+// SourceBadge용 공식 출처 메타데이터. 기준소득월액은 매년 7월 1일 갱신.
+export const PENSION_SOURCE = {
+  label: '국민연금공단 연금보험료 안내',
+  url: 'https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0038M0.do',
+  effectiveDate: '2026-07-01',
+}
+
 export const PENSION_TIPS = [
   '지역가입자는 보험료를 본인이 전액 부담합니다',
   '저소득 지역가입자·농어업인은 국고 지원 대상일 수 있습니다',

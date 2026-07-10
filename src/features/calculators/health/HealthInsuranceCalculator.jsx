@@ -6,10 +6,12 @@ import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
 import { formatCurrency } from '../../../utils/formatCurrency'
+import { SourceBadge } from '../../../shared/ui'
 import {
   buildEmployeeHealthInsuranceResult,
   buildRegionalHealthInsuranceResult,
   getHealthInsuranceRecommendations,
+  HEALTH_SOURCE,
   HEALTH_TIPS,
   INSURED_TYPES,
 } from '../services/healthInsuranceService'
@@ -133,6 +135,12 @@ export default function HealthInsuranceCalculator() {
           <CalculatorRecommendCard items={getHealthInsuranceRecommendations()} />
         </div>
       )}
+
+      <SourceBadge
+        label={HEALTH_SOURCE.label}
+        url={HEALTH_SOURCE.url}
+        effectiveDate={HEALTH_SOURCE.effectiveDate}
+      />
     </CalculatorLayout>
   )
 }

@@ -7,6 +7,7 @@ import CalculatorSavingCard from '../components/CalculatorSavingCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
 import { formatCurrency } from '../../../utils/formatCurrency'
+import { SourceBadge } from '../../../shared/ui'
 import {
   buildGasResult,
   DEFAULT_REGION_ID,
@@ -144,6 +145,15 @@ export default function GasCalculator() {
 
           <CalculatorRecommendCard items={getGasRecommendations(result.usage)} />
         </div>
+      )}
+
+      {region && (
+        <SourceBadge
+          label={`${region.provider} 요금표`}
+          url={region.source}
+          effectiveDate={region.effectiveDate}
+          note={region.note}
+        />
       )}
     </CalculatorLayout>
   )

@@ -1,28 +1,29 @@
 /* Theme tokens — synced with src/constants/theme.js */
 :root {
-  --blue-50: #eff6ff;
-  --blue-100: #dbeafe;
-  --blue-200: #bfdbfe;
-  --blue-300: #93c5fd;
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --blue-600: #2563eb;
-  --blue-700: #1d4ed8;
-  --blue-800: #1e40af;
-  --blue-900: #1e3a8a;
-  --blue-950: #172554;
+  /* Deep indigo-navy scale — 채도를 낮춘 프리미엄 네이비 (2026-07 디자인 리프레시) */
+  --blue-50: #f4f6fb;
+  --blue-100: #e8edf7;
+  --blue-200: #d2dcf0;
+  --blue-300: #aebfe2;
+  --blue-400: #8099cd;
+  --blue-500: #5673b1;
+  --blue-600: #3b5697;
+  --blue-700: #2f457c;
+  --blue-800: #263763;
+  --blue-900: #1c2949;
+  --blue-950: #101830;
 
   --green-50: #ecfdf5;
   --green-600: #059669;
   --green-700: #047857;
 
   --bg: #ffffff;
-  --bg-subtle: #f8fafc;
-  --bg-muted: #f1f5f9;
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
+  --bg-subtle: #f7f8fb;
+  --bg-muted: #eef0f5;
+  --border: #e4e7ee;
+  --border-light: #eef0f5;
+  --text-secondary: #5c6575;
+  --text-muted: #8f97a8;
 
   --max-width: 1120px;
   --section-gap: 4.5rem;
@@ -31,18 +32,21 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
 
-  --shadow-xs: 0 1px 2px rgba(23, 37, 84, 0.04);
-  --shadow-sm: 0 4px 12px rgba(23, 37, 84, 0.06);
-  --shadow-md: 0 8px 24px rgba(23, 37, 84, 0.08);
-  --shadow-lg: 0 16px 40px rgba(23, 37, 84, 0.1);
-  --shadow-card: 0 1px 3px rgba(23, 37, 84, 0.04), 0 8px 24px rgba(23, 37, 84, 0.06);
+  --shadow-xs: 0 1px 2px rgba(16, 24, 48, 0.05);
+  --shadow-sm: 0 2px 8px rgba(16, 24, 48, 0.06);
+  --shadow-md: 0 6px 20px rgba(16, 24, 48, 0.07);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 48, 0.09);
+  --shadow-card: 0 1px 2px rgba(16, 24, 48, 0.04), 0 6px 16px rgba(16, 24, 48, 0.04);
+
+  /* 포커스 링 — 하드코딩 rgba 대신 이 토큰을 사용 */
+  --ring: 0 0 0 3px rgba(59, 86, 151, 0.16);
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   --sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Noto Sans KR', sans-serif;
 
-  --gradient-primary: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-900) 100%);
   --gradient-surface: linear-gradient(145deg, #ffffff 0%, var(--blue-50) 100%);
-  --gradient-cta: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-900) 100%);
+  --gradient-cta: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-950) 100%);
 }

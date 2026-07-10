@@ -43,8 +43,8 @@
 }
 
 .topics-index__card:hover {
-  border-color: var(--color-primary, #2563eb);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
+  border-color: var(--color-primary, #3b5697);
+  box-shadow: 0 6px 20px rgba(47, 69, 124, 0.1);
   transform: translateY(-2px);
 }
 

@@ -33,7 +33,7 @@
 }
 
 .related-topic-nav__chip:hover {
-  border-color: var(--color-primary, #2563eb);
+  border-color: var(--color-primary, #3b5697);
   background: #eff6ff;
 }
 

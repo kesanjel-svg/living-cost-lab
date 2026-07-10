@@ -13,8 +13,8 @@
 }
 
 .hub-content-card:hover {
-  border-color: var(--color-primary, #2563eb);
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+  border-color: var(--color-primary, #3b5697);
+  box-shadow: 0 4px 16px rgba(47, 69, 124, 0.08);
   transform: translateY(-2px);
 }
 

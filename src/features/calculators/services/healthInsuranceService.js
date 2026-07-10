@@ -15,6 +15,13 @@ export const HEALTH_INSURANCE_RATE = 0.0719
 // 2026년 장기요양보험료율 0.9448%(건강보험료 대비 13.14%로 환산해 부과).
 export const LONG_TERM_CARE_RATE_OF_HEALTH = 0.1314
 
+// SourceBadge용 공식 출처 메타데이터. 보험료율은 매년 건정심 의결로 갱신.
+export const HEALTH_SOURCE = {
+  label: '국민건강보험공단 보험료율 안내',
+  url: 'https://www.nhis.or.kr',
+  effectiveDate: '2026-01-01',
+}
+
 export const HEALTH_TIPS = [
   '건강보험료는 매년 변경되니 최신 고시를 확인하세요',
   '장기요양보험료는 건강보험료에 비례해 함께 부과됩니다',

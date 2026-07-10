@@ -33,7 +33,7 @@
   border: none;
   border-radius: var(--radius-lg);
   box-shadow:
-    0 4px 14px rgba(37, 99, 235, 0.28),
+    0 4px 14px rgba(47, 69, 124, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   cursor: pointer;
   transition:
@@ -44,6 +44,6 @@
 .cost-report-form__submit:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 6px 18px rgba(37, 99, 235, 0.32),
+    0 6px 18px rgba(47, 69, 124, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }

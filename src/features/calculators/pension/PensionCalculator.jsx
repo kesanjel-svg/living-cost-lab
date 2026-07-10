@@ -6,9 +6,11 @@ import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
 import { formatCurrency } from '../../../utils/formatCurrency'
+import { SourceBadge } from '../../../shared/ui'
 import {
   buildPensionResult,
   getPensionRecommendations,
+  PENSION_SOURCE,
   PENSION_TIPS,
 } from '../services/pensionService'
 
@@ -95,6 +97,12 @@ export default function PensionCalculator() {
           <CalculatorRecommendCard items={getPensionRecommendations()} />
         </div>
       )}
+
+      <SourceBadge
+        label={PENSION_SOURCE.label}
+        url={PENSION_SOURCE.url}
+        effectiveDate={PENSION_SOURCE.effectiveDate}
+      />
     </CalculatorLayout>
   )
 }

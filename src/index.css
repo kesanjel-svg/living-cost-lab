@@ -18,6 +18,14 @@ html {
   box-sizing: border-box;
 }
 
+/* 계산기·요금 사이트 특성상 숫자는 항상 고정폭으로 — 자릿수가 바뀌어도 흔들리지 않게 */
+input,
+select,
+table,
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
 body {
   margin: 0;
 }

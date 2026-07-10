@@ -8,7 +8,7 @@ export const BRAND = {
   url: 'https://livingcostlabs.com',
   logoPath: '/favicon.svg',
   ogImagePath: '/og-image.png',
-  themeColor: '#2563eb',
+  themeColor: '#3b5697',
   locale: 'ko_KR',
   copyright: '© 2026 생활비연구소',
   description:

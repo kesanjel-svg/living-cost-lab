@@ -8,8 +8,10 @@ import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
 import { getDefaultElectricUsageFromProfile } from '../../profile/services/profileService'
 import { formatCurrency } from '../../../utils/formatCurrency'
+import { SourceBadge } from '../../../shared/ui'
 import {
   buildElectricResult,
+  ELECTRIC_SOURCE,
   ELECTRIC_TIPS,
   getElectricRecommendations,
   isCurrentSummerPeriod,
@@ -96,6 +98,12 @@ export default function ElectricCalculator() {
           <CalculatorRecommendCard items={getElectricRecommendations(result.usage)} />
         </div>
       )}
+
+      <SourceBadge
+        label={ELECTRIC_SOURCE.label}
+        url={ELECTRIC_SOURCE.url}
+        effectiveDate={ELECTRIC_SOURCE.effectiveDate}
+      />
     </CalculatorLayout>
   )
 }

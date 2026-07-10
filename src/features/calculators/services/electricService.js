@@ -7,6 +7,13 @@ import { getProgramsByCalculator } from '../../support/services/supportService'
 // 출처: KEPCO 한글 전기요금표(https://home.kepco.co.kr/kepco/front/html/CY/E/E/CYEEHP00101.html),
 // 요금 계산기(https://cyber.kepco.co.kr/ckepco/front/jsp/CY/J/A/CYJAPP000.jsp)
 // 매년 요금 개편이 있을 수 있어 실제 청구 전 최신 고시로 재확인 필요.
+// SourceBadge용 공식 출처 메타데이터. 요금표 갱신 시 effectiveDate도 함께 갱신할 것.
+export const ELECTRIC_SOURCE = {
+  label: '한국전력공사 전기요금표',
+  url: 'https://home.kepco.co.kr/kepco/front/html/CY/E/E/CYEEHP00101.html',
+  effectiveDate: '2026-07-01',
+}
+
 const GENERAL_PERIOD_TIERS = [
   { limit: 200, baseFee: 910, unitPrice: 120.0 },
   { limit: 400, baseFee: 1600, unitPrice: 214.6 },
