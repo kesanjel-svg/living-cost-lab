@@ -258,7 +258,14 @@ Sprint 6: SEO 강화 / 7: 통합검색 / 8: 카테고리 허브 / 9: AI 진단 2
    - **조치**: "인천" 항목명을 "인천(미추홀·연수 등, 삼천리 권역)"으로 명확화하고 note에 권역 한계 명시, 새 항목 `incheon-icgas`("인천(부평·계양 등, 인천도시가스 권역)")를 추가 — 요금은 이미 김포 조사에서 확보한 인천도시가스 수치(취사 22.5593원/MJ, 난방 22.5258원/MJ, 기본요금 1,200원, 2024-08-01 시행분)를 그대로 재사용(동일 공급사이므로 재조사 불필요). `gimpo` 항목 note도 새 인천도시가스 항목을 참조하도록 간소화
    - `GAS_REGION_ORDER`에 `incheon` 바로 뒤 `incheon-icgas` 삽입(48개), 전국평균 note 47→48개 지역, `GasCalculatorPage.jsx` SEO description·`CalculatorsPage.jsx` 안내 문구도 48개 지역으로 갱신
    - 검증: `npm run build`(53/53 프리렌더)/`npm run lint` 통과(기존 무관 warning 1건만), Node 스크립트로 48개 지역 평균 재계산(기본요금 약 1,024원, note "48개" 정상 반영), 브라우저 실측으로 드롭다운에 "인천(부평·계양 등, 인천도시가스 권역)" 옵션 선택 시 힌트 텍스트 정상 노출, 콘솔 에러 0건
-   - push 예정(사용자 승인 하에 자동 진행)
+   - push 완료(2026-07-11 사용자 승인)
+
+33. **모바일 UI 버그 2건 수정 (완료, 2026-07-11)** — 사용자 제보: "모바일에서 검색입력창과 클릭창이 겹침, AI 생활비 진단 화면에서 기본색상과 선택색이 비슷해 구분 어려움"
+   - **선택 상태 대비 부족 (실제 원인 확인)**: `SupportFinderOptionGroup.css`의 `.support-finder__option--selected`가 배경 `--blue-50`(#f4f6fb)을 썼는데, 미선택 기본 배경 `--bg-subtle`(#f7f8fb)과 거의 동일한 색이었음 — 1단계 디자인 리프레시에서 팔레트를 채도 낮은 네이비로 바꾸며 두 톤 사이 간격이 좁아진 부작용. 이 컴포넌트는 AI 생활비 진단(`CostReportForm`)의 나이·가구원수·월소득·거주지역·주거형태 선택 버튼에 쓰여 정확히 신고된 화면과 일치. 배경을 `--blue-100`, 테두리를 `--blue-200`→`--blue-500`, `font-weight`를 500→600(선택 시)으로 강화해 대비 확보
+   - **모바일 검색창 겹침**: `type="search"` 입력창(`SearchInput.jsx`의 헤더 검색, `SupportSearch.jsx`의 지원금 검색)에 iOS/Android가 자동으로 그리는 기본 지우기(×) 아이콘이 커스텀 "검색" 버튼과 겹쳐 보이는 문제로 진단 — `padding-right:0`인 입력창이라 native 클리어 버튼이 바로 옆 커스텀 제출 버튼과 인접해 겹침 발생 가능. `-webkit-appearance:none`/`appearance:none` + `::-webkit-search-cancel-button`/`::-webkit-search-decoration` 제거로 네이티브 장식을 없애고 커스텀 UI만 남김
+   - **검증 삽질 기록**: 브라우저 자동화 탭이 백그라운드 상태로 유지되며 Chrome이 CSS `transition`을 중간에 멈춰버려(0.2s 트랜지션이 있는 background/border-color/color 속성) `getComputedStyle`이 계속 미선택 상태의 "멈춘" 값을 반환하는 현상을 겪음 — 인라인 `!important` 강제 오버라이드조차 반영 안 되는 것으로 실제 앱 버그가 아님을 의심, `transition:none`을 강제 주입해 트랜지션을 우회하자 정상적으로 최종 색상(`--blue-100`/`--blue-500`/`--blue-700`)이 확인됨. CSSOM 직접 조회로 CSS 규칙 자체(순서·특이도·내용)가 항상 올바름을 먼저 확인해뒀던 것이 실제 버그와 도구 아티팩트를 구분하는 데 결정적이었음
+   - 검증: `npm run build`(53/53 프리렌더)/`npm run lint` 통과(기존 무관 warning 1건만), `transition:none` 우회 후 선택/미선택 상태 색상 대비 명확히 구분됨 확인(선택 `#e8edf7`/`#5673b1`/`#2f457c` vs 미선택 `#f7f8fb`/`#e4e7ee`/`#5c6575`), `-webkit-appearance:none` computed style 정상 적용 확인
+   - push는 사용자 확인 후 진행
 
 ### 🔜 다음 할 일
 아래 중 우선순위는 사용자 확인 후 진행:

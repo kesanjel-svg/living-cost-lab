@@ -38,6 +38,14 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.support-search__input::-webkit-search-cancel-button,
+.support-search__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .support-search__input:focus {
