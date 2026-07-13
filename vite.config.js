@@ -128,6 +128,10 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         },
       },
       cssMinify: true,
+      // CSS 압축기가 미디어쿼리를 최신 range 문법(width<=900px)으로 바꾸면
+      // 구형 모바일 브라우저(Safari 16.3 이하 등)에서 반응형 분기 전체가 무시됨 —
+      // 헤더 겹침 버그의 재발 방지를 위해 호환 문법(max-width)으로 출력 고정
+      cssTarget: ['chrome87', 'safari14', 'firefox78', 'edge88'],
       modulePreload: { polyfill: false },
     },
   }
