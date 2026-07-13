@@ -126,10 +126,9 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .support-finder__submit,
-  button[type='submit'] {
-    width: 100%;
-  }
+  /* (제거됨) button[type='submit'] 전역 width:100% — 헤더 검색 pill의 "검색" 버튼까지
+     100%로 늘려 입력창을 0px로 만들던 원인. 전체 폭이 필요한 제출 버튼들
+     (calculator/cost-report/profile/support-finder)은 각자 CSS에 이미 width:100% 보유. */
 
   .card {
     min-width: 0;
