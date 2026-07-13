@@ -15,6 +15,8 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  /* 예기치 않은 줄바꿈이 생겨도 줄끼리 붙지 않도록 안전 간격 */
+  row-gap: 0.625rem;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
@@ -109,7 +111,10 @@
   background: var(--blue-50);
 }
 
-@media (max-width: 768px) {
+/* 900px 미만: 인라인 메뉴가 검색창과 한 줄에 다 못 들어가 줄바꿈되며
+   검색창과 겹쳐 보이는 구간(약 770~860px)이 있어, 햄버거 메뉴로 전환하는
+   분기점을 768px → 900px로 상향 (폰 가로모드·태블릿 포함) */
+@media (max-width: 900px) {
   .header__toggle {
     display: flex;
   }

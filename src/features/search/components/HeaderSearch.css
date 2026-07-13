@@ -5,11 +5,12 @@
   margin: 0 1rem;
 }
 
-@media (max-width: 768px) {
+/* Header.css의 햄버거 분기점(900px)과 반드시 함께 유지할 것 */
+@media (max-width: 900px) {
   .header-search {
     order: 3;
     flex: 1 1 100%;
     max-width: none;
-    margin: 0.75rem 0 0;
+    margin: 0.125rem 0 0;
   }
 }
