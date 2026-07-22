@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { formatBlogDate, getBlogPath } from '../services/blogService'
+import { getBlogThemeImage } from '../data/blogImages'
 import './BlogCard.css'
 
 export default function BlogCard({ post, index = 0 }) {
@@ -10,7 +11,16 @@ export default function BlogCard({ post, index = 0 }) {
       style={{ animationDelay: `${0.05 + index * 0.06}s` }}
     >
       <div className={`blog-card__thumb blog-card__thumb--${post.thumbnailTheme}`}>
-        <span aria-hidden="true">{post.thumbnail}</span>
+        <img
+          className="blog-card__img"
+          src={getBlogThemeImage(post.thumbnailTheme)}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="blog-card__emoji" aria-hidden="true">
+          {post.thumbnail}
+        </span>
       </div>
       <div className="blog-card__body">
         <span className="blog-card__category">{post.category}</span>

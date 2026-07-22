@@ -45,13 +45,38 @@
 }
 
 .blog-detail__hero {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 10rem;
+  aspect-ratio: 21 / 9;
+  max-height: 20rem;
   margin-bottom: 1.5rem;
-  font-size: 3.5rem;
+  overflow: hidden;
   border-radius: var(--radius-lg);
+}
+
+.blog-detail__hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-detail__hero-emoji {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
 }
 
 .blog-detail__hero--energy {

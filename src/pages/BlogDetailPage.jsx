@@ -8,6 +8,7 @@ import {
   getRelatedPosts,
 } from '../features/blog/services/blogService'
 import { blogPosts } from '../data/blogPosts'
+import { getBlogThemeImage } from '../features/blog/data/blogImages'
 import { formatPageTitle } from '../constants/branding'
 import Seo from '../shared/seo/Seo'
 import { EmptyState } from '../shared/ui'
@@ -124,7 +125,15 @@ export default function BlogDetailPage() {
             <div
               className={`blog-detail__hero blog-detail__hero--${post.thumbnailTheme}`}
             >
-              <span aria-hidden="true">{post.thumbnail}</span>
+              <img
+                className="blog-detail__hero-img"
+                src={getBlogThemeImage(post.thumbnailTheme)}
+                alt={post.category}
+                decoding="async"
+              />
+              <span className="blog-detail__hero-emoji" aria-hidden="true">
+                {post.thumbnail}
+              </span>
             </div>
 
             <nav className="blog-detail__toc" aria-label="목차">
