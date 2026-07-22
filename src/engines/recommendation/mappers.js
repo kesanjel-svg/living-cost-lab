@@ -11,9 +11,11 @@ export function mapSupportProgram(program, exampleSaving = 20000) {
   }
 }
 
+// 미제공(available: false) 항목은 null을 반환해 추천 목록에서 아예 제외한다.
+// "준비중" 배지 노출은 애드센스 탐색(Navigation) 정책상 미완성 페이지 신호가 되므로 금지.
 export function mapCalculator(id) {
   const calculator = calculatorRegistry[id]
-  if (!calculator) {
+  if (!calculator?.available) {
     return null
   }
 
@@ -21,13 +23,12 @@ export function mapCalculator(id) {
     id,
     title: calculator.title,
     link: calculator.href,
-    ...(calculator.available ? {} : { status: '준비중' }),
   }
 }
 
 export function mapBlog(id) {
   const blog = blogRegistry[id]
-  if (!blog) {
+  if (!blog?.available) {
     return null
   }
 
@@ -35,7 +36,6 @@ export function mapBlog(id) {
     id,
     title: blog.title,
     link: blog.href,
-    ...(blog.available ? {} : { status: '준비중' }),
   }
 }
 

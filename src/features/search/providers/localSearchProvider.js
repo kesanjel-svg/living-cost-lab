@@ -39,25 +39,26 @@ function buildDocuments() {
     gas: 'gas',
     pension: 'pension',
     'health-insurance': 'health',
+    'net-salary': 'netSalary',
   }
 
-  const calculatorDocs = popularCalculators.map((calculator) => {
-    const registryKey = registryKeyMap[calculator.id] ?? calculator.id
-    const registry = calculatorRegistry[registryKey]
-
-    return {
+  // 미제공(available: false) 계산기는 검색 색인에서 제외한다 — "준비중" 배지 노출 금지.
+  const calculatorDocs = popularCalculators
+    .filter((calculator) => {
+      const registryKey = registryKeyMap[calculator.id] ?? calculator.id
+      return calculatorRegistry[registryKey]?.available
+    })
+    .map((calculator) => ({
       id: `calculator-${calculator.id}`,
       type: SEARCH_TYPES.CALCULATOR,
       title: calculator.title,
       description: calculator.description,
       href: calculator.href,
       tags: ['계산기'],
-      available: registry?.available ?? calculator.id === 'electric',
       haystack: [calculator.title, calculator.description, '계산기']
         .join(' ')
         .toLowerCase(),
-    }
-  })
+    }))
 
   return [...supportDocs, ...blogDocs, ...calculatorDocs]
 }

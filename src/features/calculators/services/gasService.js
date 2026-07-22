@@ -74,26 +74,12 @@ function buildGasRecommendCards(report, userInput) {
 
   const electricCalculator = report.calculators.find((calc) => calc.id === 'electric')
   if (electricCalculator) {
-    items.push(
-      electricCalculator.status
-        ? { title: electricCalculator.title, status: electricCalculator.status, buttonText: '준비중' }
-        : { title: electricCalculator.title, link: electricCalculator.link, buttonText: '계산하기' },
-    )
+    items.push({ title: electricCalculator.title, link: electricCalculator.link, buttonText: '계산하기' })
   }
 
   const gasBlog = report.blogs.find((blog) => blog.id === 'gas-saving')
   if (gasBlog) {
-    items.push(
-      gasBlog.status
-        ? { title: gasBlog.title, status: gasBlog.status, buttonText: '준비중' }
-        : { title: gasBlog.title, link: gasBlog.link, buttonText: '읽어보기' },
-    )
-  } else {
-    items.push({
-      title: '도시가스 절약 팁',
-      status: '준비중',
-      buttonText: '준비중',
-    })
+    items.push({ title: gasBlog.title, link: gasBlog.link, buttonText: '읽어보기' })
   }
 
   return items

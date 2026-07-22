@@ -60,12 +60,12 @@ function getDefaultBlogs(limit = 3) {
 
 function getDefaultCalculators(limit = 3) {
   return Object.entries(calculatorRegistry)
+    .filter(([, calculator]) => calculator.available)
     .slice(0, limit)
     .map(([id, calculator]) => ({
       id,
       title: calculator.title,
       link: calculator.href,
-      ...(calculator.available ? {} : { status: '준비중' }),
     }))
 }
 

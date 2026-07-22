@@ -99,40 +99,14 @@ function buildElectricRecommendCards(report, userInput) {
     })
   }
 
-  items.push({
-    title: '에너지캐시백',
-    status: '준비중',
-    buttonText: '준비중',
-  })
-
   const gasCalculator = mapCalculator('gas')
   if (gasCalculator) {
-    items.push(
-      gasCalculator.status
-        ? { title: gasCalculator.title, status: gasCalculator.status, buttonText: '준비중' }
-        : { title: gasCalculator.title, link: gasCalculator.link, buttonText: '계산하기' },
-    )
-  } else {
-    items.push({
-      title: '도시가스 계산기',
-      status: '준비중',
-      buttonText: '준비중',
-    })
+    items.push({ title: gasCalculator.title, link: gasCalculator.link, buttonText: '계산하기' })
   }
 
   const electricBlog = report.blogs.find((blog) => blog.id === 'electric-saving')
   if (electricBlog) {
-    items.push({
-      title: electricBlog.title,
-      status: electricBlog.status || '준비중',
-      buttonText: '준비중',
-    })
-  } else {
-    items.push({
-      title: '전기요금 절약 팁',
-      status: '준비중',
-      buttonText: '준비중',
-    })
+    items.push({ title: electricBlog.title, link: electricBlog.link, buttonText: '읽어보기' })
   }
 
   return items

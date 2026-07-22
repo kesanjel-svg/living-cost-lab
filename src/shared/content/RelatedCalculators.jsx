@@ -7,26 +7,24 @@ export default function RelatedCalculators({
   calculators = [],
   id = 'related-calculators',
 }) {
-  if (!calculators.length) {
+  // 미제공(available: false) 계산기는 "준비중" 배지 대신 아예 노출하지 않는다.
+  const availableCalculators = calculators.filter(
+    (calculator) => calculator.available !== false,
+  )
+
+  if (!availableCalculators.length) {
     return null
   }
 
   return (
     <DetailSection id={id} title={title}>
       <ul className="related-calculators__list">
-        {calculators.map((calculator) => (
+        {availableCalculators.map((calculator) => (
           <li key={calculator.id} className="related-calculators__item">
-            {calculator.available !== false ? (
-              <Link to={calculator.href} className="related-calculators__link">
-                {calculator.title}
-                <span aria-hidden="true">→</span>
-              </Link>
-            ) : (
-              <span className="related-calculators__pending">
-                {calculator.title}
-                <span className="related-calculators__badge">준비중</span>
-              </span>
-            )}
+            <Link to={calculator.href} className="related-calculators__link">
+              {calculator.title}
+              <span aria-hidden="true">→</span>
+            </Link>
           </li>
         ))}
       </ul>

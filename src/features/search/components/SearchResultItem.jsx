@@ -18,9 +18,6 @@ export default function SearchResultItem({ item, onSelect }) {
       {item.description && (
         <span className="search-result-item__desc">{item.description}</span>
       )}
-      {item.available === false && (
-        <span className="search-result-item__badge">준비중</span>
-      )}
     </Link>
   )
 }

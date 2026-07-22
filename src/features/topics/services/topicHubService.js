@@ -49,7 +49,7 @@ function mapSupportItem(program) {
 
 function mapCalculatorItem(id) {
   const calculator = calculatorRegistry[id]
-  if (!calculator) {
+  if (!calculator?.available) {
     return null
   }
 
@@ -57,10 +57,9 @@ function mapCalculatorItem(id) {
     id: `calculator-${id}`,
     type: 'calculator',
     title: calculator.title,
-    summary: calculator.available ? '바로 계산하기' : '준비 중',
+    summary: '바로 계산하기',
     href: calculator.href,
     badge: '계산기',
-    available: calculator.available,
   }
 }
 

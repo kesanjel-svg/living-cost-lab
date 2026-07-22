@@ -42,7 +42,6 @@ export default function HubLayout({
           title="추천 콘텐츠"
           description="이 토픽에서 가장 먼저 확인하면 좋은 콘텐츠입니다."
           items={featured}
-          emptyText="추천 콘텐츠를 준비 중입니다."
         />
 
         <HubContentSection

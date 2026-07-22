@@ -24,12 +24,11 @@ export const features = [
     available: true,
   },
   {
-    id: 'ai',
+    id: 'ai-diagnosis',
     icon: '🤖',
-    title: 'AI 상담',
-    badge: '준비중',
-    description: '생활비 절약에 대해 AI와 상담하는 기능을 준비하고 있습니다.',
-    href: '#ai',
-    available: false,
+    title: 'AI 생활비 진단',
+    description: '몇 가지 정보만 입력하면 맞춤 지원금과 절약 방법을 진단해드립니다.',
+    href: '/cost-report',
+    available: true,
   },
 ]
