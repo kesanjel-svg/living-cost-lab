@@ -24,9 +24,9 @@ export default function ContentCtaSection({
       </h2>
       {description && <p className="content-cta__desc">{description}</p>}
       <div className="content-cta__actions">
-        {actions.map((action) => (
+        {actions.map((action, index) => (
           <CtaButton
-            key={action.to}
+            key={`${action.to}-${index}`}
             to={action.to}
             variant={variantMap[action.variant ?? 'secondary']}
             size="sm"

@@ -139,12 +139,28 @@ export default function BlogDetailPage() {
             </nav>
 
             <div className="blog-detail__body">
+              {post.lead && <p className="blog-detail__lead">{post.lead}</p>}
               {post.content.map((section) => (
                 <section key={section.id} id={section.id} className="blog-detail__section">
                   <h2>{section.heading}</h2>
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
+                  {section.links?.length > 0 && (
+                    <ul className="blog-detail__section-links">
+                      {section.links.map((link) => (
+                        <li key={link.to}>
+                          {link.to.startsWith('http') ? (
+                            <a href={link.to} target="_blank" rel="noreferrer">
+                              {link.label}
+                            </a>
+                          ) : (
+                            <Link to={link.to}>{link.label}</Link>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </section>
               ))}
             </div>
