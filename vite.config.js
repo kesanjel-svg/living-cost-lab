@@ -19,11 +19,21 @@ import {
   buildSitemapXml,
 } from './src/shared/seo/buildSeoAssets.js'
 
-function brandingHtmlPlugin() {
+function brandingHtmlPlugin(env) {
   return {
     name: 'branding-html',
     transformIndexHtml(html) {
       const schemaGraph = JSON.stringify(buildHomeSchemaGraph(BRAND_DESCRIPTION))
+
+      // 애드센스 사이트 소유권 확인용 메타태그. AdSense SDK 스크립트는
+      // 클라이언트에서 JS로 지연 삽입되어(initAdSense()) 정적 HTML에는
+      // 없으므로, 구글의 정적 크롤링 기반 소유권 확인이 실패하는 문제가 있었음
+      // (2026-07-23 재심사 "확인할 수 없음" 원인) — 항상 정적으로 존재하는
+      // 이 메타태그로 대체. 클라이언트 ID 미설정(로컬 개발) 시에는 빈 문자열로 치환.
+      const adsenseClientId = env.VITE_ADSENSE_CLIENT?.trim() || ''
+      const adsenseVerificationMeta = adsenseClientId
+        ? `<meta name="google-adsense-account" content="${adsenseClientId}" />`
+        : ''
 
       return html
         .replaceAll('__BRAND_DEFAULT_TITLE__', BRAND_DEFAULT_TITLE)
@@ -35,6 +45,7 @@ function brandingHtmlPlugin() {
         .replaceAll('__BRAND_LOGO_URL__', getBrandLogoUrl())
         .replaceAll('__BRAND_OG_IMAGE_URL__', getBrandOgImageUrl())
         .replaceAll('__BRAND_HOME_SCHEMA__', schemaGraph)
+        .replaceAll('__ADSENSE_VERIFICATION_META__', adsenseVerificationMeta)
     },
   }
 }
@@ -107,7 +118,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
   return {
     plugins: [
       react(),
-      brandingHtmlPlugin(),
+      brandingHtmlPlugin(env),
       brandingManifestPlugin(),
       seoAssetsPlugin(env),
     ],
