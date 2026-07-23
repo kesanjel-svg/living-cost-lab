@@ -7,6 +7,13 @@ export const popularCalculators = [
     href: '/calculators/net-salary',
   },
   {
+    id: 'severance',
+    icon: '📦',
+    title: '퇴직금 계산기',
+    description: '입사일·퇴사일과 급여로 평균임금 기준 예상 퇴직금을 계산합니다.',
+    href: '/calculators/severance',
+  },
+  {
     id: 'electric',
     icon: '⚡',
     title: '전기요금 계산기',

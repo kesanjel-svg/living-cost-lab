@@ -24,4 +24,9 @@ export const calculatorRegistry = {
     href: '/calculators/net-salary',
     available: true,
   },
+  severance: {
+    title: '퇴직금 계산기',
+    href: '/calculators/severance',
+    available: true,
+  },
 }

@@ -124,6 +124,14 @@
   cursor: pointer;
 }
 
+.calculator-input__group {
+  margin-bottom: 1.125rem;
+}
+
+.calculator-input__group:last-of-type {
+  margin-bottom: 0;
+}
+
 .calculator-input__hint {
   margin: 0.625rem 0 0;
   font-size: 0.8125rem;

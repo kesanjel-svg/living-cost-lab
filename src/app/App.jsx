@@ -28,6 +28,9 @@ const HealthInsuranceCalculatorPage = lazy(
 const NetSalaryCalculatorPage = lazy(
   () => import('../features/calculators/netSalary/NetSalaryCalculatorPage'),
 )
+const SeveranceCalculatorPage = lazy(
+  () => import('../features/calculators/severance/SeveranceCalculatorPage'),
+)
 const BlogPage = lazy(() => import('../pages/BlogPage'))
 const BlogDetailPage = lazy(() => import('../pages/BlogDetailPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
@@ -187,6 +190,14 @@ export function AppShell() {
                 element={
                   <LazyRoute>
                     <NetSalaryCalculatorPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators/severance"
+                element={
+                  <LazyRoute>
+                    <SeveranceCalculatorPage />
                   </LazyRoute>
                 }
               />
