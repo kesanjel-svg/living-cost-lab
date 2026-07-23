@@ -14,6 +14,13 @@ export const popularCalculators = [
     href: '/calculators/severance',
   },
   {
+    id: 'unemployment',
+    icon: '🧭',
+    title: '실업급여 계산기',
+    description: '나이·가입기간·평균 월급여로 예상 구직급여 총액을 계산합니다.',
+    href: '/calculators/unemployment',
+  },
+  {
     id: 'electric',
     icon: '⚡',
     title: '전기요금 계산기',

@@ -29,4 +29,9 @@ export const calculatorRegistry = {
     href: '/calculators/severance',
     available: true,
   },
+  unemployment: {
+    title: '실업급여 계산기',
+    href: '/calculators/unemployment',
+    available: true,
+  },
 }
