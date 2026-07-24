@@ -8,6 +8,7 @@ import {
 } from '../constants/branding'
 import { getBlogPath, getLatestPosts } from '../features/blog/services/blogService'
 import { blogPosts } from '../data/blogPosts'
+import BrandLogo from './BrandLogo'
 import './Footer.css'
 
 const SERVICE_LINKS = [
@@ -34,7 +35,10 @@ export default function Footer() {
       <div className="footer__inner">
         <div className="footer__top">
           <div className="footer__brand-block">
-            <p className="footer__brand">{BRAND_NAME}</p>
+            <p className="footer__brand">
+              <BrandLogo size={22} className="footer__brand-mark" />
+              <span>{BRAND_NAME}</span>
+            </p>
             <p className="footer__tagline">{BRAND_TAGLINE}</p>
             <p className="footer__name-en">{BRAND_NAME_EN}</p>
           </div>

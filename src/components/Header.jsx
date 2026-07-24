@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { BRAND_NAME } from '../constants/branding'
 import { navItems } from '../data'
+import BrandLogo from './BrandLogo'
 import HeaderSearch from '../features/search/components/HeaderSearch'
 import './Header.css'
 
@@ -16,7 +17,8 @@ export default function Header() {
     <header className="header">
       <div className="header__inner">
         <Link to="/" className="header__logo" onClick={closeMenu}>
-          {BRAND_NAME}
+          <BrandLogo className="header__logo-mark" />
+          <span>{BRAND_NAME}</span>
         </Link>
 
         <HeaderSearch />

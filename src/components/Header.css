@@ -25,6 +25,9 @@
 }
 
 .header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: clamp(0.9375rem, 4vw, 1.125rem);
   font-weight: 700;
   color: var(--blue-900);
@@ -34,8 +37,17 @@
   min-width: 0;
 }
 
+.header__logo-mark {
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out);
+}
+
 .header__logo:hover {
   color: var(--blue-600);
+}
+
+.header__logo:hover .header__logo-mark {
+  transform: rotate(-6deg) scale(1.05);
 }
 
 .header__toggle {
