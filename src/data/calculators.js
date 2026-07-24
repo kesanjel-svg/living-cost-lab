@@ -35,6 +35,13 @@ export const popularCalculators = [
     href: '/calculators/parental-leave',
   },
   {
+    id: 'four-insurance',
+    icon: '🛡️',
+    title: '4대보험 계산기',
+    description: '보수월액으로 근로자·사업주 4대보험 부담분을 한 번에 계산합니다.',
+    href: '/calculators/four-insurance',
+  },
+  {
     id: 'electric',
     icon: '⚡',
     title: '전기요금 계산기',

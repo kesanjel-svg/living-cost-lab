@@ -40,6 +40,9 @@ const AnnualLeaveCalculatorPage = lazy(
 const ParentalLeaveCalculatorPage = lazy(
   () => import('../features/calculators/parentalLeave/ParentalLeaveCalculatorPage'),
 )
+const FourInsuranceCalculatorPage = lazy(
+  () => import('../features/calculators/fourInsurance/FourInsuranceCalculatorPage'),
+)
 const BlogPage = lazy(() => import('../pages/BlogPage'))
 const BlogDetailPage = lazy(() => import('../pages/BlogDetailPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
@@ -231,6 +234,14 @@ export function AppShell() {
                 element={
                   <LazyRoute>
                     <ParentalLeaveCalculatorPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators/four-insurance"
+                element={
+                  <LazyRoute>
+                    <FourInsuranceCalculatorPage />
                   </LazyRoute>
                 }
               />

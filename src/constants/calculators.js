@@ -44,4 +44,9 @@ export const calculatorRegistry = {
     href: '/calculators/parental-leave',
     available: true,
   },
+  fourInsurance: {
+    title: '4대보험 계산기',
+    href: '/calculators/four-insurance',
+    available: true,
+  },
 }
