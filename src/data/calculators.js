@@ -21,6 +21,13 @@ export const popularCalculators = [
     href: '/calculators/unemployment',
   },
   {
+    id: 'annual-leave',
+    icon: '🌴',
+    title: '연차수당 계산기',
+    description: '입사일과 통상임금으로 발생 연차일수와 예상 연차수당을 계산합니다.',
+    href: '/calculators/annual-leave',
+  },
+  {
     id: 'electric',
     icon: '⚡',
     title: '전기요금 계산기',

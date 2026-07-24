@@ -34,4 +34,9 @@ export const calculatorRegistry = {
     href: '/calculators/unemployment',
     available: true,
   },
+  annualLeave: {
+    title: '연차수당 계산기',
+    href: '/calculators/annual-leave',
+    available: true,
+  },
 }
