@@ -28,6 +28,13 @@ export const popularCalculators = [
     href: '/calculators/annual-leave',
   },
   {
+    id: 'parental-leave',
+    icon: '🍼',
+    title: '육아휴직급여 계산기',
+    description: '통상임금과 사용 개월수로 구간별 예상 육아휴직급여 총액을 계산합니다.',
+    href: '/calculators/parental-leave',
+  },
+  {
     id: 'electric',
     icon: '⚡',
     title: '전기요금 계산기',

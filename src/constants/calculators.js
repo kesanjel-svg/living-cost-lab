@@ -39,4 +39,9 @@ export const calculatorRegistry = {
     href: '/calculators/annual-leave',
     available: true,
   },
+  parentalLeave: {
+    title: '육아휴직급여 계산기',
+    href: '/calculators/parental-leave',
+    available: true,
+  },
 }

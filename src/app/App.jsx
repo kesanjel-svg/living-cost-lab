@@ -37,6 +37,9 @@ const UnemploymentCalculatorPage = lazy(
 const AnnualLeaveCalculatorPage = lazy(
   () => import('../features/calculators/annualLeave/AnnualLeaveCalculatorPage'),
 )
+const ParentalLeaveCalculatorPage = lazy(
+  () => import('../features/calculators/parentalLeave/ParentalLeaveCalculatorPage'),
+)
 const BlogPage = lazy(() => import('../pages/BlogPage'))
 const BlogDetailPage = lazy(() => import('../pages/BlogDetailPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
@@ -220,6 +223,14 @@ export function AppShell() {
                 element={
                   <LazyRoute>
                     <AnnualLeaveCalculatorPage />
+                  </LazyRoute>
+                }
+              />
+              <Route
+                path="/calculators/parental-leave"
+                element={
+                  <LazyRoute>
+                    <ParentalLeaveCalculatorPage />
                   </LazyRoute>
                 }
               />

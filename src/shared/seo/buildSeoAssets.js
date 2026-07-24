@@ -22,6 +22,7 @@ export const STATIC_PATHS = [
   '/calculators/severance',
   '/calculators/unemployment',
   '/calculators/annual-leave',
+  '/calculators/parental-leave',
   '/blog',
   '/topics',
   '/search',

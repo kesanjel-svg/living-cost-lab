@@ -41,6 +41,7 @@ function buildDocuments() {
     'health-insurance': 'health',
     'net-salary': 'netSalary',
     'annual-leave': 'annualLeave',
+    'parental-leave': 'parentalLeave',
   }
 
   // 미제공(available: false) 계산기는 검색 색인에서 제외한다 — "준비중" 배지 노출 금지.
