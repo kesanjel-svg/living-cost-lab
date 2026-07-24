@@ -5,6 +5,7 @@ import CalculatorInputCard from '../components/CalculatorInputCard'
 import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import CalculatorResultAd from '../components/CalculatorResultAd'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import { SourceBadge } from '../../../shared/ui'
 import {
@@ -113,6 +114,8 @@ export default function HealthInsuranceCalculator() {
           <CalculatorTipCard tips={HEALTH_TIPS} />
 
           <CalculatorRecommendCard items={getHealthInsuranceRecommendations()} />
+
+          <CalculatorResultAd />
         </div>
       )}
 
@@ -133,6 +136,8 @@ export default function HealthInsuranceCalculator() {
           <CalculatorTipCard tips={HEALTH_TIPS} />
 
           <CalculatorRecommendCard items={getHealthInsuranceRecommendations()} />
+
+          <CalculatorResultAd />
         </div>
       )}
 

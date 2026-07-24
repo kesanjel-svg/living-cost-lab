@@ -7,6 +7,7 @@ import CalculatorBreakdownChart from '../components/CalculatorBreakdownChart'
 import CalculatorSavingCard from '../components/CalculatorSavingCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import CalculatorResultAd from '../components/CalculatorResultAd'
 import { getDefaultElectricUsageFromProfile } from '../../profile/services/profileService'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import { SourceBadge } from '../../../shared/ui'
@@ -99,6 +100,8 @@ export default function ElectricCalculator() {
           <CalculatorTipCard tips={ELECTRIC_TIPS} />
 
           <CalculatorRecommendCard items={getElectricRecommendations(result.usage)} />
+
+          <CalculatorResultAd />
         </div>
       )}
 

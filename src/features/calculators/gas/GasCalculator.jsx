@@ -7,6 +7,7 @@ import CalculatorBreakdownChart from '../components/CalculatorBreakdownChart'
 import CalculatorSavingCard from '../components/CalculatorSavingCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import CalculatorResultAd from '../components/CalculatorResultAd'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import { SourceBadge } from '../../../shared/ui'
 import {
@@ -147,6 +148,8 @@ export default function GasCalculator() {
           <CalculatorTipCard tips={GAS_TIPS} />
 
           <CalculatorRecommendCard items={getGasRecommendations(result.usage)} />
+
+          <CalculatorResultAd />
         </div>
       )}
 

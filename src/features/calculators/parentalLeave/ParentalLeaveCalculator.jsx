@@ -4,6 +4,7 @@ import CalculatorLayout from '../components/CalculatorLayout'
 import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import CalculatorResultAd from '../components/CalculatorResultAd'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import { SourceBadge } from '../../../shared/ui'
 import {
@@ -116,6 +117,8 @@ export default function ParentalLeaveCalculator() {
           <CalculatorTipCard tips={PARENTAL_LEAVE_TIPS} />
 
           <CalculatorRecommendCard items={getParentalLeaveRecommendations()} />
+
+          <CalculatorResultAd />
         </div>
       )}
 

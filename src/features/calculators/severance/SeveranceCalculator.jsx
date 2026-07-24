@@ -5,6 +5,7 @@ import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorBreakdownChart from '../components/CalculatorBreakdownChart'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import CalculatorResultAd from '../components/CalculatorResultAd'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import { SourceBadge } from '../../../shared/ui'
 import {
@@ -193,6 +194,8 @@ export default function SeveranceCalculator() {
           <CalculatorTipCard tips={SEVERANCE_TIPS} />
 
           <CalculatorRecommendCard items={getSeveranceRecommendations()} />
+
+          <CalculatorResultAd />
         </div>
       )}
 

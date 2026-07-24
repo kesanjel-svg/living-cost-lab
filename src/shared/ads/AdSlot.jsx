@@ -39,6 +39,10 @@ export default function AdSlot({
       aria-label={label}
       data-ad-slot={slotId}
     >
+      {/* 콘텐츠와 광고를 시각적으로 구분 — 오인 클릭 방지 및 애드센스 정책 준수 */}
+      <span className="ad-slot__label" aria-hidden="true">
+        {label}
+      </span>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}

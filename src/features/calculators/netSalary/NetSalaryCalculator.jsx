@@ -6,6 +6,7 @@ import CalculatorResultCard from '../components/CalculatorResultCard'
 import CalculatorBreakdownChart from '../components/CalculatorBreakdownChart'
 import CalculatorTipCard from '../components/CalculatorTipCard'
 import CalculatorRecommendCard from '../components/CalculatorRecommendCard'
+import CalculatorResultAd from '../components/CalculatorResultAd'
 import { SourceBadge } from '../../../shared/ui'
 import {
   buildNetSalaryResult,
@@ -105,6 +106,8 @@ export default function NetSalaryCalculator() {
           <CalculatorTipCard tips={NET_SALARY_TIPS} />
 
           <CalculatorRecommendCard items={getNetSalaryRecommendations()} />
+
+          <CalculatorResultAd />
         </div>
       )}
 
