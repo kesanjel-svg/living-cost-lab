@@ -120,6 +120,14 @@ export default function BlogDetailPage() {
               <time className="blog-detail__date" dateTime={post.datePublished}>
                 {formatBlogDate(post.datePublished)}
               </time>
+              {post.dateModified && post.dateModified !== post.datePublished && (
+                <time
+                  className="blog-detail__date blog-detail__date--modified"
+                  dateTime={post.dateModified}
+                >
+                  (수정: {formatBlogDate(post.dateModified)})
+                </time>
+              )}
             </header>
 
             <div

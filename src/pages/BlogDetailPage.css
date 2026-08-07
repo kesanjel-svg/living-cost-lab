@@ -44,6 +44,10 @@
   color: var(--text-muted);
 }
 
+.blog-detail__date--modified {
+  margin-left: 0.5rem;
+}
+
 .blog-detail__hero {
   position: relative;
   display: flex;
