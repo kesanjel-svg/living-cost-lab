@@ -1,3 +1,4 @@
+import { SourceBadge } from '../../../../shared/ui'
 import './SupportDetailHeader.css'
 
 export default function SupportDetailHeader({ program }) {
@@ -16,6 +17,14 @@ export default function SupportDetailHeader({ program }) {
             </span>
           ))}
         </div>
+      )}
+
+      {program.organization && (
+        <SourceBadge
+          label={program.organization}
+          url={program.website}
+          effectiveDate={program.lastChecked}
+        />
       )}
     </header>
   )

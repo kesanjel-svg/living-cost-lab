@@ -12,6 +12,7 @@
   "applyMethod": "복지로 온라인 신청 또는 주민센터 방문 신청 후 국민행복카드로 어린이집에서 결제",
   "organization": "보건복지부 / 지자체",
   "website": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003250&wlfareInfoReldBztpCd=01",
+  "lastChecked": "2026-07-05",
   "documents": ["국민행복카드(아이행복카드)", "어린이집 입소(재원) 확인서", "아동 주민등록등본"],
   "tags": ["보육료", "어린이집", "영유아", "정부지원금"],
   "age": "all",

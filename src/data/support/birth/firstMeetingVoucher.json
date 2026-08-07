@@ -12,6 +12,7 @@
   "applyMethod": "복지로 온라인 신청 또는 주민센터 방문 신청, 출생신고와 동시에 신청 가능",
   "organization": "보건복지부",
   "website": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004656",
+  "lastChecked": "2026-07-05",
   "documents": ["출생신고 완료 후 아동 주민등록등본", "국민행복카드(카드사 또는 은행 앱에서 발급)", "신청인(부모) 신분증"],
   "tags": ["첫만남이용권", "출산", "국민행복카드", "정부지원금"],
   "age": "all",

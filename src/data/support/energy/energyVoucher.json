@@ -12,6 +12,8 @@
   "applyMethod": "주민센터 또는 복지로를 통해 신청",
   "organization": "산업통상자원부 / 한국에너지공단",
   "website": "https://www.bokjiro.go.kr",
+
+  "lastChecked": "2026-06-30",
   "documents": ["주민등록등본", "소득·재산 증명 서류", "에너지 사용 고지서"],
   "tags": ["전기요금", "가스요금", "취약계층", "정부지원금"],
   "age": "all",

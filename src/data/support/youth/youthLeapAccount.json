@@ -12,6 +12,7 @@
   "applyMethod": "취급은행 앱 비대면 신청 또는 서민금융진흥원 홈페이지 확인 후 신청",
   "organization": "금융위원회 / 서민금융진흥원",
   "website": "https://www.kinfa.or.kr/financialProduct/youthLeapAccount.do",
+  "lastChecked": "2026-07-05",
   "documents": ["신분증", "소득금액증명원(또는 원천징수영수증)", "취급은행 입출금 계좌"],
   "tags": ["청년도약계좌", "자산형성", "정부기여금", "정부지원금"],
   "age": "20",

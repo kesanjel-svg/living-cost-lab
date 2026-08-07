@@ -12,6 +12,8 @@
   "applyMethod": "거주지 주민센터 또는 지자체 온라인 신청",
   "organization": "보건복지부 / 지자체",
   "website": "https://www.bokjiro.go.kr",
+
+  "lastChecked": "2026-06-30",
   "documents": ["주민등록등본", "출생증명서 또는 임신 확인 서류", "통장 사본"],
   "tags": ["출산", "육아", "영유아", "정부지원금"],
   "age": "all",

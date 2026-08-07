@@ -12,6 +12,8 @@
   "applyMethod": "LH청약센터 또는 지자체 주거 포털 신청",
   "organization": "국토교통부 / LH",
   "website": "https://www.myhome.go.kr",
+
+  "lastChecked": "2026-06-30",
   "documents": ["임대차계약서", "주민등록등본", "소득·재산 증명", "통장 사본"],
   "tags": ["월세", "청년", "주거비", "정부지원금"],
   "age": "20",

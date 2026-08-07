@@ -12,6 +12,8 @@
   "applyMethod": "국세청 홈택스에서 온라인 신청",
   "organization": "국세청",
   "website": "https://www.hometax.go.kr",
+
+  "lastChecked": "2026-06-30",
   "documents": ["소득·재산 신고서", "가족관계증명서", "통장 사본"],
   "tags": ["자녀", "양육", "세금환급", "정부지원금"],
   "age": "all",

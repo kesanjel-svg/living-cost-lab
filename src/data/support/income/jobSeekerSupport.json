@@ -12,6 +12,7 @@
   "applyMethod": "고용24(work24.go.kr) 온라인 신청 또는 거주지 관할 고용센터 방문 신청",
   "organization": "고용노동부 / 한국고용정보원",
   "website": "https://www.work24.go.kr",
+  "lastChecked": "2026-07-05",
   "documents": ["신분증", "소득·재산 확인 서류", "구직등록 및 제도안내 동영상 수강 확인"],
   "tags": ["구직촉진수당", "실업부조", "취업지원", "정부지원금"],
   "age": "all",
