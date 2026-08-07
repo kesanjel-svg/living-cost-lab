@@ -1,0 +1,33 @@
+.calculator-guide {
+  width: 100%;
+  max-width: 720px;
+  margin: 2.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.calculator-guide__section {
+  margin-bottom: 1.75rem;
+}
+
+.calculator-guide__section:last-child {
+  margin-bottom: 0;
+}
+
+.calculator-guide__heading {
+  margin: 0 0 0.875rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.calculator-guide__paragraph {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.calculator-guide__paragraph:last-child {
+  margin-bottom: 0;
+}
