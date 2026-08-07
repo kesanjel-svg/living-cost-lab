@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { calculatorRegistry } from '../../../constants/calculators'
 import supportPrograms from '../../../data/supportPrograms'
+import ApplicationSteps from '../../../shared/content/ApplicationSteps'
 import ContentBreadcrumb from '../../../shared/content/ContentBreadcrumb'
 import ContentCtaSection from '../../../shared/content/ContentCtaSection'
 import ContentToc from '../../../shared/content/ContentToc'
@@ -17,6 +18,7 @@ import { addRecentSupportView } from '../../../shared/storage/userActivityStorag
 import SupportDetailHeader from '../components/detail/SupportDetailHeader'
 import SupportDetailSeo from '../components/detail/SupportDetailSeo'
 import {
+  buildApplicationSteps,
   buildSupportBreadcrumbs,
   buildSupportCtaActions,
   buildSupportTocSections,
@@ -60,6 +62,11 @@ export default function SupportDetailPage() {
 
   const tocSections = useMemo(
     () => (program ? buildSupportTocSections(program) : []),
+    [program],
+  )
+
+  const applicationSteps = useMemo(
+    () => (program ? buildApplicationSteps(program) : []),
     [program],
   )
 
@@ -159,6 +166,8 @@ export default function SupportDetailPage() {
                   공식 홈페이지 바로가기 →
                 </a>
               )}
+
+              <ApplicationSteps steps={applicationSteps} />
             </DetailSection>
 
             {program.documents?.length > 0 && (

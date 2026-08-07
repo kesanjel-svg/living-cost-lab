@@ -54,6 +54,45 @@ export function buildSupportSeoConfig(program) {
   }
 }
 
+/**
+ * 신청방법 단계별 안내를 프로그램 자체의 필드(신청대상·소득기준·서류·신청방법·
+ * 담당기관)에서 구성한다. 새로운 사실을 추가하지 않고 이미 검증된 JSON 필드를
+ * 절차 형태로 재구성하는 것이므로 별도 출처 확인 없이 전체 프로그램에 적용 가능하다.
+ */
+export function buildApplicationSteps(program) {
+  const steps = []
+
+  steps.push({
+    title: '신청 자격 확인',
+    description: program.income
+      ? `${program.target} (소득 기준: ${program.income})`
+      : program.target,
+  })
+
+  if (program.documents?.length) {
+    steps.push({
+      title: '필요 서류 준비',
+      description: `${program.documents.join(', ')}을(를) 미리 준비합니다.`,
+    })
+  }
+
+  steps.push({
+    title: '신청하기',
+    description: program.applyPeriod
+      ? `${program.applyMethod} (신청 기간: ${program.applyPeriod})`
+      : program.applyMethod,
+  })
+
+  if (program.organization) {
+    steps.push({
+      title: '문의 및 확인',
+      description: `자세한 사항은 담당 기관(${program.organization})에 문의하거나 공식 홈페이지에서 확인할 수 있습니다.`,
+    })
+  }
+
+  return steps
+}
+
 export function buildSupportCtaActions() {
   return [
     {
